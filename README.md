@@ -1,37 +1,10 @@
-## Welcome to GitHub Pages
+## 私とCakePHP3
 
-You can use the [editor on GitHub](https://github.com/o0h/cakephp3-with-me/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+CakePHP3を触っていて感じた、「こういう使い方ができるな」というtipsや実験を残していきたいと思います。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### 背景
+CakePHP3は、2.xの時代から業務で利用しています。  
+私が触り始めた時と比較すると「人気が落ち着いた」という言葉もよく耳にしますが、(時代背景的にフルスタックなものよりコンポーネント志向が高まっている状況もありますが、)個人的には期待される責務に対して非常によく練られて勢いもあるフレームワークだと感じます。  
+しかしながら、まだまだWeb上に公開されている「実践的なやり方」が不足していて、この重厚かつ網羅的なソフトウェアのポテンシャルをまだまだ引き出されていないのでは？と思わされる場面が多々ありました。
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/o0h/cakephp3-with-me/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+自分にとってはCakeをやっていることが面白いので、その魅力が少しでも世間に届いたら幸いです。
