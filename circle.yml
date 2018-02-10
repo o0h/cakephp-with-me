@@ -1,0 +1,13 @@
+machine:
+  node:
+    version: 6.11.2
+    npm:
+      version: 3.10.10
+deployment:
+  website:
+    branch: master
+    commands:
+      - git config --global user.email "o0h@users.noreply.github.com"
+      - git config --global user.name "Hideki Kinjyo"
+      - echo "machine github.com login o0h password $GITHUB_TOKEN" > ~/.netrc
+      - cd website && npm install && GIT_USER=o0h npm run publish-gh-pages
