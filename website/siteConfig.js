@@ -9,7 +9,7 @@
 const users = [
   {
     caption: 'User1',
-    image: '/test-site/img/docusaurus.svg',
+    image: '/img/docusaurus.svg',
     infoLink: 'https://www.facebook.com',
     pinned: true,
   },
@@ -18,9 +18,9 @@ const users = [
 const siteConfig = {
   title: 'Test Site' /* title for your website */,
   tagline: 'A website for testing',
-  url: 'https://facebook.github.io' /* your website url */,
-  baseUrl: '/test-site/' /* base url for your project */,
-  projectName: 'test-site',
+  url: 'https://cake.nichiyoubi.land' /* your website url */,
+  baseUrl: '/' /* base url for your project */,
+  projectName: 'cakephp3-with-me',
   headerLinks: [
     {doc: 'doc1', label: 'Docs'},
     {doc: 'doc4', label: 'API'},
@@ -50,7 +50,7 @@ const siteConfig = {
   },
   scripts: ['https://buttons.github.io/buttons.js'],
   // You may provide arbitrary config keys to be used as needed by your template.
-  repoUrl: 'https://github.com/facebook/test-site',
+  repoUrl: 'https://github.com/o0h/cakephp3-with-me',
 };
 
 module.exports = siteConfig;
