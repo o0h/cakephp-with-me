@@ -1,6 +1,7 @@
 baseurl = "http://cake.nichiyoubi.land/"
 languageCode = "ja-jp"
 Title = "cakephp-with-me"
+publishDir = "docs"
 
 [params]
   paginate = 10
