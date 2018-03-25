@@ -12,7 +12,7 @@ jobs:
       - run: git submodule update --init --recursive
       # ユーザページサイトのリポジトリをpublicフォルダにcloneする
       - run: git clone git@github.com:o0h/cakephp-with-me.git public
-      - run: hugo
+      - run: hugo -t pickles
       # HTMLProoferでテストする
       - run:
           name: "Test Website"
