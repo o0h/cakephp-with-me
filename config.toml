@@ -1,7 +1,6 @@
 baseurl = "/"
 languageCode = "ja-jp"
 Title = "cakephp-with-me"
-publishDir = "docs"
 
 [params]
   paginate = 10

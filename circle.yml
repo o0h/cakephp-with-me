@@ -10,8 +10,8 @@ jobs:
       - run: echo "machine github.com login o0h password $GITHUB_TOKEN" > ~/.netrc
       - run: git submodule sync
       - run: git submodule update --init --recursive
-      # ユーザページサイトのリポジトリをpublicフォルダにcloneする
-      - run: git clone git@github.com:o0h/cakephp-with-me.git public
+      - run: git worktree add -B gh-pages public origin/gh-pages
+      - run: rm -rf public
       - run: hugo -t pickles
       # HTMLProoferでテストする
       - run:
@@ -19,7 +19,7 @@ jobs:
           command: htmlproofer public --allow-hash-href --check-html --empty-alt-ignore
       # ユーザページサイトにPushする
       - deploy:
-          command: cd docs && git add . && git diff --cached --exit-code --quiet || git commit -m "Rebuilding site" && git push origin master
+          command: cd public && git add . && git diff --cached --exit-code --quiet || git commit -m "Rebuilding site" && git push origin gh-pages
 
 workflows:
   version: 2
