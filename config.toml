@@ -33,6 +33,18 @@ Title = "cakephp-with-me"
     weight = 2
 
 [[menu.main]]
+    parent = "Tags"
+    name = "utility"
+    url = "/tags/utility"
+    weight = 3
+
+[[menu.main]]
+    parent = "Tags"
+    name = "tips"
+    url = "/tags/tips"
+    weight = 3
+
+[[menu.main]]
     identifier = "categories"
     name = "Categories"
     weight = 3
