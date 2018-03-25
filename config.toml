@@ -1,4 +1,4 @@
-baseurl = "http://cake.nichiyoubi.land/"
+baseurl = "/"
 languageCode = "ja-jp"
 Title = "cakephp-with-me"
 publishDir = "docs"
