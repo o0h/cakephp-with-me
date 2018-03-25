@@ -1,0 +1,75 @@
+baseurl = "http://cake.nichiyoubi.land/"
+languageCode = "ja-jp"
+Title = "cakephp-with-me"
+
+[params]
+  paginate = 10
+  # Social accounts. Link to these accounts are displayed in the header and
+  # footer
+  twitter = "o0h_"
+  github = "o0h"
+  # Disqus shortname
+  disqus = ""
+  # Google Analytics API key.
+  ga_api_key = "Your Google Analytics tracking id"
+  author = "Hideki Kinjyo"
+  authorwebsite = "http://daisuki.nichiyoubi.land"
+  avatar = "https://avatars.githubusercontent.com/o0h"
+  bio = "都内でサーバーサイドエンジニアやってます"
+  # Short subtitle/tagline. This is displayed in the header.
+  subtitle = "CakePHPに関する学んだことや勉強したことをメモしていきます"
+  # Logo image. This is displayed ogp image.
+  logo = "/path/to/logo"
+  favicon = "/path/to/favicon"
+
+[[menu.main]]
+    name = "About"
+    url = "/about"
+    weight = 1
+
+[[menu.main]]
+    name = "Tags"
+    url = "/tags"
+    weight = 2
+
+[[menu.main]]
+    identifier = "categories"
+    name = "Categories"
+    weight = 3
+
+[[menu.main]]
+    parent = "categories"
+    name = "CakePHP 3.x"
+    url = "/categories/cakephp3"
+    weight = 3
+
+[[menu.main]]
+    parent = "categories"
+    name = "Plugins"
+    url = "/categories/plugins"
+    weight = 3
+
+[related]
+  # Only include matches with rank >= threshold. This is a normalized rank between 0 and 100.
+  threshold = 80
+
+  # To get stable "See also" sections we, by default, exclude newer related pages.
+  includeNewer = false
+
+  # Will lower case keywords in both queries and in the indexes.
+  toLower = false
+
+  [[related.indices]]
+  name = "keywords"
+  weight = 150
+  [[related.indices]]
+  name  = "author"
+  toLower = true
+  weight = 30
+  [[related.indices]]
+  name  = "tags"
+  weight = 100
+  [[related.indices]]
+  name  = "date"
+  weight = 10
+  pattern = "2017"
