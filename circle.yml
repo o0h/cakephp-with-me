@@ -19,7 +19,7 @@ jobs:
           command: htmlproofer public --allow-hash-href --check-html --empty-alt-ignore
       # ユーザページサイトにPushする
       - deploy:
-          command: cd public && git add . && git diff --cached --exit-code --quiet || git commit -m "Rebuilding site" && git push origin gh-pages
+          command: cd public && git add . && git diff --cached --exit-code --quiet || git commit -m "Rebuilding site" && git push origin master
 
 workflows:
   version: 2
