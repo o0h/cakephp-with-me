@@ -3,23 +3,60 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/posts/16-collection/</loc>
+    <lastmod>2018-03-25T20:35:59+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
     <lastmod>2018-03-25T17:16:22+09:00</lastmod>
   </url>
   
   <url>
+    <loc>/categories/cakephp3/</loc>
+    <lastmod>2018-03-25T20:35:59+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
+    <lastmod>2018-03-25T20:35:59+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/collection/</loc>
+    <lastmod>2018-03-25T20:35:59+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2018-03-25T20:35:59+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2018-03-25T20:35:59+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/tips/</loc>
+    <lastmod>2018-03-25T20:35:59+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/utility/</loc>
+    <lastmod>2018-03-25T20:35:59+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-03-25T17:16:22+09:00</lastmod>
+    <lastmod>2018-03-25T20:35:59+09:00</lastmod>
     <priority>0</priority>
   </url>
   
