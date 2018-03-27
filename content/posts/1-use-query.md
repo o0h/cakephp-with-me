@@ -11,7 +11,7 @@ Cake2では、Modelからの返却値がすべて配列でした。
 $books = $this->Books->find()->all();
 $this->set(compact('books'));
 ```
-もっと酷い時は、[ResultSet](https://api.cakephp.org/3.0/class-Cake.ORM.ResultSet.html)のあ使い方に難儀してhydrationをいじって、そのまま配列にして処理を・・・という書き方をしたりもしました。
+もっと酷い時は、[ResultSet](https://api.cakephp.org/3.0/class-Cake.ORM.ResultSet.html)の使い方に難儀してhydrationをいじって、そのまま配列にして処理を・・・という書き方をしたりもしました。
 
 ref: [Class Cake\\ORM\\Query \| CakePHP 3\.4](https://api.cakephp.org/3.4/class-Cake.ORM.Query.html#_enableHydration)
 
@@ -23,9 +23,9 @@ $books = $this->Books->find();
 $this->set(compact('books'));
 
 // in template
-foreach ($books as $book) {
+<?php foreach ($books as $book): ?>
   <div><h1><?= h($book->title) ?></h1></div>
-}
+<?php endforeach; ?>}
 ```
 
 個人的には「単純にレコードを取り出したいだけ」の時は(`all()`などを使って)ResultSet化しないでQueryオブジェクトのままやり取りすることが多いです。  
