@@ -6,10 +6,27 @@
     <description>Recent content on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 25 Mar 2018 20:35:59 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 27 Mar 2018 13:52:39 +0900</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>`Query` を愛用する。(もしくは `-&gt;all()` を避ける)</title>
+      <link>/posts/1-use-query/</link>
+      <pubDate>Tue, 27 Mar 2018 13:52:39 +0900</pubDate>
+      
+      <guid>/posts/1-use-query/</guid>
+      <description>Cake2では、Modelからの返却値がすべて配列でした。
+そのため、私はCake3を利用し始めた当初、「データベースからの取得した内容」は「値の集合」に変換して処理するぞ！みたいな意識が働きがちでした。
+例えばこんな様子です
+$books = $this-&amp;gt;Books-&amp;gt;find()-&amp;gt;all(); $this-&amp;gt;set(compact(&#39;books&#39;));  もっと酷い時は、ResultSetのあ使い方に難儀してhydrationをいじって、そのまま配列にして処理を・・・という書き方をしたりもしました。
+ref: Class Cake\ORM\Query | CakePHP 3.4
+しかし、QueryはIteratorAggregateを備えているので、「それをそのままループさせる」ことでレコードを処理することが可能です
+// in controller $books = $this-&amp;gt;Books-&amp;gt;find(); $this-&amp;gt;set(compact(&#39;books&#39;)); // in template foreach ($books as $book) { &amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;&amp;lt;?= h($book-&amp;gt;title) ?&amp;gt;&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt; }  個人的には「単純にレコードを取り出したいだけ」の時は(all()などを使って)ResultSet化しないでQueryオブジェクトのままやり取りすることが多いです。
+ Queryのままにしておく = 結果を確定させないままの状態を維持しておくことで利用できる機能があるため  orderやwhereの追加、subqueryの利用など  後にロジックの改修があったときに変更をしやすい  1と同じ理由です  明示的にall()を使っている箇所について、必ず「ResultSetが欲しい」「DBにクエリを実行させたい」と言ったような意図をコード上で表現できるようになる 単純にコードが減る  1,2は昨日の話です。3,4は表現力の話です。
+これらに鑑みて、「デメリットはあまり無さそうでちょっとメリットがあるな」というのが、現時点での私の所見です。</description>
+    </item>
     
     <item>
       <title>コレクションを任意の順番で並び替える</title>

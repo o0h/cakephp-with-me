@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on cakephp-with-me</title>
-    <link>/posts/</link>
-    <description>Recent content in Posts on cakephp-with-me</description>
+    <title>Orm and Database on cakephp-with-me</title>
+    <link>/tags/orm-and-database/</link>
+    <description>Recent content in Orm and Database on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 27 Mar 2018 13:52:39 +0900</lastBuildDate>
     
-	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/orm-and-database/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -26,22 +26,6 @@ ref: Class Cake\ORM\Query | CakePHP 3.4
 // in controller $books = $this-&amp;gt;Books-&amp;gt;find(); $this-&amp;gt;set(compact(&#39;books&#39;)); // in template foreach ($books as $book) { &amp;lt;div&amp;gt;&amp;lt;h1&amp;gt;&amp;lt;?= h($book-&amp;gt;title) ?&amp;gt;&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt; }  個人的には「単純にレコードを取り出したいだけ」の時は(all()などを使って)ResultSet化しないでQueryオブジェクトのままやり取りすることが多いです。
  Queryのままにしておく = 結果を確定させないままの状態を維持しておくことで利用できる機能があるため  orderやwhereの追加、subqueryの利用など  後にロジックの改修があったときに変更をしやすい  1と同じ理由です  明示的にall()を使っている箇所について、必ず「ResultSetが欲しい」「DBにクエリを実行させたい」と言ったような意図をコード上で表現できるようになる 単純にコードが減る  1,2は昨日の話です。3,4は表現力の話です。
 これらに鑑みて、「デメリットはあまり無さそうでちょっとメリットがあるな」というのが、現時点での私の所見です。</description>
-    </item>
-    
-    <item>
-      <title>コレクションを任意の順番で並び替える</title>
-      <link>/posts/16-collection/</link>
-      <pubDate>Sun, 25 Mar 2018 20:35:59 +0900</pubDate>
-      
-      <guid>/posts/16-collection/</guid>
-      <description>コレクションを任意の順番で並び替える PHPを使っていると、「任意に順番を並び替えたキーに沿って、連想配列を並び替えたい」ということが意外と面倒くさかったりする。
-MySQLでいう ORDER BY FIELD(field, idx1, idx2, idx3) みたいなやつ。
-Collectionクラスを用いると簡単にできそうだな〜と思ったのでメモ。
-$order = [2, 1, 3]; $data = collection([ [&#39;id&#39; =&amp;gt; 1, &#39;name&#39; =&amp;gt; &#39;John&#39;], [&#39;id&#39; =&amp;gt; 2, &#39;name&#39; =&amp;gt; &#39;Alice&#39;], [&#39;id&#39; =&amp;gt; 3, &#39;name&#39; =&amp;gt; &#39;Yui&#39;], ]); $orderMap = array_flip($order); $data = $data-&amp;gt;sortBy( function ($datum) use ($orderMap) { return $orderMap[$datum-&amp;gt;id]; }, SORT_ASC ) -&amp;gt;compile(false);  何をしているかというと、
- array_flipでもとの並び順を覚えさせて 対応順にarrayに位置を教えてあげる  というだけのもの。
-Collectionクラスは、以前にQiitaにも書いた。
-とても便利で強力なUtilityなので、使いこなしたい。
-[CakePHP3]現場で使えるCollectionクラスの15選 - Qiita</description>
     </item>
     
   </channel>
