@@ -81,7 +81,7 @@
 $this-&gt;set(compact('books'));
 </code></pre>
 
-<p>もっと酷い時は、<a href="https://api.cakephp.org/3.0/class-Cake.ORM.ResultSet.html">ResultSet</a>のあ使い方に難儀してhydrationをいじって、そのまま配列にして処理を・・・という書き方をしたりもしました。</p>
+<p>もっと酷い時は、<a href="https://api.cakephp.org/3.0/class-Cake.ORM.ResultSet.html">ResultSet</a>の使い方に難儀してhydrationをいじって、そのまま配列にして処理を・・・という書き方をしたりもしました。</p>
 
 <p>ref: <a href="https://api.cakephp.org/3.4/class-Cake.ORM.Query.html#_enableHydration">Class Cake\ORM\Query | CakePHP 3.4</a></p>
 
@@ -92,9 +92,9 @@ $books = $this-&gt;Books-&gt;find();
 $this-&gt;set(compact('books'));
 
 // in template
-foreach ($books as $book) {
+&lt;?php foreach ($books as $book): ?&gt;
   &lt;div&gt;&lt;h1&gt;&lt;?= h($book-&gt;title) ?&gt;&lt;/h1&gt;&lt;/div&gt;
-}
+&lt;?php endforeach; ?&gt;}
 </code></pre>
 
 <p>個人的には「単純にレコードを取り出したいだけ」の時は(<code>all()</code>などを使って)ResultSet化しないでQueryオブジェクトのままやり取りすることが多いです。</p>

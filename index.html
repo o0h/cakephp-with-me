@@ -72,10 +72,10 @@
     Cake2では、Modelからの返却値がすべて配列でした。
 そのため、私はCake3を利用し始めた当初、「データベースからの取得した内容」は「値の集合」に変換して処理するぞ！みたいな意識が働きがちでした。
 例えばこんな様子です
-$books = $this-&gt;Books-&gt;find()-&gt;all(); $this-&gt;set(compact('books'));  もっと酷い時は、ResultSetのあ使い方に難儀してhydrationをいじって、そのまま配列にして処理を・・・という書き方をしたりもしました。
+$books = $this-&gt;Books-&gt;find()-&gt;all(); $this-&gt;set(compact('books'));  もっと酷い時は、ResultSetの使い方に難儀してhydrationをいじって、そのまま配列にして処理を・・・という書き方をしたりもしました。
 ref: Class Cake\ORM\Query | CakePHP 3.4
 しかし、QueryはIteratorAggregateを備えているので、「それをそのままループさせる」ことでレコードを処理することが可能です
-// in controller $books = $this-&gt;Books-&gt;find(); $this-&gt;set(compact('books')); // in template foreach ($books as $book) { &lt;div&gt;&lt;h1&gt;&lt;?= h($book-&gt;title) ?&gt;&lt;/h1&gt;&lt;/div&gt; }  個人的には「単純にレコードを取り出したいだけ」の時は(all()などを使って)ResultSet化しないでQueryオブジェクトのままやり取りすることが多いです。
+// in controller $books = $this-&gt;Books-&gt;find(); $this-&gt;set(compact('books')); // in template &lt;?php foreach ($books as $book): ?&gt; &lt;div&gt;&lt;h1&gt;&lt;?= h($book-&gt;title) ?&gt;&lt;/h1&gt;&lt;/div&gt; &lt;?php endforeach; ?&gt;}  個人的には「単純にレコードを取り出したいだけ」の時は(all()などを使って)ResultSet化しないでQueryオブジェクトのままやり取りすることが多いです。
  Queryのままにしておく = 結果を確定させないままの状態を維持しておくことで利用できる機能があるため  orderやwhereの追加、subqueryの利用など  後にロジックの改修があったときに変更をしやすい  1と同じ理由です  明示的にall()を使っている箇所について、必ず「ResultSetが欲しい」「DBにクエリを実行させたい」と言ったような意図をコード上で表現できるようになる 単純にコードが減る  1,2は昨日の話です。3,4は表現力の話です。
 これらに鑑みて、「デメリットはあまり無さそうでちょっとメリットがあるな」というのが、現時点での私の所見です。
   </div>
