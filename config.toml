@@ -2,6 +2,7 @@ baseurl = "/"
 languageCode = "ja-jp"
 Title = "cakephp-with-me"
 
+theme = ["my-theme", "pickles"]
 [params]
   paginate = 10
   # Social accounts. Link to these accounts are displayed in the header and
