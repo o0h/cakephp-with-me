@@ -6,10 +6,27 @@
     <description>Recent content on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 27 Mar 2018 13:52:39 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 02 Dec 2018 18:12:32 +0900</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>findOrCreate()時にvalidationを行う</title>
+      <link>/posts/24-find-or-create-validation/</link>
+      <pubDate>Sun, 02 Dec 2018 18:12:32 +0900</pubDate>
+      
+      <guid>/posts/24-find-or-create-validation/</guid>
+      <description>※1人AdventのDay-2です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+先日、Modelを書いているときにfindOrCreate()の挙動でハマった部分があったので調べてみました。 バリデーションが期待通りに動かなかったので、その対応を書いています。
+findOrCreateメソッドについて CakePHP3のTableClassに、 findOrCreate() というメソッドがあります。
+code: https://github.com/cakephp/cakephp/blob/3.6.13/src/ORM/Table.php#L1686
+これは、「第1引数で渡されたデータを検索する。DB上に存在しなければ、新規にEntityを作成・保存し、それを返却する」というものです。知っていると、多くの場面で使いたくなります。
+$data = [&#39;name&#39; =&amp;gt; &#39;new太郎&#39;]; $entity = $this-&amp;gt;Table-&amp;gt;findOrCreate($data);  この結果として、(DB上にすでにレコードがあるか無いかにかかわらず) {name: new太郎} のEntityインスタンスが取得される、というわけです。なお、 すでに persistent 済みであるため、$entity-&amp;gt;isNew() はfalseとなります。
+実装内容について詳しく もう少し、内部処理について詳しく見てみましょう。
+// \Cake\ORM\Table public function findOrCreate($search, callable $callback = null, $options = []) { $options = new ArrayObject($options + [ &#39;atomic&#39; =&amp;gt; true, &#39;defaults&#39; =&amp;gt; true, ]); $entity = $this-&amp;gt;_executeTransaction(function () use ($search, $callback, $options) { return $this-&amp;gt;_processFindOrCreate($search, $callback, $options-&amp;gt;getArrayCopy()); }, $options[&#39;atomic&#39;]); if ($entity &amp;amp;&amp;amp; $this-&amp;gt;_transactionCommitted($options[&#39;atomic&#39;], true)) { $this-&amp;gt;dispatchEvent(&#39;Model.</description>
+    </item>
     
     <item>
       <title>`Query` を愛用する。(もしくは `-&gt;all()` を避ける)</title>
