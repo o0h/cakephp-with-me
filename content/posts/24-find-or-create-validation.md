@@ -3,7 +3,6 @@ title: "findOrCreate()時にvalidationを行う"
 date: 2018-12-02T18:12:32+09:00
 tags: [ORM-and-Database]
 categories: ["CakePHP3"]
-draft: true
 ---
 
 ※1人AdventのDay-2です
