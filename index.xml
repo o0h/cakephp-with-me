@@ -17,7 +17,9 @@
       <pubDate>Sun, 09 Dec 2018 22:34:12 +0900</pubDate>
       
       <guid>/posts/28-cakephp-3_7/</guid>
-      <description>晴れて、CakePHPの3.7がリリースされました。
+      <description>※1人AdventのDay-9です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+晴れて、CakePHPの3.7がリリースされました。
 CakePHP 3.7.0 Released — Bakery
 ここしばらく、「4へのスムーズな移行をするために」を意識し続けてきたCakePHPコミュニティです。その様子は、別の場所に自分なりの観点でまとめてみています。
  今からちょっとだけ先の未来、CakePHP4の話 〜Upcoming CakePHP Roadmap &amp;amp; Releases〜 - コネヒト開発者ブログ CakePHP3.6.0のbeta1が出たのでおさらいしてみる - コネヒト開発者ブログ  そして、本来であれば「出さずに済ませたかった」とも言える3.7であり、これが3系のファイナルバージョンとなるはずです。
@@ -26,9 +28,7 @@ CakePHP 3.7.0 Released — Bakery
 CakePHP 3.7.0 Released — Bakery 3.7 Migration Guide - 3.7
 CakePHP3.xの最終バージョン  This release is the last planned feature release for 3.x. Going forward the core team will be focusing on supporting 3.7 and completing 4.0.0.
  とされています。
-元々は3.6に全うさせる予定だった役割の一部を、3.7に託したのかなという印象があります。
-振る舞いの変更 以降に際して注意すべきはこの項目なのかな、と思っています。
-Database/Datasource/ORM  IntegerType にあたるカラムに非numericな値が来た場合に例外を投げるように  ref: https://github.</description>
+元々は3.6に全うさせる予定だった役割の一部を、3.7に託したのかなという印象があります。</description>
     </item>
     
     <item>
