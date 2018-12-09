@@ -61,6 +61,38 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="/posts/28-cakephp-3_7/">CakePHP 3.7の個人的な見どころ</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-12-09T22:34:12&#43;09:00">
+        Dec 9, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    晴れて、CakePHPの3.7がリリースされました。
+CakePHP 3.7.0 Released — Bakery
+ここしばらく、「4へのスムーズな移行をするために」を意識し続けてきたCakePHPコミュニティです。その様子は、別の場所に自分なりの観点でまとめてみています。
+ 今からちょっとだけ先の未来、CakePHP4の話 〜Upcoming CakePHP Roadmap &amp; Releases〜 - コネヒト開発者ブログ CakePHP3.6.0のbeta1が出たのでおさらいしてみる - コネヒト開発者ブログ  そして、本来であれば「出さずに済ませたかった」とも言える3.7であり、これが3系のファイナルバージョンとなるはずです。
+リリースノートと移行ガイドから、その内容を読み取ってみます。
+主観により取捨選択しているので、詳細は原文を参照してください。
+CakePHP 3.7.0 Released — Bakery 3.7 Migration Guide - 3.7
+CakePHP3.xの最終バージョン  This release is the last planned feature release for 3.x. Going forward the core team will be focusing on supporting 3.7 and completing 4.0.0.
+ とされています。
+元々は3.6に全うさせる予定だった役割の一部を、3.7に託したのかなという印象があります。
+振る舞いの変更 以降に際して注意すべきはこの項目なのかな、と思っています。
+Database/Datasource/ORM  IntegerType にあたるカラムに非numericな値が来た場合に例外を投げるように  ref: https://github.
+  </div>
+  
+  <a href="/posts/28-cakephp-3_7/" class="c-article__btn p-list-article__btn">Read more</a></li>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="/posts/24-find-or-create-validation/">findOrCreate()時にvalidationを行う</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -189,6 +221,8 @@ Collectionクラスは、以前にQiitaにも書いた。
           <ul>
             
               <li class="p-menu__listitem p-menu__child"><a href="/tags/orm-and-database">ORM/Database</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="/tags/ver-up">Version up</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="/tags/tips">tips</a></li>
             
