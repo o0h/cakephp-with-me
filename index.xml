@@ -12,6 +12,26 @@
     
     
     <item>
+      <title>dereuromark/cakephp-dtoに触ってみる</title>
+      <link>/posts/27-cakephp-dto/</link>
+      <pubDate>Sun, 02 Dec 2018 18:12:32 +0900</pubDate>
+      
+      <guid>/posts/27-cakephp-dto/</guid>
+      <description>※1人AdventのDay-8です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+CakePHP開発者であるMark Sch.さんが、新しいプラグインを公開されていました。 [New]dereuromark/cakephp-dto CakePHP DTO Plugin https://t.co/vBFe8DJUPE
+&amp;mdash; function(){exit;} (@call_user_func) 2018年12月8日 
+名前の通り、CakePHPでDTOを扱うための実装のようです。
+cf) Data Transfer Object - Wikipedia
+おもしろそうなので、早速触ってみました。
+ざっくりいうと何？  決められたプロパティを持つmutable/immutableなオブジェクトを扱いやすくするためのもの 決められたプロパティ = 型は、設定ファイルに記述していく それらの設定を、実クラス生成コマンドによって作成する 実際のクラスを生成するからIDE上での保管や静的解析との相性が良い  CakeDTOに触ってみる setup まずは、インストールです
+composer require dereuromark/cakephp-dto:dev-master  Pluginを有効化します。1
+bin/cake plugin load CakeDto -b  はじめてのDTO作成 ファイル初期生成用のコマンドが用意されています。
+bin/cake dto init  これを実行すると、config/dto.xmlに以下のようなファイルが設置されます
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt; &amp;lt;dtos xmlns=&amp;quot;cakephp-dto&amp;quot; xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot; xsi:schemaLocation=&amp;quot;cakephp-dto https://github.com/dereuromark/cakephp-dto&amp;quot;&amp;gt; &amp;lt;/dtos&amp;gt;  ・・・と言っておいて何ですが、個人的にYAMLでいきたいのでYAMLに書き換えます。 こちらのExampleを参考にしましょう。 /examples/basic.dto.yml</description>
+    </item>
+    
+    <item>
       <title>findOrCreate()時にvalidationを行う</title>
       <link>/posts/24-find-or-create-validation/</link>
       <pubDate>Sun, 02 Dec 2018 18:12:32 +0900</pubDate>
