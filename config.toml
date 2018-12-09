@@ -47,6 +47,12 @@ theme = ["my-theme", "pickles"]
 
 [[menu.main]]
     parent = "Tags"
+    name = "Version up"
+    url = "/tags/ver-up"
+    weight = 3
+
+[[menu.main]]
+    parent = "Tags"
     name = "tips"
     url = "/tags/tips"
     weight = 3
