@@ -4,6 +4,10 @@ date: 2018-12-14T06:44:56+09:00
 tags: [ORM-and-Database]
 categories: ["CakePHP3"]
 ---
+※1人AdventのDay-14です
+
+[1人advent\(CakePHP中心、PHP開発よもやま\) Advent Calendar 2018 \- Adventar](https://adventar.org/calendars/3627)
+
 ## 概要
 CakePHP3では、データの誤操作を防ぐためEntityの持つプロパティへの代入可否を設定する `$_accessible` 機構が備わっています。  
 具体的な利用方法を確認していきたいと思います。
