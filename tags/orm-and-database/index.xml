@@ -6,10 +6,31 @@
     <description>Recent content in Orm and Database on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 13 Dec 2018 19:09:01 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 14 Dec 2018 06:44:56 +0900</lastBuildDate>
     
 	<atom:link href="/tags/orm-and-database/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Entityの`$_accessible`について、もう1度。</title>
+      <link>/posts/31-look-into-accesible/</link>
+      <pubDate>Fri, 14 Dec 2018 06:44:56 +0900</pubDate>
+      
+      <guid>/posts/31-look-into-accesible/</guid>
+      <description>概要 CakePHP3では、データの誤操作を防ぐためEntityの持つプロパティへの代入可否を設定する $_accessible 機構が備わっています。
+具体的な利用方法を確認していきたいと思います。
+イントロ フレームワークを利用したアプリケーション開発の最大のメリットの1つが「簡単・少量の記述で、パワフルなシステムを構築できる」点にあると思います。
+その一方で、「うっかりと変なことをやってしまう」リスクが高まる部分もあります。とりわけ、セキュリティやデータ操作の領域においての「うっかり」は取り返しのつかないダメージになりえます。
+CakePHP3において、データの健全な扱いを支援するための機構の1つが Entity::$_accessibleによるプロパティの保護です。
+これを設定することで、データを簡易に代入しつつ更新を許したくないプロパティについては渡された値を無視できるようになります。
+利用例(Cookbookより) まずは、Cookbookにある例をひきながらその基本的な利用の方法についておさらいをしましょう。
+エンティティー - 3.7
+最も基本的な設定方法は、以下のとおりです。
+namespace App\Model\Entity; use Cake\ORM\Entity; class Article extends Entity { protected $_accessible = [ &#39;title&#39; =&amp;gt; true, &#39;body&#39; =&amp;gt; true, &#39;*&#39; =&amp;gt; false, ]; }  Enittyのメンバーとして $_accessible を設け、その連想配列の中に「key =&amp;gt; 代入の可否」という形で値をもたせます。明示的に指定されていないプロパティはデフォルトではすべて false(代入不可)となり、「明示指定していないプロパティ(=「その他」のプロパティ)の挙動を変える」という場合には * を利用します。
+$_accessible が適用される場面 $_accessible による代入保護が働く場面は、主に以下の3つです。
+ Table::newEntity() によるEntityの作成、 Table::patchEntity() によるEntityの更新 newキーワードを利用したEntityの作成において、オプション(コンストラクタの第2引数となる連想配列)で &#39;guard&#39; =&amp;gt; true を指定した場合 Entity::set() で、第1引数が連想配列の場合  1・2のケースでも内部的にはset()メソッドを利用しており、結果的には3の挙動が適用されることになります。
+ここで注意すべきなのは、set()の呼び出し方によって代入の保護実施の有無が変化するという点です。</description>
+    </item>
     
     <item>
       <title>カスタムファインダーについておさらい</title>

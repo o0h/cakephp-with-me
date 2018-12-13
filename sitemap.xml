@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/posts/31-look-into-accesible/</loc>
+    <lastmod>2018-12-14T06:44:56+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/posts/30-custom-find/</loc>
     <lastmod>2018-12-13T19:09:01+09:00</lastmod>
   </url>
@@ -39,13 +44,13 @@
   
   <url>
     <loc>/categories/cakephp3/</loc>
-    <lastmod>2018-12-13T19:09:01+09:00</lastmod>
+    <lastmod>2018-12-14T06:44:56+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2018-12-13T19:09:01+09:00</lastmod>
+    <lastmod>2018-12-14T06:44:56+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -57,7 +62,7 @@
   
   <url>
     <loc>/tags/orm-and-database/</loc>
-    <lastmod>2018-12-13T19:09:01+09:00</lastmod>
+    <lastmod>2018-12-14T06:44:56+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -69,7 +74,7 @@
   
   <url>
     <loc>/posts/</loc>
-    <lastmod>2018-12-13T19:09:01+09:00</lastmod>
+    <lastmod>2018-12-14T06:44:56+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -99,7 +104,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-12-13T19:09:01+09:00</lastmod>
+    <lastmod>2018-12-14T06:44:56+09:00</lastmod>
     <priority>0</priority>
   </url>
   
