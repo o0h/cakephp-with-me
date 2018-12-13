@@ -61,6 +61,39 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="/posts/30-custom-find/">カスタムファインダーについておさらい</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-12-13T19:09:01&#43;09:00">
+        Dec 13, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    ※1人AdventのDay-13です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+概要 CakePHP3で導入された「カスタムファインダー」は、Queryの組み立てを抽象化・パッケージ化する手法です。
+よく利用するconditonsの追加やfields、formatResultsなどの手順を一箇所にまとめ、更にメソッドチェーンによるQueryのビルドを可能にします。
+イントロ CakePHP3のORM機能の1つに、Tableで提供されている「カスタムファインド」というものがあります。
+これは、より「鮮明で簡潔なコーディングをする」ことを支援する強力な機能だと思っています。
+とはいっても、自分自身もCakePHP3を触り始めた当初はその存在1を知らず、利用できていませんでした。今になって感じるのは、うまく付き合えばより「Cakeらしい」コードが書けそうだということです。
+この記事では、その具体的な実装や内部処理の流れについて触れていきます。
+簡単な利用例(Cookbookより) まずは、Cookbookにある内容を例にとって、簡単なサンプルに触れてみたいと思います。 データの取り出しと結果セット - 3.7
+use Cake\ORM\Query; use Cake\ORM\Table; class ArticlesTable extends Table { public function findOwnedBy(Query $query, array $options) { $user = $options['user']; return $query-&gt;where(['author_id' =&gt; $user-&gt;id]); } } // コントローラーやテーブルのメソッド内で $articles = TableRegistry::get('Articles'); $query = $articles-&gt;find('ownedBy', ['user' =&gt; $userEntity]);  よくありそうな、「記事の筆者によって絞り込む」という処理です。
+これはWHERE author_id = :user_id という条件付けによって達成されます。
+カスタムファインダーを使う際には、2つの手順が必要です。
+ findXxx という規則に従ってメソッド名をつける Table::find('Xxx') という形で呼び出す  とてもシンプルですが、これだけでOKです。
+  </div>
+  
+  <a href="/posts/30-custom-find/" class="c-article__btn p-list-article__btn">Read more</a></li>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="/posts/28-cakephp-3_7/">CakePHP 3.7の個人的な見どころ</a></h2>
     <p class="c-article__meta">
       Posted on

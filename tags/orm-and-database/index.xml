@@ -6,10 +6,31 @@
     <description>Recent content in Orm and Database on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 02 Dec 2018 18:12:32 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 13 Dec 2018 19:09:01 +0900</lastBuildDate>
     
 	<atom:link href="/tags/orm-and-database/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>カスタムファインダーについておさらい</title>
+      <link>/posts/30-custom-find/</link>
+      <pubDate>Thu, 13 Dec 2018 19:09:01 +0900</pubDate>
+      
+      <guid>/posts/30-custom-find/</guid>
+      <description>※1人AdventのDay-13です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+概要 CakePHP3で導入された「カスタムファインダー」は、Queryの組み立てを抽象化・パッケージ化する手法です。
+よく利用するconditonsの追加やfields、formatResultsなどの手順を一箇所にまとめ、更にメソッドチェーンによるQueryのビルドを可能にします。
+イントロ CakePHP3のORM機能の1つに、Tableで提供されている「カスタムファインド」というものがあります。
+これは、より「鮮明で簡潔なコーディングをする」ことを支援する強力な機能だと思っています。
+とはいっても、自分自身もCakePHP3を触り始めた当初はその存在1を知らず、利用できていませんでした。今になって感じるのは、うまく付き合えばより「Cakeらしい」コードが書けそうだということです。
+この記事では、その具体的な実装や内部処理の流れについて触れていきます。
+簡単な利用例(Cookbookより) まずは、Cookbookにある内容を例にとって、簡単なサンプルに触れてみたいと思います。 データの取り出しと結果セット - 3.7
+use Cake\ORM\Query; use Cake\ORM\Table; class ArticlesTable extends Table { public function findOwnedBy(Query $query, array $options) { $user = $options[&#39;user&#39;]; return $query-&amp;gt;where([&#39;author_id&#39; =&amp;gt; $user-&amp;gt;id]); } } // コントローラーやテーブルのメソッド内で $articles = TableRegistry::get(&#39;Articles&#39;); $query = $articles-&amp;gt;find(&#39;ownedBy&#39;, [&#39;user&#39; =&amp;gt; $userEntity]);  よくありそうな、「記事の筆者によって絞り込む」という処理です。
+これはWHERE author_id = :user_id という条件付けによって達成されます。
+カスタムファインダーを使う際には、2つの手順が必要です。
+ findXxx という規則に従ってメソッド名をつける Table::find(&#39;Xxx&#39;) という形で呼び出す  とてもシンプルですが、これだけでOKです。</description>
+    </item>
     
     <item>
       <title>findOrCreate()時にvalidationを行う</title>
