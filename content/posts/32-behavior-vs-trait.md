@@ -1,5 +1,5 @@
 ---
-title: "32 as Mixin Prefers Behavior or Trait"
+title: "Behaviorを使うか、Traitにするか"
 date: 2018-12-16T16:04:42+09:00
 tags: [ORM-and-Database]
 categories: ["CakePHP3"]
