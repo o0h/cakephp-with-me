@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://cake.nichiyoubi.land/"
 languageCode = "ja-jp"
 Title = "cakephp-with-me"
 
