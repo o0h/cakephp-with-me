@@ -3,7 +3,6 @@ title: "32 as Mixin Prefers Behavior or Trait"
 date: 2018-12-16T16:04:42+09:00
 tags: [ORM-and-Database]
 categories: ["CakePHP3"]
-draft: true
 ---
 ※1人AdventのDay-16です
 
