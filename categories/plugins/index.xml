@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Plugins on cakephp-with-me</title>
-    <link>/categories/plugins/</link>
+    <link>https://cake.nichiyoubi.land/categories/plugins/</link>
     <description>Recent content in Plugins on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 08 Dec 2018 18:12:32 +0900</lastBuildDate>
     
-	<atom:link href="/categories/plugins/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cake.nichiyoubi.land/categories/plugins/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>dereuromark/cakephp-dtoに触ってみる</title>
-      <link>/posts/27-cakephp-dto/</link>
+      <link>https://cake.nichiyoubi.land/posts/27-cakephp-dto/</link>
       <pubDate>Sat, 08 Dec 2018 18:12:32 +0900</pubDate>
       
-      <guid>/posts/27-cakephp-dto/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/27-cakephp-dto/</guid>
       <description>※1人AdventのDay-8です
 1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
 CakePHP開発者であるMark Sch.さんが、新しいプラグインを公開されていました。 [New]dereuromark/cakephp-dto CakePHP DTO Plugin https://t.co/vBFe8DJUPE

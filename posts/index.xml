@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on cakephp-with-me</title>
-    <link>/posts/</link>
+    <link>https://cake.nichiyoubi.land/posts/</link>
     <description>Recent content in Posts on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 16 Dec 2018 16:04:42 +0900</lastBuildDate>
     
-	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cake.nichiyoubi.land/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Behaviorを使うか、Traitにするか</title>
-      <link>/posts/32-behavior-vs-trait/</link>
+      <link>https://cake.nichiyoubi.land/posts/32-behavior-vs-trait/</link>
       <pubDate>Sun, 16 Dec 2018 16:04:42 +0900</pubDate>
       
-      <guid>/posts/32-behavior-vs-trait/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/32-behavior-vs-trait/</guid>
       <description>※1人AdventのDay-16です
 1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
 概要 CakePHP3ではBehaviorを利用することで、Tableクラスにmixinすることができます。また、PHPにはTraitの仕組みがあり、これを利用することで継承を用いずにメソッドやプロパティの再利用を実現することができます。
@@ -51,10 +51,10 @@ Behaviorを使う場面③: (静的)プロパティの利用・共有 設定値�
     
     <item>
       <title>Entityの`$_accessible`について、もう1度。</title>
-      <link>/posts/31-look-into-accesible/</link>
+      <link>https://cake.nichiyoubi.land/posts/31-look-into-accesible/</link>
       <pubDate>Fri, 14 Dec 2018 06:44:56 +0900</pubDate>
       
-      <guid>/posts/31-look-into-accesible/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/31-look-into-accesible/</guid>
       <description>※1人AdventのDay-14です
 1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
 概要 CakePHP3では、データの誤操作を防ぐためEntityの持つプロパティへの代入可否を設定する $_accessible 機構が備わっています。
@@ -73,10 +73,10 @@ $_accessible が適用される場面 $_accessible による代入保護が働�
     
     <item>
       <title>カスタムファインダーについておさらい</title>
-      <link>/posts/30-custom-find/</link>
+      <link>https://cake.nichiyoubi.land/posts/30-custom-find/</link>
       <pubDate>Thu, 13 Dec 2018 19:09:01 +0900</pubDate>
       
-      <guid>/posts/30-custom-find/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/30-custom-find/</guid>
       <description>※1人AdventのDay-13です
 1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
 概要 CakePHP3で導入された「カスタムファインダー」は、Queryの組み立てを抽象化・パッケージ化する手法です。
@@ -94,10 +94,10 @@ use Cake\ORM\Query; use Cake\ORM\Table; class ArticlesTable extends Table { publ
     
     <item>
       <title>CakePHP 3.7の個人的な見どころ</title>
-      <link>/posts/28-cakephp-3_7/</link>
+      <link>https://cake.nichiyoubi.land/posts/28-cakephp-3_7/</link>
       <pubDate>Sun, 09 Dec 2018 22:34:12 +0900</pubDate>
       
-      <guid>/posts/28-cakephp-3_7/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/28-cakephp-3_7/</guid>
       <description>※1人AdventのDay-9です
 1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
 晴れて、CakePHPの3.7がリリースされました。
@@ -112,10 +112,10 @@ CakePHP 3.7.0 Released — Bakery
     
     <item>
       <title>dereuromark/cakephp-dtoに触ってみる</title>
-      <link>/posts/27-cakephp-dto/</link>
+      <link>https://cake.nichiyoubi.land/posts/27-cakephp-dto/</link>
       <pubDate>Sat, 08 Dec 2018 18:12:32 +0900</pubDate>
       
-      <guid>/posts/27-cakephp-dto/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/27-cakephp-dto/</guid>
       <description>※1人AdventのDay-8です
 1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
 CakePHP開発者であるMark Sch.さんが、新しいプラグインを公開されていました。 [New]dereuromark/cakephp-dto CakePHP DTO Plugin https://t.co/vBFe8DJUPE
@@ -132,10 +132,10 @@ bin/cake dto init  これを実行すると、config/dto.xmlに以下のよう�
     
     <item>
       <title>findOrCreate()時にvalidationを行う</title>
-      <link>/posts/24-find-or-create-validation/</link>
+      <link>https://cake.nichiyoubi.land/posts/24-find-or-create-validation/</link>
       <pubDate>Sun, 02 Dec 2018 18:12:32 +0900</pubDate>
       
-      <guid>/posts/24-find-or-create-validation/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/24-find-or-create-validation/</guid>
       <description>※1人AdventのDay-2です
 1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
 先日、Modelを書いているときにfindOrCreate()の挙動でハマった部分があったので調べてみました。 バリデーションが期待通りに動かなかったので、その対応を書いています。
@@ -149,10 +149,10 @@ $data = [&#39;name&#39; =&amp;gt; &#39;new太郎&#39;]; $entity = $this-&amp;gt;
     
     <item>
       <title>`Query` を愛用する。(もしくは `-&gt;all()` を避ける)</title>
-      <link>/posts/1-use-query/</link>
+      <link>https://cake.nichiyoubi.land/posts/1-use-query/</link>
       <pubDate>Tue, 27 Mar 2018 13:52:39 +0900</pubDate>
       
-      <guid>/posts/1-use-query/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/1-use-query/</guid>
       <description>Cake2では、Modelからの返却値がすべて配列でした。
 そのため、私はCake3を利用し始めた当初、「データベースからの取得した内容」は「値の集合」に変換して処理するぞ！みたいな意識が働きがちでした。
 例えばこんな様子です
@@ -166,10 +166,10 @@ ref: Class Cake\ORM\Query | CakePHP 3.4
     
     <item>
       <title>コレクションを任意の順番で並び替える</title>
-      <link>/posts/16-collection/</link>
+      <link>https://cake.nichiyoubi.land/posts/16-collection/</link>
       <pubDate>Sun, 25 Mar 2018 20:35:59 +0900</pubDate>
       
-      <guid>/posts/16-collection/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/16-collection/</guid>
       <description>コレクションを任意の順番で並び替える PHPを使っていると、「任意に順番を並び替えたキーに沿って、連想配列を並び替えたい」ということが意外と面倒くさかったりする。
 MySQLでいう ORDER BY FIELD(field, idx1, idx2, idx3) みたいなやつ。
 Collectionクラスを用いると簡単にできそうだな〜と思ったのでメモ。

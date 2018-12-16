@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ver Up on cakephp-with-me</title>
-    <link>/tags/ver-up/</link>
+    <link>https://cake.nichiyoubi.land/tags/ver-up/</link>
     <description>Recent content in Ver Up on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 09 Dec 2018 22:34:12 +0900</lastBuildDate>
     
-	<atom:link href="/tags/ver-up/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cake.nichiyoubi.land/tags/ver-up/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CakePHP 3.7の個人的な見どころ</title>
-      <link>/posts/28-cakephp-3_7/</link>
+      <link>https://cake.nichiyoubi.land/posts/28-cakephp-3_7/</link>
       <pubDate>Sun, 09 Dec 2018 22:34:12 +0900</pubDate>
       
-      <guid>/posts/28-cakephp-3_7/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/28-cakephp-3_7/</guid>
       <description>※1人AdventのDay-9です
 1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
 晴れて、CakePHPの3.7がリリースされました。

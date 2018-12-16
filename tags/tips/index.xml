@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tips on cakephp-with-me</title>
-    <link>/tags/tips/</link>
+    <link>https://cake.nichiyoubi.land/tags/tips/</link>
     <description>Recent content in Tips on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 25 Mar 2018 20:35:59 +0900</lastBuildDate>
     
-	<atom:link href="/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cake.nichiyoubi.land/tags/tips/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>コレクションを任意の順番で並び替える</title>
-      <link>/posts/16-collection/</link>
+      <link>https://cake.nichiyoubi.land/posts/16-collection/</link>
       <pubDate>Sun, 25 Mar 2018 20:35:59 +0900</pubDate>
       
-      <guid>/posts/16-collection/</guid>
+      <guid>https://cake.nichiyoubi.land/posts/16-collection/</guid>
       <description>コレクションを任意の順番で並び替える PHPを使っていると、「任意に順番を並び替えたキーに沿って、連想配列を並び替えたい」ということが意外と面倒くさかったりする。
 MySQLでいう ORDER BY FIELD(field, idx1, idx2, idx3) みたいなやつ。
 Collectionクラスを用いると簡単にできそうだな〜と思ったのでメモ。
