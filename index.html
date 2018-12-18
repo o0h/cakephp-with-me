@@ -31,8 +31,9 @@
   <meta property="og:type" content="website" />
   
   
-  <meta name="generator" content="Hugo 0.47.1" /><link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-  <link rel="stylesheet" href="https://cake.nichiyoubi.land/css/style.css" />
+  <meta name="generator" content="Hugo 0.47.1" /><link rel="stylesheet" href="https://cake.nichiyoubi.land/css/style.css" />
+  
+  
   <link rel='icon' type='image/x-icon' href="https://cake.nichiyoubi.land/path/to/favicon" />
   <link href="https://cake.nichiyoubi.land/index.xml" rel="alternate" type="application/rss+xml" title="cakephp-with-me" />
   
@@ -103,7 +104,7 @@ Behaviorを使う場面③: (静的)プロパティの利用・共有 設定値�
 後者のアプローチを考える場合、Behaviorなら「自身の中に値を保持する」「それを都度参照するようにする」ことが可能です。各Tableからみて、「1箇所だけ見れば済む」ようになりました。他方で、Traitでは「自身の中に持つ」という状況を作り出すのが困難です。Traitの中にプロパティを生やすことはもちろん可能ですが、それは「各Tableに複製される」ようになります。すなわち、どれか1つを変更したところで、他Tableの手が届くところへの影響はあません。
   </div>
   
-  <a href="https://cake.nichiyoubi.land/posts/32-behavior-vs-trait/" class="c-article__btn p-list-article__btn">Read more</a></li>
+  <a href="https://cake.nichiyoubi.land/posts/32-behavior-vs-trait/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -137,7 +138,7 @@ $_accessible が適用される場面 $_accessible による代入保護が働�
  Table::newEntity() によるEntityの作成、 Table::patchEntity() によるEntityの更新 newキーワードを利用したEntityの作成において、オプション(コンストラクタの第2引数となる連想配列)で 'guard' =&gt; true を指定した場合 Entity::set() で、第1引数が連想配列の場合  1・2のケースでも内部的にはset()メソッドを利用しており、結果的には3の挙動が適用されることになります。
   </div>
   
-  <a href="https://cake.nichiyoubi.land/posts/31-look-into-accesible/" class="c-article__btn p-list-article__btn">Read more</a></li>
+  <a href="https://cake.nichiyoubi.land/posts/31-look-into-accesible/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -170,7 +171,7 @@ use Cake\ORM\Query; use Cake\ORM\Table; class ArticlesTable extends Table { publ
  findXxx という規則に従ってメソッド名をつける Table::find('Xxx') という形で呼び出す  とてもシンプルですが、これだけでOKです。
   </div>
   
-  <a href="https://cake.nichiyoubi.land/posts/30-custom-find/" class="c-article__btn p-list-article__btn">Read more</a></li>
+  <a href="https://cake.nichiyoubi.land/posts/30-custom-find/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -200,7 +201,7 @@ CakePHP 3.7.0 Released — Bakery
  とされています。
   </div>
   
-  <a href="https://cake.nichiyoubi.land/posts/28-cakephp-3_7/" class="c-article__btn p-list-article__btn">Read more</a></li>
+  <a href="https://cake.nichiyoubi.land/posts/28-cakephp-3_7/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -232,7 +233,7 @@ bin/cake dto init  これを実行すると、config/dto.xmlに以下のよう�
 &lt;?xml version=&quot;1.0&quot;?&gt; &lt;dtos xmlns=&quot;cakephp-dto&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;cakephp-dto https://github.com/dereuromark/cakephp-dto&quot;&gt; &lt;/dtos&gt;  ・・・と言っておいて何ですが、個人的にYAMLでいきたいのでYAMLに書き換えます。 こちらのExampleを参考にしましょう。 /examples/basic.dto.yml
   </div>
   
-  <a href="https://cake.nichiyoubi.land/posts/27-cakephp-dto/" class="c-article__btn p-list-article__btn">Read more</a></li>
+  <a href="https://cake.nichiyoubi.land/posts/27-cakephp-dto/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -261,7 +262,7 @@ $data = ['name' =&gt; 'new太郎']; $entity = $this-&gt;Table-&gt;findOrCreate($
 // \Cake\ORM\Table public function findOrCreate($search, callable $callback = null, $options = []) { $options = new ArrayObject($options + [ 'atomic' =&gt; true, 'defaults' =&gt; true, ]); $entity = $this-&gt;_executeTransaction(function () use ($search, $callback, $options) { return $this-&gt;_processFindOrCreate($search, $callback, $options-&gt;getArrayCopy()); }, $options['atomic']); if ($entity &amp;&amp; $this-&gt;_transactionCommitted($options['atomic'], true)) { $this-&gt;dispatchEvent('Model.
   </div>
   
-  <a href="https://cake.nichiyoubi.land/posts/24-find-or-create-validation/" class="c-article__btn p-list-article__btn">Read more</a></li>
+  <a href="https://cake.nichiyoubi.land/posts/24-find-or-create-validation/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -457,14 +458,16 @@ Collectionクラスは、以前にQiitaにも書いた。
   </footer>
 
   
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-15522979-9', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-15522979-9', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
   
 
 </body>
