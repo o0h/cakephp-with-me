@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Behaviorを使うか、Traitにするか</title>
-  <meta property="og:title" content="Behaviorを使うか、Traitにするか" />
-  <meta name="twitter:title" content="Behaviorを使うか、Traitにするか" />
+  <title>33 Cakephp 3_7_1</title>
+  <meta property="og:title" content="33 Cakephp 3_7_1" />
+  <meta name="twitter:title" content="33 Cakephp 3_7_1" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="Hideki Kinjyo"/>
   <meta property="og:site_name" content="cakephp-with-me" />
-  <meta property="og:url" content="https://cake.nichiyoubi.land/posts/32-behavior-vs-trait/" />
+  <meta property="og:url" content="https://cake.nichiyoubi.land/posts/33-cakephp-3_7_1/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -61,16 +61,16 @@
 
 <article class="p-article">
   <header>
-    <h1>Behaviorを使うか、Traitにするか</h1>
+    <h1>33 Cakephp 3_7_1</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-12-16T16:04:42&#43;09:00">
-          Dec 16, 2018
+        <time datetime="2018-12-19T23:25:17&#43;09:00">
+          Dec 19, 2018
         </time>
       </div>
       
-      <a href="https://cake.nichiyoubi.land/tags/orm-and-database" class="c-tag">ORM-and-Database</a>
+      <a href="https://cake.nichiyoubi.land/tags/ver-up" class="c-tag">ver-up</a>
       
     </div>
   </header>
@@ -78,90 +78,104 @@
   <section id="js-article" class="p-article__body">
     
 
-<p>※1人AdventのDay-16です</p>
+<p>※1人AdventのDay-19です</p>
 
 <p><a href="https://adventar.org/calendars/3627">1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar</a></p>
 
+<hr />
+
 <h2 id="概要">概要</h2>
 
-<p>CakePHP3ではBehaviorを利用することで、Tableクラスにmixinすることができます。また、PHPにはTraitの仕組みがあり、これを利用することで継承を用いずにメソッドやプロパティの再利用を実現することができます。<br />
-現時点で考えている、個人的な「どう使い分けるか」というポイントをまとめてみます。</p>
+<p>CakePHP3.7.1がリリースされたので、その内容をチェックしてみます。<br />
+今回は3.7.x系の初アップデートということもあり、コミュニティにおいて発見されたものを中心としたbugfixが多く見られました。</p>
 
 <h2 id="イントロ">イントロ</h2>
 
-<p>CakePHPには3.xより前のバージョンから、Modelレイヤーに「Behavior」という機構があります。複数のModel(Table)クラスで同様に利用されるような機能を、Modelを通じて透過的に利用できるようにしようというものです。これを利用することで、呼び出し側は、その機能がModelクラスに直接所属しているのかBehaviorから提供されているかを全く意識することなく利用ができます。<br />
-例えば、 <code>TreeBehavior</code> などはCakePHPにおいて過去から継続して提供されているユニークな例の1つでしょう。 <code>$Model-&gt;find('children', ['for' =&gt; 100])</code> などとすれば、「アイテム100番に属する子アイテムを取得する」という操作が可能です。</p>
+<p>CakePHP3.7が、12月9日にリリースされました。<br />
+その際には、以下の記事で言及しています。<br />
+<a href="https://cake.nichiyoubi.land/posts/28-cakephp-3_7/">CakePHP 3.7の個人的な見どころ</a></p>
 
-<p>一方で、PHP5.4からTrait機構が言語から提供されています。<br />
-CakePHP2.xはPHP5.3.0での利用を前提としているためにTraitの利用は選択肢に含まれませんが、CakePHP3.xにおいては状況が異なります。「Traitを利用して、Tableクラスに直接メソッドを植え付ける」ことが可能になりました。<br />
-単純なメソッド提供だけに絞れば同等の利用ができそうな両者は、どのように共存していけばよいのでしょうか？</p>
+<p>それから9日後の12月18日に、3.7.1がリリースされています。</p>
 
-<h2 id="個人的なシンプルな結論">個人的なシンプルな結論</h2>
+<ul>
+<li>bakery: <a href="https://bakery.cakephp.org/2018/12/17/cakephp_371_released.html">CakePHP 3.7.1 Released — Bakery</a></li>
+<li>GitHub Release: <a href="https://github.com/cakephp/cakephp/releases/tag/3.7.1">Release CakePHP 3.7.1 released · cakephp/cakephp</a></li>
+<li>GitHub Issues: <a href="https://github.com/cakephp/cakephp/milestone/185?closed=1">3.7.1 Milestone</a></li>
+</ul>
 
-<p>個人的には、「Traitで済むものはTraitで良いのではないか」と考えるようにしています。その範疇外のものや、出来なくはないが考慮すべきことが増える場合などにはBehaviorを利用します。</p>
+<p>この記事では、今回のアップデートで反映された修正をみてみたいと思います。</p>
 
-<h2 id="phpにおけるtraitの位置付け">PHPにおけるTraitの位置付け</h2>
+<h2 id="bugfixes">Bugfixes</h2>
 
-<p>Traitが言語から提供されるようになってから、「どう使うか」というのは議論の的です。とりわけ、Abstract/Interfaceと交えて「デザインの仕方が大きく変わりそう」という関心を集めているように感じます。</p>
+<p>このアップデートでは、新機能の実装は行われずにBugfixesのみとなっています。</p>
 
-<p>必ずしもTrait(のみ)の話ではないですが、個人的な「Classの役割が狭まり、Traitの利用箇所は多岐に渡って拡大していくのではないか」という考え方は、こちらのエントリーにインスパイアされた面があります。</p>
+<h3 id="cellがtemplate-を発見できなかった場合に-出力されるエラーメッセージを適切にセットできるように">cellがtemplateを発見できなかった場合に出力されるエラーメッセージを適切にセットできるように</h3>
 
-<p><a href="https://blog.shin1x1.com/entry/anonymous-class-change-class-in-php7">PHP 7 の無名クラスから考えるクラスの在り方 - Shin x Blog</a></p>
+<pre><code>Fixed incorrect error messages when cells cannot find their template.
+</code></pre>
 
-<p>今回は無名クラスの話ではないので、スコープが異なるのですが、それでも「Traitでやれること─とりわけ、具体実装についてはTraitを利用していく」という意味で合致しています。</p>
+<p><a href="https://github.com/cakephp/cakephp/pull/12783">3.7 cell - exception by saeideng · Pull Request #12783 · cakephp/cakephp</a></p>
 
-<h2 id="traitで済むこと">Traitで済むこと</h2>
+<h3 id="cookieがセットされていない-を検査するアサーションの不具合を修正">「Cookieがセットされていない」を検査するアサーションの不具合を修正</h3>
 
-<p>「メソッドの提供」のみであれば、Traitでもできそうです。また、visible/non-visibleなクラスメンバ・インスタンスメンバを利用する場合でも、traitは十分に活用できます。</p>
+<pre><code>Fixed a regression in assertCookieNotSet().
+</code></pre>
 
-<p>例えばカスタムファインダメソッドの提供などは、Traitでも行けそうです。<br />
-「Queryインスタンスが渡されてきて」「呼び出し時に$optionを受け取ることができる」というインターフェイスにすれば問題なく動作します。その中に、formatResults()やwhere()/order()のデコレーションを実装することができるし、面倒くさいQueryExpressionを内部で組み立てて上げることも出来るわけです。</p>
+<p><a href="https://github.com/cakephp/cakephp/pull/12794">Fixed regression in assertCookieNotSet by jeremyharris · Pull Request #12794 · cakephp/cakephp</a></p>
 
-<p>こう考えると、従来的なBehaviorの役割は、その多くをTraitに託すことも可能なのではないでしょうか？</p>
+<h3 id="emailクラスでの-deprecated漏れに対応">Emailクラスでの@deprecated漏れに対応</h3>
 
-<h2 id="behaviorを使う場面①-ライフサイクルへの">Behaviorを使う場面①: ライフサイクルへの</h2>
+<pre><code>Added missing @deprecated annotations on methods on Email.
+</code></pre>
 
-<p>CakePHPにはModelの利用に関するライフサイクルが存在し、イベントベースで処理を割り込ませることが可能です。<br />
-<a href="https://book.cakephp.org/3.0/ja/orm/table-objects.html#table-callbacks">コールバックのライフサイクル</a></p>
+<p><a href="https://github.com/cakephp/cakephp/commit/3db50b4044dc4fdbad6d54cfbeb437f772ffbb3a">Add deprecated doc strings. · cakephp/cakephp@3db50b4</a></p>
 
-<p>これらを活用する場合、Bahaviorでの機能提供を行ったほうが無難かと考えています。<br />
-Bahaviorでは、各イベントの発火時にTableクラス自体とBehaviorが持つそれぞれの処理が考慮されるようにデザインされています。例えば、Behaviorに <code>beforeFind</code>メソッドをもたせた場合、<code>Model.beforeFind</code> にぶら下げて実行させる事は容易です。
-他方で、Traitに定義された <code>beforeFind()</code> メソッドは、それを利用するTable自体の <code>beforeFind()</code> と見分けが付きません。そのため、「TableとBehaviorの<code>beforeFind()</code>を明示的に双方とも呼び出す」ことが必要になります。これは、実装時にうっかりと忘れてしまいそうではないでしょうか・・?</p>
+<h3 id="phpdoc中の肩宣言において-array-だった部分を-type-に変更">PHPDoc中の肩宣言において、<code>array</code>だった部分を<code>type[]</code> に変更</h3>
 
-<p>そういう訳で、もし「ライフサイクルに則ってイベントを購読する」ことが重要な場合は、Behaviorを利用したほうがストレスなく開発を勧めていけるのではないかと思います。もちろん、具体的な実装をTraitに持たせつつ、Tabelの内部のメソッド(例えば<code>initialize()</code>や<code>beforeMarshal()</code>)、implemetedEventsに登録されているメソッドの内部からTraitの処理を呼び出す」といった方法は可能です。</p>
+<pre><code>Improve typehints on array properties.
+</code></pre>
 
-<h2 id="behaviorを使う場面②-設定値の管理">Behaviorを使う場面②: 設定値の管理</h2>
+<p><a href="https://github.com/cakephp/cakephp/pull/12815/files">Fix array doc blocks to be more precise where applicable. by dereuromark · Pull Request #12815 · cakephp/cakephp</a></p>
 
-<p>Behaviorの中での何らかの設定値を扱う場面もあります。その際に、 <code>ConfigTrait</code>を利用するなど、インスタンス内部に <code>$_config</code> というプロパティを作成することで管理するでしょうか。</p>
+<h3 id="数値系のtypeへの-代入時に-カンマやスペースを許容">数値系のTypeへの代入時に、カンマやスペースを許容</h3>
 
-<p>もしTraitで同様のことを行おうとすると、利用側となるTableの持つプロパティと区別をできずに競合する可能性があります。<br />
-これを無難に回避するために、設定や状態管理を伴うある程度複雑な機能については、Behaviorとして「別クラス」を定義してしまうほうが良いのかなと感じます。</p>
+<pre><code>Loosened type checking in integer and decimal type classes. Both these types now allow whitespace, and commas to accept more number formats.
+</code></pre>
 
-<h2 id="behaviorを使う場面③-静的-プロパティの利用-共有">Behaviorを使う場面③: (静的)プロパティの利用・共有</h2>
+<p><a href="https://github.com/cakephp/cakephp/pull/12819">allow incorrect decimal / float formatting by segy · Pull Request #12819 · cakephp/cakephp</a></p>
 
-<p>設定値の管理の変形バージョンといえる話かもしれません。<br />
-ある機能を専任的に扱う存在としてのBehaviorを考える場合、「他のクラスに対しても影響をもたらす値の管理」を行いたい場合があります。</p>
+<p>これは、3.7.0において「不正なフォーマットの数値文字列が来たときに例外を吐くようにする」の関連ですね。<br />
+Issueがそこそこ盛り上がっていました。</p>
 
-<p>例えば「管理者モードを扱えるようにするBehavior」において「一時的に非管理者モードでのアクセスを行う」ような実装を考えていたとします<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>。この状態切り替えを、すべて「読み込み時に完了できる」もしくは「操作実行時に、都度参照できる」ようになれば、問題なくモードの切替が達成できると思います。<br />
-後者のアプローチを考える場合、Behaviorなら「自身の中に値を保持する」「それを都度参照するようにする」ことが可能です。各Tableからみて、「1箇所だけ見れば済む」ようになりました。他方で、Traitでは「自身の中に持つ」という状況を作り出すのが困難です。Traitの中にプロパティを生やすことはもちろん可能ですが、それは「各Tableに複製される」ようになります。すなわち、どれか1つを変更したところで、他Tableの手が届くところへの影響はあません。</p>
+<h3 id="integrationtesttraitのsetup-teardown-メソッドをリネームし-アノテーションを利用したフックを行うように">IntegrationTestTraitのsetUp() / tearDown()メソッドをリネームし、アノテーションを利用したフックを行うように</h3>
 
-<p>このようなケースに置いては、Behaviorを扱うのが良いのかな？と思います。</p>
+<pre><code>IntegrationTestTrait now uses annotations for its setup/teardown logic. This removes the need for awkward method aliasing when using the trait.
+</code></pre>
 
-<h2 id="まとめ">まとめ</h2>
+<p><a href="https://github.com/cakephp/cakephp/pull/12822">Use annotitations for integration trait setup/teardown by markstory · Pull Request #12822 · cakephp/cakephp</a></p>
 
-<p>今回の内容は、あくまで今の時点における個人的な考え方です。<br />
-CakePHPのコアコード内で、ORM\TableにおいてはBaahaviorの投入例がないので、フレームワーク側の設計思想を読み取るにはいたりませんでした。
-そうした中で、「Traitの活用方法は」という原則論に立ち返ることで、「Traitで可能な範囲の具体的な実装は、Traitにまかせてしまってよいのでは」という様に考えています。<br />
-Behaviorの機能やその呼び出され方、協調の仕方を学ぶことで、すっきりとした実装の基準が描いていければいいなと思います。</p>
-<div class="footnotes">
+<p>個人的に、3.7にアップデートしたときに少し困って &amp;&amp; 煩雑に感じていた点。<br />
+Trait側に<code>setUp()</code> メソッドが入ることで、Controller &lt;- <code>Parent::setUp()</code> を直接的に呼び出しにくくなっていました。</p>
 
-<hr />
+<h3 id="consoleクラスの利用時に引数の指定状態によってはwarningが出る問題の修正">Consoleクラスの利用時に引数の指定状態によってはwarningが出る問題の修正</h3>
 
-<ol>
-<li id="fn:1">モードの状態管理をModel側で行いたい需要があるかは不明ですが・・あくまで、この場限りの説明として
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
-</ol>
-</div>
+<pre><code>ConsoleConsole\Arguments::getArgument() no longer raises a notice error on missing arguments.
+</code></pre>
+
+<p><a href="https://github.com/cakephp/cakephp/pull/12825/files">Fix notice error on missing argument by markstory · Pull Request #12825 · cakephp/cakephp</a></p>
+
+<h3 id="consoleクラスのcreatefile-実行時に-暗黙的にディレクトリを作成するように">ConsoleクラスのcreateFile()実行時に、暗黙的にディレクトリを作成するように</h3>
+
+<pre><code>Console\ConsoleIo::createFile() will now recursively create directories if necessary. This improves compatibility with Shell::createFile().
+</code></pre>
+
+<p><a href="https://github.com/cakephp/cakephp/pull/12826/files">createFile() should create directories. by markstory · Pull Request #12826 · cakephp/cakephp</a></p>
+
+<h2 id="感想">感想</h2>
+
+<p>今回は、軽微なバグ修正(特に、ロジックのミスではないErrorの修正)が中心のアップデートでした。<br />
+3.4-&gt;.5や 3.5-&gt;.6 に比べると、(その位置づけ的に)差分の小さかったアップグレードとはいえ、やはり桁が1つ上がっているので細かいところでエラーや不具合が出ているなぁという感想です。<br />
+機能的な改善を伴うコミットhはみられないものの、もし3.7.0を利用していたらサクッと上げてしまうのが良いように思います。</p>
 
   </section>
   <footer>
@@ -170,12 +184,11 @@ Behaviorの機能やその呼び出され方、協調の仕方を学ぶことで
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
-          <a href="https://cake.nichiyoubi.land/posts/33-cakephp-3_7_1/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://cake.nichiyoubi.land/posts/31-look-into-accesible/">Older</a>
+          <a href="https://cake.nichiyoubi.land/posts/32-behavior-vs-trait/">Older</a>
           
         </div>
       </div>
@@ -187,30 +200,9 @@ Behaviorの機能やその呼び出され方、協調の仕方を学ぶことで
   <ul id="slider" class="p-related__list">
     
     <li class="p-related__item js-related__item">
-      <a href="/posts/31-look-into-accesible/"
+      <a href="/posts/28-cakephp-3_7/"
         >
-        <span>Entityの`$_accessible`について、もう1度。</span>
-      </a>
-    </li>
-    
-    <li class="p-related__item js-related__item">
-      <a href="/posts/30-custom-find/"
-        >
-        <span>カスタムファインダーについておさらい</span>
-      </a>
-    </li>
-    
-    <li class="p-related__item js-related__item">
-      <a href="/posts/24-find-or-create-validation/"
-        >
-        <span>findOrCreate()時にvalidationを行う</span>
-      </a>
-    </li>
-    
-    <li class="p-related__item js-related__item">
-      <a href="/posts/1-use-query/"
-        >
-        <span>`Query` を愛用する。(もしくは `-&gt;all()` を避ける)</span>
+        <span>CakePHP 3.7の個人的な見どころ</span>
       </a>
     </li>
     
