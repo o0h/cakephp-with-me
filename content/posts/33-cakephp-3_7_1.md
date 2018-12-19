@@ -1,5 +1,5 @@
 ---
-title: "33 Cakephp 3_7_1"
+title: "CakePHP 3.7.1がリリースされたので更新内容を確認"
 date: 2018-12-19T23:25:17+09:00
 tags: [ver-up]
 categories: ["CakePHP3"]
