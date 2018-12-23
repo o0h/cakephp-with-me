@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://cake.nichiyoubi.land/posts/34-fixturize/</loc>
+    <lastmod>2018-12-22T16:16:36+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cake.nichiyoubi.land/posts/33-cakephp-3_7_1/</loc>
     <lastmod>2018-12-19T23:25:17+09:00</lastmod>
   </url>
@@ -54,13 +59,13 @@
   
   <url>
     <loc>https://cake.nichiyoubi.land/categories/cakephp3/</loc>
-    <lastmod>2018-12-19T23:25:17+09:00</lastmod>
+    <lastmod>2018-12-22T16:16:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://cake.nichiyoubi.land/categories/</loc>
-    <lastmod>2018-12-19T23:25:17+09:00</lastmod>
+    <lastmod>2018-12-22T16:16:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -77,6 +82,12 @@
   </url>
   
   <url>
+    <loc>https://cake.nichiyoubi.land/tags/plugins/</loc>
+    <lastmod>2018-12-22T16:16:36+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://cake.nichiyoubi.land/categories/plugins/</loc>
     <lastmod>2018-12-08T18:12:32+09:00</lastmod>
     <priority>0</priority>
@@ -84,7 +95,7 @@
   
   <url>
     <loc>https://cake.nichiyoubi.land/posts/</loc>
-    <lastmod>2018-12-19T23:25:17+09:00</lastmod>
+    <lastmod>2018-12-22T16:16:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -114,7 +125,7 @@
   
   <url>
     <loc>https://cake.nichiyoubi.land/</loc>
-    <lastmod>2018-12-19T23:25:17+09:00</lastmod>
+    <lastmod>2018-12-22T16:16:36+09:00</lastmod>
     <priority>0</priority>
   </url>
   

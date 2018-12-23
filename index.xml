@@ -6,10 +6,43 @@
     <description>Recent content on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 19 Dec 2018 23:25:17 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 22 Dec 2018 16:16:36 +0900</lastBuildDate>
     
 	<atom:link href="https://cake.nichiyoubi.land/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>fixturize: テストの実行速度を大幅に改善させるプラグイン</title>
+      <link>https://cake.nichiyoubi.land/posts/34-fixturize/</link>
+      <pubDate>Sat, 22 Dec 2018 16:16:36 +0900</pubDate>
+      
+      <guid>https://cake.nichiyoubi.land/posts/34-fixturize/</guid>
+      <description>概要 friendsofcake/fixturizeは、CakePHPにおける単体テストの実行速度を大幅に改善させるプラグインです。
+MySQL互換RDBMSで利用が可能で、導入は簡単です。
+実際の利用方法と
+イントロ CakePHPのTestSuiteでは、非常に簡単にDBと連携したフィクスチャデータを利用することができます。
+予めPHPクラスとして記述しておいたスキーマやレコードの内容を、必要に応じて指定した通りに読み込む形です。
+レコードの作成作業は、各テストケースの実行時に行われます。
+このライフサイクルは直感的でクリーンさを保ちやすい一方で、懸念となるのは実行速度です。1つのテストケースごとに、毎回「テーブルの中身の破棄」「完全なデータのインサート」が行われるからです。
+そうしたオーバーヘッドを削減するために作り出されたプラグインが、fixturizeです。
+fixturizeの概要 FriendsOfCake/fixturize: CakePHP3: Improve performance of your fixture based tests on MySQL.
+fixturizeは、既存の TestFixture クラスを当プラグインのクラスに置き換えることで実行されます。
+通常のTestFixtureの処理をオーバーライドする形で、
+ テストケース実行時(setUp)に 通常は「テーブルのトランケートを行う」ところで もし「今作成済みの対象テーブルの内容が、fixtureに記述された内容と差異がない」ことを確認できたら truncate/insert処理をスキップする  という機能を追加します。
+そのために、「fixtureデータの作成・破棄・更新」に係るコストが省略されるわけです。
+この結果、レポジトリにあるREADMEの内容を参照すると大変な時間短縮の成果を生み出しています。
+導入 導入はとてもシンプルです。
+READMEの内容をそのまま参照します。
+ composerを利用してインストールする  composer require friendsofcake/fixturize  既存のfixtureの、継承元クラスを変更する   もちろん、extends CheckSumTestFixture をしても良いと思いますが、importを書き換えてaliasを当てる〜とした方が手間が少ないです   導入はこれだけで完了です。
+実装詳細 それでは、どのように「無駄な更新はスキップする！」を実現しているのでしょうか。
+具体的な実装内容について確認していきます。
+ChecksumTestFixtureがオーバーライドしているメソッドは、 insert() truncate() drop() の3つのメソッドです。
+これらの内部において、このプラグインの機能である「更新する必要があるか」をチェックできるように処理が追加されています。
+テストのブート時やテストケースクラスのブート時にもfixture関連の処理が入ります。
+しかし、fixturizeの機能は主に「反復的にfixtureのセットアップをする際に、どのような挙動をするか」という点にあるといえるでしょう。
+そのため、今回は要点を描きやすくするために「各テストケース間の処理」について掻い摘んで流れを追っていきます。
+Fixtureの処理の流れ TestCaseクラスが、FixtureManagerクラス経由で load()処理を呼ぶことになります。</description>
+    </item>
     
     <item>
       <title>CakePHP 3.7.1がリリースされたので更新内容を確認</title>
