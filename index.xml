@@ -17,7 +17,9 @@
       <pubDate>Sat, 22 Dec 2018 16:16:36 +0900</pubDate>
       
       <guid>https://cake.nichiyoubi.land/posts/34-fixturize/</guid>
-      <description>概要 friendsofcake/fixturizeは、CakePHPにおける単体テストの実行速度を大幅に改善させるプラグインです。
+      <description>※1人AdventのDay-22です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+概要 friendsofcake/fixturizeは、CakePHPにおける単体テストの実行速度を大幅に改善させるプラグインです。
 MySQL互換RDBMSで利用が可能で、導入は簡単です。
 実際の利用方法と
 イントロ CakePHPのTestSuiteでは、非常に簡単にDBと連携したフィクスチャデータを利用することができます。
@@ -36,12 +38,7 @@ READMEの内容をそのまま参照します。
  composerを利用してインストールする  composer require friendsofcake/fixturize  既存のfixtureの、継承元クラスを変更する   もちろん、extends CheckSumTestFixture をしても良いと思いますが、importを書き換えてaliasを当てる〜とした方が手間が少ないです   導入はこれだけで完了です。
 実装詳細 それでは、どのように「無駄な更新はスキップする！」を実現しているのでしょうか。
 具体的な実装内容について確認していきます。
-ChecksumTestFixtureがオーバーライドしているメソッドは、 insert() truncate() drop() の3つのメソッドです。
-これらの内部において、このプラグインの機能である「更新する必要があるか」をチェックできるように処理が追加されています。
-テストのブート時やテストケースクラスのブート時にもfixture関連の処理が入ります。
-しかし、fixturizeの機能は主に「反復的にfixtureのセットアップをする際に、どのような挙動をするか」という点にあるといえるでしょう。
-そのため、今回は要点を描きやすくするために「各テストケース間の処理」について掻い摘んで流れを追っていきます。
-Fixtureの処理の流れ TestCaseクラスが、FixtureManagerクラス経由で load()処理を呼ぶことになります。</description>
+ChecksumTestFixtureがオーバーライドしているメソッドは、 insert() truncate() drop() の3つのメソッドです。</description>
     </item>
     
     <item>
