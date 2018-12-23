@@ -3,6 +3,11 @@ languageCode = "ja-jp"
 Title = "cakephp-with-me"
 
 theme = ["my-theme", "pickles"]
+
+[seo]
+  enableRobotsTXT = true
+  canonifyURLs = true
+
 [params]
   paginate = 10
   # Social accounts. Link to these accounts are displayed in the header and
