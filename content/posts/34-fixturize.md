@@ -4,6 +4,11 @@ date: 2018-12-22T16:16:36+09:00
 tags: [Plugins]
 categories: ["CakePHP3"]
 ---
+※1人AdventのDay-22です
+
+[1人advent\(CakePHP中心、PHP開発よもやま\) Advent Calendar 2018 \- Adventar](https://adventar.org/calendars/3627)
+
+---
 ## 概要
 friendsofcake/fixturizeは、CakePHPにおける単体テストの実行速度を大幅に改善させるプラグインです。  
 MySQL互換RDBMSで利用が可能で、導入は簡単です。  
