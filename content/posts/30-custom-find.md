@@ -12,6 +12,8 @@ categories: ["CakePHP3"]
 CakePHP3で導入された「カスタムファインダー」は、Queryの組み立てを抽象化・パッケージ化する手法です。  
 よく利用するconditonsの追加やfields、formatResultsなどの手順を一箇所にまとめ、更にメソッドチェーンによるQueryのビルドを可能にします。
 
+<!--more-->
+
 ## イントロ
 
 CakePHP3のORM機能の1つに、Tableで提供されている「カスタムファインド」というものがあります。  
