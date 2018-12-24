@@ -3,8 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://cake.nichiyoubi.land/posts/35-object-registry/</loc>
+    <lastmod>2018-12-24T07:35:23+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cake.nichiyoubi.land/posts/34-fixturize/</loc>
     <lastmod>2018-12-22T16:16:36+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cake.nichiyoubi.land/posts/10-orm-database/</loc>
+    <lastmod>2018-12-21T19:40:10+09:00</lastmod>
   </url>
   
   <url>
@@ -59,13 +69,13 @@
   
   <url>
     <loc>https://cake.nichiyoubi.land/categories/cakephp3/</loc>
-    <lastmod>2018-12-22T16:16:36+09:00</lastmod>
+    <lastmod>2018-12-24T07:35:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://cake.nichiyoubi.land/categories/</loc>
-    <lastmod>2018-12-22T16:16:36+09:00</lastmod>
+    <lastmod>2018-12-24T07:35:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -76,8 +86,14 @@
   </url>
   
   <url>
+    <loc>https://cake.nichiyoubi.land/tags/core/</loc>
+    <lastmod>2018-12-24T07:35:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://cake.nichiyoubi.land/tags/orm-and-database/</loc>
-    <lastmod>2018-12-16T16:04:42+09:00</lastmod>
+    <lastmod>2018-12-21T19:40:10+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -95,7 +111,7 @@
   
   <url>
     <loc>https://cake.nichiyoubi.land/posts/</loc>
-    <lastmod>2018-12-22T16:16:36+09:00</lastmod>
+    <lastmod>2018-12-24T07:35:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -125,7 +141,7 @@
   
   <url>
     <loc>https://cake.nichiyoubi.land/</loc>
-    <lastmod>2018-12-22T16:16:36+09:00</lastmod>
+    <lastmod>2018-12-24T07:35:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   

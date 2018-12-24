@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Collection</title>
-  <meta property="og:title" content="Collection" />
-  <meta name="twitter:title" content="Collection" />
+  <title>cakephp-with-me</title>
+  <meta property="og:title" content="cakephp-with-me" />
+  <meta name="twitter:title" content="cakephp-with-me" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="Hideki Kinjyo"/>
   <meta property="og:site_name" content="cakephp-with-me" />
-  <meta property="og:url" content="https://cake.nichiyoubi.land/tags/collection/" />
+  <meta property="og:url" content="https://cake.nichiyoubi.land/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -35,6 +35,8 @@
   
   
   <link rel='icon' type='image/x-icon' href="https://cake.nichiyoubi.land/path/to/favicon" />
+  <link href="https://cake.nichiyoubi.land/index.xml" rel="alternate" type="application/rss+xml" title="cakephp-with-me" />
+  
   <script type="text/javascript" src="https://cake.nichiyoubi.land/js/bundle.js"></script>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-light.min.css">
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
@@ -57,7 +59,33 @@
   </header>
   <main id="main" class="l-main">
 
-<h2 class="c-title p-tag-title">Collection</h2>
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/1-use-query/">`Query` を愛用する。(もしくは `-&gt;all()` を避ける)</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-03-27T13:52:39&#43;09:00">
+        Mar 27, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    Cake2では、Modelからの返却値がすべて配列でした。
+そのため、私はCake3を利用し始めた当初、「データベースからの取得した内容」は「値の集合」に変換して処理するぞ！みたいな意識が働きがちでした。
+例えばこんな様子です
+$books = $this-&gt;Books-&gt;find()-&gt;all(); $this-&gt;set(compact('books'));  もっと酷い時は、ResultSetの使い方に難儀してhydrationをいじって、そのまま配列にして処理を・・・という書き方をしたりもしました。
+ref: Class Cake\ORM\Query | CakePHP 3.4
+しかし、QueryはIteratorAggregateを備えているので、「それをそのままループさせる」ことでレコードを処理することが可能です
+// in controller $books = $this-&gt;Books-&gt;find(); $this-&gt;set(compact('books')); // in template &lt;?php foreach ($books as $book): ?&gt; &lt;div&gt;&lt;h1&gt;&lt;?= h($book-&gt;title) ?&gt;&lt;/h1&gt;&lt;/div&gt; &lt;?php endforeach; ?&gt;}  個人的には「単純にレコードを取り出したいだけ」の時は(all()などを使って)ResultSet化しないでQueryオブジェクトのままやり取りすることが多いです。
+ Queryのままにしておく = 結果を確定させないままの状態を維持しておくことで利用できる機能があるため  orderやwhereの追加、subqueryの利用など  後にロジックの改修があったときに変更をしやすい  1と同じ理由です  明示的にall()を使っている箇所について、必ず「ResultSetが欲しい」「DBにクエリを実行させたい」と言ったような意図をコード上で表現できるようになる 単純にコードが減る  1,2は昨日の話です。3,4は表現力の話です。
+これらに鑑みて、「デメリットはあまり無さそうでちょっとメリットがあるな」というのが、現時点での私の所見です。
+  </div>
+  
+</article>
+
+
 
 
 <article class="c-article p-list-article">
@@ -88,12 +116,14 @@ Collectionクラスは、以前にQiitaにも書いた。
   <div class="c-pagination__ctrl">
     <div class="c-pagination__newer">
       
+      <a href="https://cake.nichiyoubi.land/">Newer</a>
+      
     </div>
     <div class="c-pagination__older">
       
     </div>
   </div>
-  <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
+  <span class="c-pagination__count p-pagination__count">Page 2 of 2</span>
 </nav>
 
 

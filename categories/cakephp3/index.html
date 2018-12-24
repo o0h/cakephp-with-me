@@ -62,6 +62,37 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/35-object-registry/">ObjectRegistryについて</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-12-24T07:35:23&#43;09:00">
+        Dec 24, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    ※1人AdventのDay-23です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+概要 ObjectRegistryというものがあります。
+CakePHPで内部的にかなり頻繁に利用されているクラスであり、インスタンス管理の根幹を担っていると言っても過言ではありません。
+どんな使われ方をされていて、どんな処理をしているのかを見てみました。
+イントロ CakePHPを用いたアプリケーションを作成していくに当たり、自身で直接触れることはあまりなさそうなクラスです。 class docを見ると、以下のように書かれています。
+Acts as a registry/factory for objects. Provides registry &amp; factory functionality for object types. Used as a super class for various composition based re-use features in CakePHP. Each subclass needs to implement the various abstract methods to complete the template method load().  1つとして「普段は抽象的に操作をしている部分を少し具体的に知ることができたら、より納得感をもって開発ができるだろう」という視点、2つ目に「自身が実装や設計を考えるにあたって学びがありそうだ」という視点で内部構造を見てみたいと思いました。
+ObjectRegistryはどこで利用されているか ObjectRegistryは抽象クラスであり、Countable/IteratorAggregateといったインターフェイスを実装します。ここから分かる通り、「コレクション」としての性格を備えたものです。
+この利用先は、どのようなクラスがあるでしょうか。
+一覧を列挙してみます。
+ \Cake\Cache\CacheRegistry \Cake\Console\HelperRegistry \Cake\Console\TaskRegistry \Cake\Controller\ComponentRegistry \Cake\Datasource\ConnectionRegistry \Cake\Log\LogEngineRegistry \Cake\Mailer\TransportRegistry \Cake\ORM\BehaviorRegistry \Cake\View\HelperRegistry  このように、「〜Registry」というsuffixをつける、という規則が見いだせます。
+  </div>
+  
+  <a href="https://cake.nichiyoubi.land/posts/35-object-registry/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/34-fixturize/">fixturize: テストの実行速度を大幅に改善させるプラグイン</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -96,6 +127,44 @@ ChecksumTestFixtureがオーバーライドしているメソッドは、 insert
   </div>
   
   <a href="https://cake.nichiyoubi.land/posts/34-fixturize/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
+    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/10-orm-database/">ORM/Database/Datasourceの棲み分け</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-12-21T19:40:10&#43;09:00">
+        Dec 21, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    ※1人AdventのDay-21です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+概要 CakePHP3のデータベース周りの処理を追っていくと、「ORM」「Database」「Datasource」という、似た名前のレイヤーが存在することに気づきます。
+普段は特に意識することのないこれらの違いは、どこにあるのでしょうか。
+気になったので調べてみました。
+イントロ CakePHP3を2.xと比較すると、最も大きな革新の1つはデータベース周りの構造の改革である、ということは間違いないと思います。
+それは、普段のアプリケーションを行っている上で直接的に目にするTale/Entity/Queryといったオブジェクトたちの登場から、感じることができます。そこから更に注意深くみてみると、フレームワークの内部ではさらなる複雑化が実施されていました。
+これらの構造については、普段の開発では意識することはないかも知れません。しかしながら、内部構造についてイメージを掴むことで、フレームワーク自体の設計思想やポテンシャル、&rdquo;らしさ&rdquo;についての理解が深まるのかとも思います。
+気になったので、自分なりに整理をしてみることにしました。
+ORM層を起点に「複雑さ」を感じてみる まずは、最も馴染みが深いであろう \Cake\ORMです。
+この中には、Table Entity Query などのクラスがあります。
+ さて、これ自体は普段から目にしている通りであって特に重要ではないのですが、問題は「実は結構いろいろと継承している」というところにあります。
+例えば、Tableクラスを見てみましょう。 何かを継承しているわけではないのですが、\Cake\Datasource\RepositoryInterfaceの実装であり、内部的には\Cake\DatabaseからTableSchema Typeというクラスを利用し、\Cake\DatasourceからはConnectionInterfaceとも関係していることが見て取れます。
+同様に、EntityQueryについてもクラス図を置いてみます。
+ Entity    Query     このように、ORM/Database/Datasourceは、それぞれが密接に関わり合っていることがわかります。
+どのように違うのか？ 実は、これらの3層はそれぞれがcakephpのGitHubアカウントにてスタンドアロンパッケージとして切り出され、公開されています。
+そこにあるdescriptionを見ることが、互いの位置づけを掴む上での端的な説明になりそうです。
+ cakephp/orm: [READ-ONLY] A flexible, lightweight and powerful Object-Relational Mapper for PHP, implemented using the DataMapper pattern. This repo is a split of the main code that can be found in https://github.
+  </div>
+  
+  <a href="https://cake.nichiyoubi.land/posts/10-orm-database/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -335,32 +404,6 @@ ref: Class Cake\ORM\Query | CakePHP 3.4
 </article>
 
 
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/16-collection/">コレクションを任意の順番で並び替える</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2018-03-25T20:35:59&#43;09:00">
-        Mar 25, 2018
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    コレクションを任意の順番で並び替える PHPを使っていると、「任意に順番を並び替えたキーに沿って、連想配列を並び替えたい」ということが意外と面倒くさかったりする。
-MySQLでいう ORDER BY FIELD(field, idx1, idx2, idx3) みたいなやつ。
-Collectionクラスを用いると簡単にできそうだな〜と思ったのでメモ。
-$order = [2, 1, 3]; $data = collection([ ['id' =&gt; 1, 'name' =&gt; 'John'], ['id' =&gt; 2, 'name' =&gt; 'Alice'], ['id' =&gt; 3, 'name' =&gt; 'Yui'], ]); $orderMap = array_flip($order); $data = $data-&gt;sortBy( function ($datum) use ($orderMap) { return $orderMap[$datum-&gt;id]; }, SORT_ASC ) -&gt;compile(false);  何をしているかというと、
- array_flipでもとの並び順を覚えさせて 対応順にarrayに位置を教えてあげる  というだけのもの。
-Collectionクラスは、以前にQiitaにも書いた。
-とても便利で強力なUtilityなので、使いこなしたい。
-[CakePHP3]現場で使えるCollectionクラスの15選 - Qiita
-  </div>
-  
-</article>
-
-
 <nav class="c-pagination p-pagination">
   <div class="c-pagination__ctrl">
     <div class="c-pagination__newer">
@@ -368,9 +411,11 @@ Collectionクラスは、以前にQiitaにも書いた。
     </div>
     <div class="c-pagination__older">
       
+      <a href="https://cake.nichiyoubi.land/categories/cakephp3/page/2/">Older</a>
+      
     </div>
   </div>
-  <span class="c-pagination__count p-pagination__count">Page 1 of 1</span>
+  <span class="c-pagination__count p-pagination__count">Page 1 of 2</span>
 </nav>
 
 
@@ -409,6 +454,8 @@ Collectionクラスは、以前にQiitaにも書いた。
         <li class="p-menu__listitem p-menu__parent">
           <span>Tags</span>
           <ul>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/core">Core</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/orm-and-database">ORM/Database</a></li>
             
