@@ -4,6 +4,11 @@ date: 2018-12-25T00:00:06+09:00
 tags: [Http/Route]
 categories: ["CakePHP3"]
 ---
+※1人AdventのDay-24です
+
+[1人advent\(CakePHP中心、PHP開発よもやま\) Advent Calendar 2018 \- Adventar](https://adventar.org/calendars/3627)
+
+---
 ## 概要
 CakePHPのRouterには、ある名前のリソースに対してRESTfulなアクセスを簡単に提供する機能 `resources()` があります。  
 その内部実装がどのようになっているのか、処理を追ってみました。
