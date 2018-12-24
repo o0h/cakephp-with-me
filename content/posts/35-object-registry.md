@@ -1,6 +1,6 @@
 ---
 title: "ObjectRegistryについて"
-date: 2018-12-24T07:35:23+09:00
+date: 2018-12-23T07:35:23+09:00
 tags: [Core]
 categories: ["CakePHP3"]
 ---
@@ -56,7 +56,7 @@ ObjectRegistryは抽象クラスであり、Countable/IteratorAggregateといっ
 ### 抽象メソッド
 まず、abstractメソッドは次の3つを持っています。
 
-#### _resolveClassName
+#### _resolveClassName()
 ```php
 /**
  * Should resolve the classname for a given object type.
@@ -110,7 +110,7 @@ protected function _resolveClassName($class)
 これは、CacheRegistryの例です。  
 App::className()に第3引数を渡しています。これはクラス名のsuffixであり、例えば`$class = 'Redis'` とした場合にはsuffixの付与により`RedisEngine`を探索されるという格好です。
 
-#### _throwMissingClassError
+#### _throwMissingClassError()
 ```php
 /**
  * Throw an exception when the requested object name is missing.
@@ -151,7 +151,7 @@ protected function _throwMissingClassError($class, $plugin)
 最も一般的な例は、ComponentRegistryのように自身の属する空間に応じた独自の例外を利用することだと思います。  
 他方で、クラスの役割によって、ランタイムエラーやロジックエクセプションを利用しているという格好です。
 
-#### _create(
+#### _create()
 ```php
 /**
  * Create an instance of a given classname.
