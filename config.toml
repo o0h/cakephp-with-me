@@ -29,42 +29,42 @@ canonifyURLs = true
 
 [[menu.main]]
     name = "About"
-    url = "/about"
+    url = "/about/"
     weight = 1
 
 [[menu.main]]
     name = "Tags"
-    url = "/tags"
+    url = "/tags/"
     weight = 2
 
 [[menu.main]]
     parent = "Tags"
     name = "ORM/Database"
-    url = "/tags/ORM-and-Database"
+    url = "/tags/ORM-and-Database/"
     weight = 3
 
 [[menu.main]]
     parent = "Tags"
     name = "utility"
-    url = "/tags/utility"
+    url = "/tags/utility/"
     weight = 3
 
 [[menu.main]]
     parent = "Tags"
     name = "Version up"
-    url = "/tags/ver-up"
+    url = "/tags/ver-up/"
     weight = 3
 
 [[menu.main]]
     parent = "Tags"
     name = "Core"
-    url = "/tags/core"
+    url = "/tags/core/"
     weight = 3
 
 [[menu.main]]
     parent = "Tags"
     name = "tips"
-    url = "/tags/tips"
+    url = "/tags/tips/"
     weight = 3
 
 [[menu.main]]
@@ -75,13 +75,13 @@ canonifyURLs = true
 [[menu.main]]
     parent = "categories"
     name = "CakePHP 3.x"
-    url = "/categories/cakephp3"
+    url = "/categories/cakephp3/"
     weight = 3
 
 [[menu.main]]
     parent = "categories"
     name = "Plugins"
-    url = "/categories/plugins"
+    url = "/categories/plugins/"
     weight = 3
 
 [related]
