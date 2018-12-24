@@ -1,7 +1,7 @@
 ---
 title: "Resource Routing"
 date: 2018-12-25T00:00:06+09:00
-tags: [Http/Route]
+tags: [http-and-routes]
 categories: ["CakePHP3"]
 ---
 ※1人AdventのDay-24です

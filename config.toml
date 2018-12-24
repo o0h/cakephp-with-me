@@ -45,7 +45,7 @@ canonifyURLs = true
 
 [[menu.main]]
     parent = "Tags"
-    name = "utility"
+    name = "Utility"
     url = "/tags/utility/"
     weight = 3
 
@@ -57,14 +57,20 @@ canonifyURLs = true
 
 [[menu.main]]
     parent = "Tags"
-    name = "Http/Router"
-    url = "/tags/http-and-router/"
+    name = "Http/Routes"
+    url = "/tags/http-and-routes/"
     weight = 3
 
 [[menu.main]]
     parent = "Tags"
     name = "Core"
     url = "/tags/core/"
+    weight = 3
+
+[[menu.main]]
+    parent = "Tags"
+    name = "Plugins"
+    url = "/tags/plugins/"
     weight = 3
 
 [[menu.main]]
@@ -82,12 +88,6 @@ canonifyURLs = true
     parent = "categories"
     name = "CakePHP 3.x"
     url = "/categories/cakephp3/"
-    weight = 3
-
-[[menu.main]]
-    parent = "categories"
-    name = "Plugins"
-    url = "/categories/plugins/"
     weight = 3
 
 [related]

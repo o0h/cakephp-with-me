@@ -2,7 +2,7 @@
 title: "dereuromark/cakephp-dtoに触ってみる"
 date: 2018-12-08T18:12:32+09:00
 tags: [Plugins]
-categories: ["Plugins"]
+categories: ["CakePHP3"]
 ---
 
 ※1人AdventのDay-8です
