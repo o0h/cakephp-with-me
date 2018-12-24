@@ -65,8 +65,8 @@
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-12-24T07:35:23&#43;09:00">
-          Dec 24, 2018
+        <time datetime="2018-12-23T07:35:23&#43;09:00">
+          Dec 23, 2018
         </time>
       </div>
       
@@ -134,7 +134,7 @@ the template method load().
 
 <p>まず、abstractメソッドは次の3つを持っています。</p>
 
-<h4 id="resolveclassname">_resolveClassName</h4>
+<h4 id="resolveclassname">_resolveClassName()</h4>
 
 <pre><code class="language-php">/**
  * Should resolve the classname for a given object type.
@@ -188,7 +188,7 @@ protected function _resolveClassName($class)
 <p>これは、CacheRegistryの例です。<br />
 App::className()に第3引数を渡しています。これはクラス名のsuffixであり、例えば<code>$class = 'Redis'</code> とした場合にはsuffixの付与により<code>RedisEngine</code>を探索されるという格好です。</p>
 
-<h4 id="throwmissingclasserror">_throwMissingClassError</h4>
+<h4 id="throwmissingclasserror">_throwMissingClassError()</h4>
 
 <pre><code class="language-php">/**
  * Throw an exception when the requested object name is missing.
@@ -230,7 +230,7 @@ protected function _throwMissingClassError($class, $plugin)
 <p>最も一般的な例は、ComponentRegistryのように自身の属する空間に応じた独自の例外を利用することだと思います。<br />
 他方で、クラスの役割によって、ランタイムエラーやロジックエクセプションを利用しているという格好です。</p>
 
-<h4 id="create">_create(</h4>
+<h4 id="create">_create()</h4>
 
 <pre><code class="language-php">/**
  * Create an instance of a given classname.
