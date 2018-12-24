@@ -17,28 +17,19 @@
       <pubDate>Sat, 22 Dec 2018 16:16:36 +0900</pubDate>
       
       <guid>https://cake.nichiyoubi.land/posts/34-fixturize/</guid>
-      <description>※1人AdventのDay-22です
-1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
-概要 friendsofcake/fixturizeは、CakePHPにおける単体テストの実行速度を大幅に改善させるプラグインです。
-MySQL互換RDBMSで利用が可能で、導入は簡単です。
-実際の利用方法と
-イントロ CakePHPのTestSuiteでは、非常に簡単にDBと連携したフィクスチャデータを利用することができます。
-予めPHPクラスとして記述しておいたスキーマやレコードの内容を、必要に応じて指定した通りに読み込む形です。
-レコードの作成作業は、各テストケースの実行時に行われます。
-このライフサイクルは直感的でクリーンさを保ちやすい一方で、懸念となるのは実行速度です。1つのテストケースごとに、毎回「テーブルの中身の破棄」「完全なデータのインサート」が行われるからです。
-そうしたオーバーヘッドを削減するために作り出されたプラグインが、fixturizeです。
-fixturizeの概要 FriendsOfCake/fixturize: CakePHP3: Improve performance of your fixture based tests on MySQL.
-fixturizeは、既存の TestFixture クラスを当プラグインのクラスに置き換えることで実行されます。
-通常のTestFixtureの処理をオーバーライドする形で、
- テストケース実行時(setUp)に 通常は「テーブルのトランケートを行う」ところで もし「今作成済みの対象テーブルの内容が、fixtureに記述された内容と差異がない」ことを確認できたら truncate/insert処理をスキップする  という機能を追加します。
-そのために、「fixtureデータの作成・破棄・更新」に係るコストが省略されるわけです。
-この結果、レポジトリにあるREADMEの内容を参照すると大変な時間短縮の成果を生み出しています。
-導入 導入はとてもシンプルです。
-READMEの内容をそのまま参照します。
- composerを利用してインストールする  composer require friendsofcake/fixturize  既存のfixtureの、継承元クラスを変更する   もちろん、extends CheckSumTestFixture をしても良いと思いますが、importを書き換えてaliasを当てる〜とした方が手間が少ないです   導入はこれだけで完了です。
-実装詳細 それでは、どのように「無駄な更新はスキップする！」を実現しているのでしょうか。
-具体的な実装内容について確認していきます。
-ChecksumTestFixtureがオーバーライドしているメソッドは、 insert() truncate() drop() の3つのメソッドです。</description>
+      <description>&lt;p&gt;※1人AdventのDay-22です&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://adventar.org/calendars/3627&#34;&gt;1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;friendsofcake/fixturizeは、CakePHPにおける単体テストの実行速度を大幅に改善させるプラグインです。&lt;br /&gt;
+MySQL互換RDBMSで利用が可能で、導入は簡単です。&lt;br /&gt;
+実際の利用方法と&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

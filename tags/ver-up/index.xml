@@ -17,18 +17,18 @@
       <pubDate>Wed, 19 Dec 2018 23:25:17 +0900</pubDate>
       
       <guid>https://cake.nichiyoubi.land/posts/33-cakephp-3_7_1/</guid>
-      <description>※1人AdventのDay-19です
-1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
-概要 CakePHP3.7.1がリリースされたので、その内容をチェックしてみます。
-今回は3.7.x系の初アップデートということもあり、コミュニティにおいて発見されたものを中心としたbugfixが多く見られました。
-イントロ CakePHP3.7が、12月9日にリリースされました。
-その際には、以下の記事で言及しています。
-CakePHP 3.7の個人的な見どころ
-それから9日後の12月18日に、3.7.1がリリースされています。
- bakery: CakePHP 3.7.1 Released — Bakery GitHub Release: Release CakePHP 3.7.1 released · cakephp/cakephp GitHub Issues: 3.7.1 Milestone  この記事では、今回のアップデートで反映された修正をみてみたいと思います。
-Bugfixes このアップデートでは、新機能の実装は行われずにBugfixesのみとなっています。
-cellがtemplateを発見できなかった場合に出力されるエラーメッセージを適切にセットできるように Fixed incorrect error messages when cells cannot find their template.  3.7 cell - exception by saeideng · Pull Request #12783 · cakephp/cakephp
-「Cookieがセットされていない」を検査するアサーションの不具合を修正 Fixed a regression in assertCookieNotSet().  Fixed regression in assertCookieNotSet by jeremyharris · Pull Request #12794 · cakephp/cakephp</description>
+      <description>&lt;p&gt;※1人AdventのDay-19です&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://adventar.org/calendars/3627&#34;&gt;1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;CakePHP3.7.1がリリースされたので、その内容をチェックしてみます。&lt;br /&gt;
+今回は3.7.x系の初アップデートということもあり、コミュニティにおいて発見されたものを中心としたbugfixが多く見られました。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

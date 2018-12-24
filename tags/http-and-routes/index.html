@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Plugins</title>
-  <meta property="og:title" content="Plugins" />
-  <meta name="twitter:title" content="Plugins" />
+  <title>Http and Routes</title>
+  <meta property="og:title" content="Http and Routes" />
+  <meta name="twitter:title" content="Http and Routes" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="Hideki Kinjyo"/>
   <meta property="og:site_name" content="cakephp-with-me" />
-  <meta property="og:url" content="https://cake.nichiyoubi.land/categories/plugins/" />
+  <meta property="og:url" content="https://cake.nichiyoubi.land/tags/http-and-routes/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -57,35 +57,29 @@
   </header>
   <main id="main" class="l-main">
 
-<h2 class="c-title p-tag-title">Plugins</h2>
+<h2 class="c-title p-tag-title">Http and Routes</h2>
 
 
 <article class="c-article p-list-article">
   <header>
-    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/27-cakephp-dto/">dereuromark/cakephp-dtoに触ってみる</a></h2>
+    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/36-resource-routing/">Resource Routing</a></h2>
     <p class="c-article__meta">
       Posted on
-      <time datetime="2018-12-08T18:12:32&#43;09:00">
-        Dec 8, 2018
+      <time datetime="2018-12-25T00:00:06&#43;09:00">
+        Dec 25, 2018
       </time>
     </p>
   </header>
   <div class="c-article__summary">
-    ※1人AdventのDay-8です
+    ※1人AdventのDay-24です
 1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
-CakePHP開発者であるMark Sch.さんが、新しいプラグインを公開されていました。 [New]dereuromark/cakephp-dto CakePHP DTO Plugin https://t.co/vBFe8DJUPE
-&mdash; function(){exit;} (@call_user_func) 2018年12月8日 
-名前の通り、CakePHPでDTOを扱うための実装のようです。
-cf) Data Transfer Object - Wikipedia
-おもしろそうなので、早速触ってみました。
-ざっくりいうと何？  決められたプロパティを持つmutable/immutableなオブジェクトを扱いやすくするためのもの 決められたプロパティ = 型は、設定ファイルに記述していく それらの設定を、実クラス生成コマンドによって作成する 実際のクラスを生成するからIDE上での保管や静的解析との相性が良い  CakeDTOに触ってみる setup まずは、インストールです
-composer require dereuromark/cakephp-dto:dev-master  Pluginを有効化します。1
-bin/cake plugin load CakeDto -b  はじめてのDTO作成 ファイル初期生成用のコマンドが用意されています。
-bin/cake dto init  これを実行すると、config/dto.xmlに以下のようなファイルが設置されます
-&lt;?xml version=&quot;1.0&quot;?&gt; &lt;dtos xmlns=&quot;cakephp-dto&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;cakephp-dto https://github.com/dereuromark/cakephp-dto&quot;&gt; &lt;/dtos&gt;  ・・・と言っておいて何ですが、個人的にYAMLでいきたいのでYAMLに書き換えます。 こちらのExampleを参考にしましょう。 /examples/basic.dto.yml
+概要 CakePHPのRouterには、ある名前のリソースに対してRESTfulなアクセスを簡単に提供する機能 resources() があります。
+その内部実装がどのようになっているのか、処理を追ってみました。
+
+
   </div>
   
-  <a href="https://cake.nichiyoubi.land/posts/27-cakephp-dto/" class="c-article__btn p-list-article__btn">Read more</a>
+  <a href="https://cake.nichiyoubi.land/posts/36-resource-routing/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
@@ -141,15 +135,17 @@ bin/cake dto init  これを実行すると、config/dto.xmlに以下のよう�
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/core/">Core</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/http-and-router/">Http/Router</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/http-and-routes/">Http/Routes</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/orm-and-database/">ORM/Database</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/plugins/">Plugins</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility/">Utility</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/ver-up/">Version up</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/tips/">tips</a></li>
-            
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility/">utility</a></li>
             
           </ul>
         </li>
@@ -161,8 +157,6 @@ bin/cake dto init  これを実行すると、config/dto.xmlに以下のよう�
           <ul>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/cakephp3/">CakePHP 3.x</a></li>
-            
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/plugins/">Plugins</a></li>
             
           </ul>
         </li>

@@ -17,17 +17,17 @@
       <pubDate>Sun, 23 Dec 2018 07:35:23 +0900</pubDate>
       
       <guid>https://cake.nichiyoubi.land/posts/35-object-registry/</guid>
-      <description>※1人AdventのDay-23です
-1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
-概要 ObjectRegistryというものがあります。
-CakePHPで内部的にかなり頻繁に利用されているクラスであり、インスタンス管理の根幹を担っていると言っても過言ではありません。
-どんな使われ方をされていて、どんな処理をしているのかを見てみました。
-イントロ CakePHPを用いたアプリケーションを作成していくに当たり、自身で直接触れることはあまりなさそうなクラスです。 class docを見ると、以下のように書かれています。
-Acts as a registry/factory for objects. Provides registry &amp;amp; factory functionality for object types. Used as a super class for various composition based re-use features in CakePHP. Each subclass needs to implement the various abstract methods to complete the template method load().  1つとして「普段は抽象的に操作をしている部分を少し具体的に知ることができたら、より納得感をもって開発ができるだろう」という視点、2つ目に「自身が実装や設計を考えるにあたって学びがありそうだ」という視点で内部構造を見てみたいと思いました。
-ObjectRegistryはどこで利用されているか ObjectRegistryは抽象クラスであり、Countable/IteratorAggregateといったインターフェイスを実装します。ここから分かる通り、「コレクション」としての性格を備えたものです。
-この利用先は、どのようなクラスがあるでしょうか。
-一覧を列挙してみます。
- \Cake\Cache\CacheRegistry \Cake\Console\HelperRegistry \Cake\Console\TaskRegistry \Cake\Controller\ComponentRegistry \Cake\Datasource\ConnectionRegistry \Cake\Log\LogEngineRegistry \Cake\Mailer\TransportRegistry \Cake\ORM\BehaviorRegistry \Cake\View\HelperRegistry  このように、「〜Registry」というsuffixをつける、という規則が見いだせます。</description>
+      <description>&lt;p&gt;※1人AdventのDay-23です&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://adventar.org/calendars/3627&#34;&gt;1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;ObjectRegistryというものがあります。&lt;br /&gt;
+CakePHPで内部的にかなり頻繁に利用されているクラスであり、インスタンス管理の根幹を担っていると言っても過言ではありません。&lt;br /&gt;
+どんな使われ方をされていて、どんな処理をしているのかを見てみました。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

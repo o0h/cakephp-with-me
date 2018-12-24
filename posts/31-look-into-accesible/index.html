@@ -76,9 +76,7 @@
   </header>
   
   <section id="js-article" class="p-article__body">
-    
-
-<p>※1人AdventのDay-14です</p>
+    <p>※1人AdventのDay-14です</p>
 
 <p><a href="https://adventar.org/calendars/3627">1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar</a></p>
 
@@ -86,6 +84,8 @@
 
 <p>CakePHP3では、データの誤操作を防ぐためEntityの持つプロパティへの代入可否を設定する <code>$_accessible</code> 機構が備わっています。<br />
 具体的な利用方法を確認していきたいと思います。</p>
+
+<p></p>
 
 <h2 id="イントロ">イントロ</h2>
 
@@ -208,7 +208,6 @@ $post-&gt;toArray(); //['title' =&gt; 'The sample post.', 'is_deleted' =&gt; fal
 <p>私自身、<code>$_accessible</code> についての理解を長らく曖昧なままにしていた反省があったため、Cookbookの内容を具体的に掘り下げることでまとめてみました。<br />
 あくまで(Cookbookでそう示されている通り)「一括代入の保護」であり、これはユーザーからのリクエストデータのマーシャル操作などを想定しているものであると思います。逆に言えば、単一のプロパティを指定して値の書き換えを行うなど、明らかに「アプリケーション実装者の意図」が介入する場合は、楽観的な作用をするということです。<br />
 設計思想を汲み取ることで、やや複雑な仕様や紛らわしい操作についてのその違いがはっきりしやすういのではないでしょうか。</p>
-
   </section>
   <footer>
     
@@ -298,15 +297,17 @@ $post-&gt;toArray(); //['title' =&gt; 'The sample post.', 'is_deleted' =&gt; fal
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/core/">Core</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/http-and-router/">Http/Router</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/http-and-routes/">Http/Routes</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/orm-and-database/">ORM/Database</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/plugins/">Plugins</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility/">Utility</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/ver-up/">Version up</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/tips/">tips</a></li>
-            
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility/">utility</a></li>
             
           </ul>
         </li>
@@ -318,8 +319,6 @@ $post-&gt;toArray(); //['title' =&gt; 'The sample post.', 'is_deleted' =&gt; fal
           <ul>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/cakephp3/">CakePHP 3.x</a></li>
-            
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/plugins/">Plugins</a></li>
             
           </ul>
         </li>

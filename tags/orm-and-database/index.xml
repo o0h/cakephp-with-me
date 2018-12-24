@@ -17,24 +17,17 @@
       <pubDate>Fri, 21 Dec 2018 19:40:10 +0900</pubDate>
       
       <guid>https://cake.nichiyoubi.land/posts/10-orm-database/</guid>
-      <description>※1人AdventのDay-21です
-1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
-概要 CakePHP3のデータベース周りの処理を追っていくと、「ORM」「Database」「Datasource」という、似た名前のレイヤーが存在することに気づきます。
-普段は特に意識することのないこれらの違いは、どこにあるのでしょうか。
-気になったので調べてみました。
-イントロ CakePHP3を2.xと比較すると、最も大きな革新の1つはデータベース周りの構造の改革である、ということは間違いないと思います。
-それは、普段のアプリケーションを行っている上で直接的に目にするTale/Entity/Queryといったオブジェクトたちの登場から、感じることができます。そこから更に注意深くみてみると、フレームワークの内部ではさらなる複雑化が実施されていました。
-これらの構造については、普段の開発では意識することはないかも知れません。しかしながら、内部構造についてイメージを掴むことで、フレームワーク自体の設計思想やポテンシャル、&amp;rdquo;らしさ&amp;rdquo;についての理解が深まるのかとも思います。
-気になったので、自分なりに整理をしてみることにしました。
-ORM層を起点に「複雑さ」を感じてみる まずは、最も馴染みが深いであろう \Cake\ORMです。
-この中には、Table Entity Query などのクラスがあります。
- さて、これ自体は普段から目にしている通りであって特に重要ではないのですが、問題は「実は結構いろいろと継承している」というところにあります。
-例えば、Tableクラスを見てみましょう。 何かを継承しているわけではないのですが、\Cake\Datasource\RepositoryInterfaceの実装であり、内部的には\Cake\DatabaseからTableSchema Typeというクラスを利用し、\Cake\DatasourceからはConnectionInterfaceとも関係していることが見て取れます。
-同様に、EntityQueryについてもクラス図を置いてみます。
- Entity    Query     このように、ORM/Database/Datasourceは、それぞれが密接に関わり合っていることがわかります。
-どのように違うのか？ 実は、これらの3層はそれぞれがcakephpのGitHubアカウントにてスタンドアロンパッケージとして切り出され、公開されています。
-そこにあるdescriptionを見ることが、互いの位置づけを掴む上での端的な説明になりそうです。
- cakephp/orm: [READ-ONLY] A flexible, lightweight and powerful Object-Relational Mapper for PHP, implemented using the DataMapper pattern. This repo is a split of the main code that can be found in https://github.</description>
+      <description>&lt;p&gt;※1人AdventのDay-21です&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://adventar.org/calendars/3627&#34;&gt;1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;CakePHP3のデータベース周りの処理を追っていくと、「ORM」「Database」「Datasource」という、似た名前のレイヤーが存在することに気づきます。&lt;br /&gt;
+普段は特に意識することのないこれらの違いは、どこにあるのでしょうか。&lt;br /&gt;
+気になったので調べてみました。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -43,36 +36,16 @@ ORM層を起点に「複雑さ」を感じてみる まずは、最も馴染み�
       <pubDate>Sun, 16 Dec 2018 16:04:42 +0900</pubDate>
       
       <guid>https://cake.nichiyoubi.land/posts/32-behavior-vs-trait/</guid>
-      <description>※1人AdventのDay-16です
-1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
-概要 CakePHP3ではBehaviorを利用することで、Tableクラスにmixinすることができます。また、PHPにはTraitの仕組みがあり、これを利用することで継承を用いずにメソッドやプロパティの再利用を実現することができます。
-現時点で考えている、個人的な「どう使い分けるか」というポイントをまとめてみます。
-イントロ CakePHPには3.xより前のバージョンから、Modelレイヤーに「Behavior」という機構があります。複数のModel(Table)クラスで同様に利用されるような機能を、Modelを通じて透過的に利用できるようにしようというものです。これを利用することで、呼び出し側は、その機能がModelクラスに直接所属しているのかBehaviorから提供されているかを全く意識することなく利用ができます。
-例えば、 TreeBehavior などはCakePHPにおいて過去から継続して提供されているユニークな例の1つでしょう。 $Model-&amp;gt;find(&#39;children&#39;, [&#39;for&#39; =&amp;gt; 100]) などとすれば、「アイテム100番に属する子アイテムを取得する」という操作が可能です。
-一方で、PHP5.4からTrait機構が言語から提供されています。
-CakePHP2.xはPHP5.3.0での利用を前提としているためにTraitの利用は選択肢に含まれませんが、CakePHP3.xにおいては状況が異なります。「Traitを利用して、Tableクラスに直接メソッドを植え付ける」ことが可能になりました。
-単純なメソッド提供だけに絞れば同等の利用ができそうな両者は、どのように共存していけばよいのでしょうか？
-個人的なシンプルな結論 個人的には、「Traitで済むものはTraitで良いのではないか」と考えるようにしています。その範疇外のものや、出来なくはないが考慮すべきことが増える場合などにはBehaviorを利用します。
-PHPにおけるTraitの位置付け Traitが言語から提供されるようになってから、「どう使うか」というのは議論の的です。とりわけ、Abstract/Interfaceと交えて「デザインの仕方が大きく変わりそう」という関心を集めているように感じます。
-必ずしもTrait(のみ)の話ではないですが、個人的な「Classの役割が狭まり、Traitの利用箇所は多岐に渡って拡大していくのではないか」という考え方は、こちらのエントリーにインスパイアされた面があります。
-PHP 7 の無名クラスから考えるクラスの在り方 - Shin x Blog
-今回は無名クラスの話ではないので、スコープが異なるのですが、それでも「Traitでやれること─とりわけ、具体実装についてはTraitを利用していく」という意味で合致しています。
-Traitで済むこと 「メソッドの提供」のみであれば、Traitでもできそうです。また、visible/non-visibleなクラスメンバ・インスタンスメンバを利用する場合でも、traitは十分に活用できます。
-例えばカスタムファインダメソッドの提供などは、Traitでも行けそうです。
-「Queryインスタンスが渡されてきて」「呼び出し時に$optionを受け取ることができる」というインターフェイスにすれば問題なく動作します。その中に、formatResults()やwhere()/order()のデコレーションを実装することができるし、面倒くさいQueryExpressionを内部で組み立てて上げることも出来るわけです。
-こう考えると、従来的なBehaviorの役割は、その多くをTraitに託すことも可能なのではないでしょうか？
-Behaviorを使う場面①: ライフサイクルへの CakePHPにはModelの利用に関するライフサイクルが存在し、イベントベースで処理を割り込ませることが可能です。
-コールバックのライフサイクル
-これらを活用する場合、Bahaviorでの機能提供を行ったほうが無難かと考えています。
-Bahaviorでは、各イベントの発火時にTableクラス自体とBehaviorが持つそれぞれの処理が考慮されるようにデザインされています。例えば、Behaviorに beforeFindメソッドをもたせた場合、Model.beforeFind にぶら下げて実行させる事は容易です。 他方で、Traitに定義された beforeFind() メソッドは、それを利用するTable自体の beforeFind() と見分けが付きません。そのため、「TableとBehaviorのbeforeFind()を明示的に双方とも呼び出す」ことが必要になります。これは、実装時にうっかりと忘れてしまいそうではないでしょうか・・?
-そういう訳で、もし「ライフサイクルに則ってイベントを購読する」ことが重要な場合は、Behaviorを利用したほうがストレスなく開発を勧めていけるのではないかと思います。もちろん、具体的な実装をTraitに持たせつつ、Tabelの内部のメソッド(例えばinitialize()やbeforeMarshal())、implemetedEventsに登録されているメソッドの内部からTraitの処理を呼び出す」といった方法は可能です。
-Behaviorを使う場面②: 設定値の管理 Behaviorの中での何らかの設定値を扱う場面もあります。その際に、 ConfigTraitを利用するなど、インスタンス内部に $_config というプロパティを作成することで管理するでしょうか。
-もしTraitで同様のことを行おうとすると、利用側となるTableの持つプロパティと区別をできずに競合する可能性があります。
-これを無難に回避するために、設定や状態管理を伴うある程度複雑な機能については、Behaviorとして「別クラス」を定義してしまうほうが良いのかなと感じます。
-Behaviorを使う場面③: (静的)プロパティの利用・共有 設定値の管理の変形バージョンといえる話かもしれません。
-ある機能を専任的に扱う存在としてのBehaviorを考える場合、「他のクラスに対しても影響をもたらす値の管理」を行いたい場合があります。
-例えば「管理者モードを扱えるようにするBehavior」において「一時的に非管理者モードでのアクセスを行う」ような実装を考えていたとします1。この状態切り替えを、すべて「読み込み時に完了できる」もしくは「操作実行時に、都度参照できる」ようになれば、問題なくモードの切替が達成できると思います。
-後者のアプローチを考える場合、Behaviorなら「自身の中に値を保持する」「それを都度参照するようにする」ことが可能です。各Tableからみて、「1箇所だけ見れば済む」ようになりました。他方で、Traitでは「自身の中に持つ」という状況を作り出すのが困難です。Traitの中にプロパティを生やすことはもちろん可能ですが、それは「各Tableに複製される」ようになります。すなわち、どれか1つを変更したところで、他Tableの手が届くところへの影響はあません。</description>
+      <description>&lt;p&gt;※1人AdventのDay-16です&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://adventar.org/calendars/3627&#34;&gt;1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;CakePHP3ではBehaviorを利用することで、Tableクラスにmixinすることができます。また、PHPにはTraitの仕組みがあり、これを利用することで継承を用いずにメソッドやプロパティの再利用を実現することができます。&lt;br /&gt;
+現時点で考えている、個人的な「どう使い分けるか」というポイントをまとめてみます。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -81,20 +54,16 @@ Behaviorを使う場面③: (静的)プロパティの利用・共有 設定値�
       <pubDate>Fri, 14 Dec 2018 06:44:56 +0900</pubDate>
       
       <guid>https://cake.nichiyoubi.land/posts/31-look-into-accesible/</guid>
-      <description>※1人AdventのDay-14です
-1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
-概要 CakePHP3では、データの誤操作を防ぐためEntityの持つプロパティへの代入可否を設定する $_accessible 機構が備わっています。
-具体的な利用方法を確認していきたいと思います。
-イントロ フレームワークを利用したアプリケーション開発の最大のメリットの1つが「簡単・少量の記述で、パワフルなシステムを構築できる」点にあると思います。
-その一方で、「うっかりと変なことをやってしまう」リスクが高まる部分もあります。とりわけ、セキュリティやデータ操作の領域においての「うっかり」は取り返しのつかないダメージになりえます。
-CakePHP3において、データの健全な扱いを支援するための機構の1つが Entity::$_accessibleによるプロパティの保護です。
-これを設定することで、データを簡易に代入しつつ更新を許したくないプロパティについては渡された値を無視できるようになります。
-利用例(Cookbookより) まずは、Cookbookにある例をひきながらその基本的な利用の方法についておさらいをしましょう。
-エンティティー - 3.7
-最も基本的な設定方法は、以下のとおりです。
-namespace App\Model\Entity; use Cake\ORM\Entity; class Article extends Entity { protected $_accessible = [ &#39;title&#39; =&amp;gt; true, &#39;body&#39; =&amp;gt; true, &#39;*&#39; =&amp;gt; false, ]; }  Enittyのメンバーとして $_accessible を設け、その連想配列の中に「key =&amp;gt; 代入の可否」という形で値をもたせます。明示的に指定されていないプロパティはデフォルトではすべて false(代入不可)となり、「明示指定していないプロパティ(=「その他」のプロパティ)の挙動を変える」という場合には * を利用します。
-$_accessible が適用される場面 $_accessible による代入保護が働く場面は、主に以下の3つです。
- Table::newEntity() によるEntityの作成、 Table::patchEntity() によるEntityの更新 newキーワードを利用したEntityの作成において、オプション(コンストラクタの第2引数となる連想配列)で &#39;guard&#39; =&amp;gt; true を指定した場合 Entity::set() で、第1引数が連想配列の場合  1・2のケースでも内部的にはset()メソッドを利用しており、結果的には3の挙動が適用されることになります。</description>
+      <description>&lt;p&gt;※1人AdventのDay-14です&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://adventar.org/calendars/3627&#34;&gt;1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;CakePHP3では、データの誤操作を防ぐためEntityの持つプロパティへの代入可否を設定する &lt;code&gt;$_accessible&lt;/code&gt; 機構が備わっています。&lt;br /&gt;
+具体的な利用方法を確認していきたいと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -103,19 +72,16 @@ $_accessible が適用される場面 $_accessible による代入保護が働�
       <pubDate>Thu, 13 Dec 2018 19:09:01 +0900</pubDate>
       
       <guid>https://cake.nichiyoubi.land/posts/30-custom-find/</guid>
-      <description>※1人AdventのDay-13です
-1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
-概要 CakePHP3で導入された「カスタムファインダー」は、Queryの組み立てを抽象化・パッケージ化する手法です。
-よく利用するconditonsの追加やfields、formatResultsなどの手順を一箇所にまとめ、更にメソッドチェーンによるQueryのビルドを可能にします。
-イントロ CakePHP3のORM機能の1つに、Tableで提供されている「カスタムファインド」というものがあります。
-これは、より「鮮明で簡潔なコーディングをする」ことを支援する強力な機能だと思っています。
-とはいっても、自分自身もCakePHP3を触り始めた当初はその存在1を知らず、利用できていませんでした。今になって感じるのは、うまく付き合えばより「Cakeらしい」コードが書けそうだということです。
-この記事では、その具体的な実装や内部処理の流れについて触れていきます。
-簡単な利用例(Cookbookより) まずは、Cookbookにある内容を例にとって、簡単なサンプルに触れてみたいと思います。 データの取り出しと結果セット - 3.7
-use Cake\ORM\Query; use Cake\ORM\Table; class ArticlesTable extends Table { public function findOwnedBy(Query $query, array $options) { $user = $options[&#39;user&#39;]; return $query-&amp;gt;where([&#39;author_id&#39; =&amp;gt; $user-&amp;gt;id]); } } // コントローラーやテーブルのメソッド内で $articles = TableRegistry::get(&#39;Articles&#39;); $query = $articles-&amp;gt;find(&#39;ownedBy&#39;, [&#39;user&#39; =&amp;gt; $userEntity]);  よくありそうな、「記事の筆者によって絞り込む」という処理です。
-これはWHERE author_id = :user_id という条件付けによって達成されます。
-カスタムファインダーを使う際には、2つの手順が必要です。
- findXxx という規則に従ってメソッド名をつける Table::find(&#39;Xxx&#39;) という形で呼び出す  とてもシンプルですが、これだけでOKです。</description>
+      <description>&lt;p&gt;※1人AdventのDay-13です&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://adventar.org/calendars/3627&#34;&gt;1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;CakePHP3で導入された「カスタムファインダー」は、Queryの組み立てを抽象化・パッケージ化する手法です。&lt;br /&gt;
+よく利用するconditonsの追加やfields、formatResultsなどの手順を一箇所にまとめ、更にメソッドチェーンによるQueryのビルドを可能にします。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

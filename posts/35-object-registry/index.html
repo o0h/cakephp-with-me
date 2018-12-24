@@ -76,9 +76,7 @@
   </header>
   
   <section id="js-article" class="p-article__body">
-    
-
-<p>※1人AdventのDay-23です</p>
+    <p>※1人AdventのDay-23です</p>
 
 <p><a href="https://adventar.org/calendars/3627">1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar</a></p>
 
@@ -87,6 +85,8 @@
 <p>ObjectRegistryというものがあります。<br />
 CakePHPで内部的にかなり頻繁に利用されているクラスであり、インスタンス管理の根幹を担っていると言っても過言ではありません。<br />
 どんな使われ方をされていて、どんな処理をしているのかを見てみました。</p>
+
+<p></p>
 
 <h2 id="イントロ">イントロ</h2>
 
@@ -386,7 +386,6 @@ public function loadComponent($name, array $config = [])
 
 <p>ObjectRegistryは、CakePHP「らしく」オブジェクトの管理やコレクションを実現するのに役立つ仕組みだと思います。<br />
 サードパーティのDIを利用するという方法も存在しますが、そこまで高度なものが必要でない場合や学習コストをフレームワーク本体のそれに寄せたい場合などに、目的や状況によってはとても簡単に手を出せるかもなと感じました。</p>
-
   </section>
   <footer>
     
@@ -448,15 +447,17 @@ public function loadComponent($name, array $config = [])
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/core/">Core</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/http-and-router/">Http/Router</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/http-and-routes/">Http/Routes</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/orm-and-database/">ORM/Database</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/plugins/">Plugins</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility/">Utility</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/ver-up/">Version up</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/tips/">tips</a></li>
-            
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility/">utility</a></li>
             
           </ul>
         </li>
@@ -468,8 +469,6 @@ public function loadComponent($name, array $config = [])
           <ul>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/cakephp3/">CakePHP 3.x</a></li>
-            
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/plugins/">Plugins</a></li>
             
           </ul>
         </li>

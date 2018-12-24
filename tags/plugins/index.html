@@ -76,23 +76,8 @@
 概要 friendsofcake/fixturizeは、CakePHPにおける単体テストの実行速度を大幅に改善させるプラグインです。
 MySQL互換RDBMSで利用が可能で、導入は簡単です。
 実際の利用方法と
-イントロ CakePHPのTestSuiteでは、非常に簡単にDBと連携したフィクスチャデータを利用することができます。
-予めPHPクラスとして記述しておいたスキーマやレコードの内容を、必要に応じて指定した通りに読み込む形です。
-レコードの作成作業は、各テストケースの実行時に行われます。
-このライフサイクルは直感的でクリーンさを保ちやすい一方で、懸念となるのは実行速度です。1つのテストケースごとに、毎回「テーブルの中身の破棄」「完全なデータのインサート」が行われるからです。
-そうしたオーバーヘッドを削減するために作り出されたプラグインが、fixturizeです。
-fixturizeの概要 FriendsOfCake/fixturize: CakePHP3: Improve performance of your fixture based tests on MySQL.
-fixturizeは、既存の TestFixture クラスを当プラグインのクラスに置き換えることで実行されます。
-通常のTestFixtureの処理をオーバーライドする形で、
- テストケース実行時(setUp)に 通常は「テーブルのトランケートを行う」ところで もし「今作成済みの対象テーブルの内容が、fixtureに記述された内容と差異がない」ことを確認できたら truncate/insert処理をスキップする  という機能を追加します。
-そのために、「fixtureデータの作成・破棄・更新」に係るコストが省略されるわけです。
-この結果、レポジトリにあるREADMEの内容を参照すると大変な時間短縮の成果を生み出しています。
-導入 導入はとてもシンプルです。
-READMEの内容をそのまま参照します。
- composerを利用してインストールする  composer require friendsofcake/fixturize  既存のfixtureの、継承元クラスを変更する   もちろん、extends CheckSumTestFixture をしても良いと思いますが、importを書き換えてaliasを当てる〜とした方が手間が少ないです   導入はこれだけで完了です。
-実装詳細 それでは、どのように「無駄な更新はスキップする！」を実現しているのでしょうか。
-具体的な実装内容について確認していきます。
-ChecksumTestFixtureがオーバーライドしているメソッドは、 insert() truncate() drop() の3つのメソッドです。
+
+
   </div>
   
   <a href="https://cake.nichiyoubi.land/posts/34-fixturize/" class="c-article__btn p-list-article__btn">Read more</a>
@@ -183,15 +168,17 @@ bin/cake dto init  これを実行すると、config/dto.xmlに以下のよう�
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/core/">Core</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/http-and-router/">Http/Router</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/http-and-routes/">Http/Routes</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/orm-and-database/">ORM/Database</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/plugins/">Plugins</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility/">Utility</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/ver-up/">Version up</a></li>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/tips/">tips</a></li>
-            
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility/">utility</a></li>
             
           </ul>
         </li>
@@ -203,8 +190,6 @@ bin/cake dto init  これを実行すると、config/dto.xmlに以下のよう�
           <ul>
             
               <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/cakephp3/">CakePHP 3.x</a></li>
-            
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/plugins/">Plugins</a></li>
             
           </ul>
         </li>

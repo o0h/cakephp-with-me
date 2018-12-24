@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Http and Routes on cakephp-with-me</title>
+    <link>https://cake.nichiyoubi.land/tags/http-and-routes/</link>
+    <description>Recent content in Http and Routes on cakephp-with-me</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 25 Dec 2018 00:00:06 +0900</lastBuildDate>
+    
+	<atom:link href="https://cake.nichiyoubi.land/tags/http-and-routes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Resource Routing</title>
+      <link>https://cake.nichiyoubi.land/posts/36-resource-routing/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:06 +0900</pubDate>
+      
+      <guid>https://cake.nichiyoubi.land/posts/36-resource-routing/</guid>
+      <description>&lt;p&gt;※1人AdventのDay-24です&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://adventar.org/calendars/3627&#34;&gt;1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;CakePHPのRouterには、ある名前のリソースに対してRESTfulなアクセスを簡単に提供する機能 &lt;code&gt;resources()&lt;/code&gt; があります。&lt;br /&gt;
+その内部実装がどのようになっているのか、処理を追ってみました。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
