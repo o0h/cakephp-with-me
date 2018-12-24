@@ -159,11 +159,16 @@ public function resources($name, $options = [], $callback = null)
 ]
 ```
 
+### connectOptions
+
 `connectOptions` は、最終的にはいくつかのデフォルト項目とマージされて`$this->connect()`メソッドの第3引数に渡されます。  
 例えば `action` `_ext` `_name` `routeClass` `_middleware` といった項目が、ここから注入可能ということです。
 
+### inflect
+
 `inflect` は、名前の通りURLの「語形変化」について設定します。・・・ここだとデフォルトが`underscore`なんですね。もしチェインケースでのURLを生成する場合は、 `dasherize` を指定することで実現されます。
 
+### id
 `id` はクラス定数を参照していますが、以下のように定義されています。
 
 ```php
@@ -184,7 +189,11 @@ const UUID = '[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-
 これは、例えば `articles/:id` (GETアクセス・view()アクション)時に「許容する」文字列のパターンをどうするかという話になります。デフォルトだと、インクリメントを想定して数字のキーかUUIDベースでのIDが想定されていることになります。  
 「screen_id」のようなリソース識別子を用いたアクセスを提供する場合など、自分で注入する必要があるでしょう。
 
+### only
+
 `only`は「どのアクションに対してResource Routingを提供するか」を指定するリストで、例えば「一覧と個別表示だけ許可」といった場合は`['only' => ['index', 'view']]` といった形になるのではないでしょうか。  
+
+### actions
 
 `actions` は、規定の「操作とactionの紐づけ」を変更するための指定です。  
 例えば、元々は `['index' => ['action' => 'index']]`というように指定されています。同様に、index/create/view/update/deleteの5種類の「操作」に対して、「規定のaction」が設定されているわけです。  
@@ -212,6 +221,8 @@ foreach ($options['map'] as $k => $mapped) {
 }
 ```
 
+### prefix / path
+
 `prefix` `path` は、その名の通り定義するルーティングの設定内容です。最終的には、`/$prefx/$options['path]/$params['path']/current($map)['path']` という形のURLが構築されます(prefixだけ、connect()の第1引数でなく第3引数で設定されることに注意
 
 ## $callback
@@ -235,13 +246,13 @@ if (is_callable($options)) {
   * $routes->resources('Articles', function ($routes) {
   *   $routes->resources('Comments');
   * });
-  *//
+  */
 ```
 
 これは、実際にどのような routingを構築するでしょう？試してみました。
 
 ```sh
- bin/cake routes
+bin/cake routes
 +-----------------+------------------------------------+-----------------------------------------------------------------------------------+
 | Route name      | URI template                       | Defaults                                                                          |
 +-----------------+------------------------------------+-----------------------------------------------------------------------------------+
@@ -257,8 +268,8 @@ if (is_callable($options)) {
 | comments:delete | /articles/:article_id/comments/:id | {"_method":"DELETE","action":"delete","controller":"Comments","plugin":null}      |
 +-----------------+------------------------------------+-----------------------------------------------------------------------------------+
 ```
-articlesと、その単一リソースの下に更にcommentsへのアクセスが提供されているのがわかります。  
-更に、この場合に`article_id` `comment_id` のいずれにも、コントローラーのアクション内からアクセス可能になっているのが気の利いている部分です。
+articlesと、その単一リソースの下に更にcommentsへのアクセスが提供されているのがわかります。 
+更に、この場合に`article_id` `comment_id` のいずれにも、コントローラーのアクション内からアクセス可能になっているのが気の利いている部分です。  
 例えば、`GET articles/2/comments/12` にアクセスした場合に、`$this->getRequest()->params`の内容は次のようになります。
 
 ![](/images/posts/2018-12-25-04-13-37.png)
