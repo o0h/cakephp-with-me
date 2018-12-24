@@ -275,10 +275,16 @@ Router::scope('/', function ($routes) {
 ]
 </code></pre>
 
+<h3 id="connectoptions">connectOptions</h3>
+
 <p><code>connectOptions</code> は、最終的にはいくつかのデフォルト項目とマージされて<code>$this-&gt;connect()</code>メソッドの第3引数に渡されます。<br />
 例えば <code>action</code> <code>_ext</code> <code>_name</code> <code>routeClass</code> <code>_middleware</code> といった項目が、ここから注入可能ということです。</p>
 
+<h3 id="inflect">inflect</h3>
+
 <p><code>inflect</code> は、名前の通りURLの「語形変化」について設定します。・・・ここだとデフォルトが<code>underscore</code>なんですね。もしチェインケースでのURLを生成する場合は、 <code>dasherize</code> を指定することで実現されます。</p>
+
+<h3 id="id">id</h3>
 
 <p><code>id</code> はクラス定数を参照していますが、以下のように定義されています。</p>
 
@@ -300,7 +306,11 @@ const UUID = '[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-
 <p>これは、例えば <code>articles/:id</code> (GETアクセス・view()アクション)時に「許容する」文字列のパターンをどうするかという話になります。デフォルトだと、インクリメントを想定して数字のキーかUUIDベースでのIDが想定されていることになります。<br />
 「screen_id」のようなリソース識別子を用いたアクセスを提供する場合など、自分で注入する必要があるでしょう。</p>
 
+<h3 id="only">only</h3>
+
 <p><code>only</code>は「どのアクションに対してResource Routingを提供するか」を指定するリストで、例えば「一覧と個別表示だけ許可」といった場合は<code>['only' =&gt; ['index', 'view']]</code> といった形になるのではないでしょうか。</p>
+
+<h3 id="actions">actions</h3>
 
 <p><code>actions</code> は、規定の「操作とactionの紐づけ」を変更するための指定です。<br />
 例えば、元々は <code>['index' =&gt; ['action' =&gt; 'index']]</code>というように指定されています。同様に、index/create/view/update/deleteの5種類の「操作」に対して、「規定のaction」が設定されているわけです。<br />
@@ -327,6 +337,8 @@ mapの基本的な形として、<code>RouterBuilder::$resourceMap</code> を引
 }
 </code></pre>
 
+<h3 id="prefix-path">prefix / path</h3>
+
 <p><code>prefix</code> <code>path</code> は、その名の通り定義するルーティングの設定内容です。最終的には、<code>/$prefx/$options['path]/$params['path']/current($map)['path']</code> という形のURLが構築されます(prefixだけ、connect()の第1引数でなく第3引数で設定されることに注意</p>
 
 <h2 id="callback">$callback</h2>
@@ -350,12 +362,12 @@ mapの基本的な形として、<code>RouterBuilder::$resourceMap</code> を引
   * $routes-&gt;resources('Articles', function ($routes) {
   *   $routes-&gt;resources('Comments');
   * });
-  *//
+  */
 </code></pre>
 
 <p>これは、実際にどのような routingを構築するでしょう？試してみました。</p>
 
-<pre><code class="language-sh"> bin/cake routes
+<pre><code class="language-sh">bin/cake routes
 +-----------------+------------------------------------+-----------------------------------------------------------------------------------+
 | Route name      | URI template                       | Defaults                                                                          |
 +-----------------+------------------------------------+-----------------------------------------------------------------------------------+
@@ -372,8 +384,8 @@ mapの基本的な形として、<code>RouterBuilder::$resourceMap</code> を引
 +-----------------+------------------------------------+-----------------------------------------------------------------------------------+
 </code></pre>
 
-<p>articlesと、その単一リソースの下に更にcommentsへのアクセスが提供されているのがわかります。<br />
-更に、この場合に<code>article_id</code> <code>comment_id</code> のいずれにも、コントローラーのアクション内からアクセス可能になっているのが気の利いている部分です。
+<p>articlesと、その単一リソースの下に更にcommentsへのアクセスが提供されているのがわかります。
+更に、この場合に<code>article_id</code> <code>comment_id</code> のいずれにも、コントローラーのアクション内からアクセス可能になっているのが気の利いている部分です。<br />
 例えば、<code>GET articles/2/comments/12</code> にアクセスした場合に、<code>$this-&gt;getRequest()-&gt;params</code>の内容は次のようになります。</p>
 
 <p><img src="https://cake.nichiyoubi.land/images/posts/2018-12-25-04-13-37.png" alt="" /></p>
