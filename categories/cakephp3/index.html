@@ -62,6 +62,35 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/36-resource-routing/">Resource Routing</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-12-25T00:00:06&#43;09:00">
+        Dec 25, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    概要 CakePHPのRouterには、ある名前のリソースに対してRESTfulなアクセスを簡単に提供する機能 resources() があります。
+その内部実装がどのようになっているのか、処理を追ってみました。
+イントロ CakePHPは伝統的に設定より規約を重んじるフレームワークであり、Routingにもその色が濃く出ています。
+CakePHP2の時代と違い、交換・取り外し可能にはなりましたが、fallbackを用いて「コントローラー/アクション」を自動的にマッピングし、起動する機構は健在です。
+そうして、CakePHPにおいてはRoutingとは「書かなくても動くもの」としての性質がありますが、その方向性を更に強化するのがResource Routingだと感じます。
+Resource Routingは、対象の「リソース」の名前を指定することで、RESTfulなエンドポイントを仕立てる機能です。
+Bookにある例を引用し、概要の紹介とします。
+ルーティング - 3.7
+// config/routes.php 内で... Router::scope('/', function ($routes) { // 3.5.0 より前は `extensions()` を使用 $routes-&gt;setExtensions(['json']); $routes-&gt;resources('Recipes'); });     HTTP format URL.format 対応するコントローラーアクション     GET /recipes.format RecipesController::index()   GET /recipes/123.format RecipesController::view(123)   POST /recipes.format RecipesController::add()   PUT /recipes/123.format RecipesController::edit(123)   PATCH /recipes/123.format RecipesController::edit(123)   DELETE /recipes/123.
+  </div>
+  
+  <a href="https://cake.nichiyoubi.land/posts/36-resource-routing/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/35-object-registry/">ObjectRegistryについて</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -377,33 +406,6 @@ $data = ['name' =&gt; 'new太郎']; $entity = $this-&gt;Table-&gt;findOrCreate($
 </article>
 
 
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/1-use-query/">`Query` を愛用する。(もしくは `-&gt;all()` を避ける)</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2018-03-27T13:52:39&#43;09:00">
-        Mar 27, 2018
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    Cake2では、Modelからの返却値がすべて配列でした。
-そのため、私はCake3を利用し始めた当初、「データベースからの取得した内容」は「値の集合」に変換して処理するぞ！みたいな意識が働きがちでした。
-例えばこんな様子です
-$books = $this-&gt;Books-&gt;find()-&gt;all(); $this-&gt;set(compact('books'));  もっと酷い時は、ResultSetの使い方に難儀してhydrationをいじって、そのまま配列にして処理を・・・という書き方をしたりもしました。
-ref: Class Cake\ORM\Query | CakePHP 3.4
-しかし、QueryはIteratorAggregateを備えているので、「それをそのままループさせる」ことでレコードを処理することが可能です
-// in controller $books = $this-&gt;Books-&gt;find(); $this-&gt;set(compact('books')); // in template &lt;?php foreach ($books as $book): ?&gt; &lt;div&gt;&lt;h1&gt;&lt;?= h($book-&gt;title) ?&gt;&lt;/h1&gt;&lt;/div&gt; &lt;?php endforeach; ?&gt;}  個人的には「単純にレコードを取り出したいだけ」の時は(all()などを使って)ResultSet化しないでQueryオブジェクトのままやり取りすることが多いです。
- Queryのままにしておく = 結果を確定させないままの状態を維持しておくことで利用できる機能があるため  orderやwhereの追加、subqueryの利用など  後にロジックの改修があったときに変更をしやすい  1と同じ理由です  明示的にall()を使っている箇所について、必ず「ResultSetが欲しい」「DBにクエリを実行させたい」と言ったような意図をコード上で表現できるようになる 単純にコードが減る  1,2は昨日の話です。3,4は表現力の話です。
-これらに鑑みて、「デメリットはあまり無さそうでちょっとメリットがあるな」というのが、現時点での私の所見です。
-  </div>
-  
-</article>
-
-
 <nav class="c-pagination p-pagination">
   <div class="c-pagination__ctrl">
     <div class="c-pagination__newer">
@@ -446,7 +448,7 @@ ref: Class Cake\ORM\Query | CakePHP 3.4
     
       
       <li class="p-menu__listitem">
-        <a href="https://cake.nichiyoubi.land/about">About</a>
+        <a href="https://cake.nichiyoubi.land/about/">About</a>
       </li>
       
     
@@ -455,15 +457,17 @@ ref: Class Cake\ORM\Query | CakePHP 3.4
           <span>Tags</span>
           <ul>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/core">Core</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/core/">Core</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/orm-and-database">ORM/Database</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/http-and-router/">Http/Router</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/ver-up">Version up</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/orm-and-database/">ORM/Database</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/tips">tips</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/ver-up/">Version up</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility">utility</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/tips/">tips</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility/">utility</a></li>
             
           </ul>
         </li>
@@ -474,9 +478,9 @@ ref: Class Cake\ORM\Query | CakePHP 3.4
           <span>Categories</span>
           <ul>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/cakephp3">CakePHP 3.x</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/cakephp3/">CakePHP 3.x</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/plugins">Plugins</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/plugins/">Plugins</a></li>
             
           </ul>
         </li>

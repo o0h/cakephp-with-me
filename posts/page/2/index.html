@@ -62,6 +62,35 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/24-find-or-create-validation/">findOrCreate()時にvalidationを行う</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-12-02T18:12:32&#43;09:00">
+        Dec 2, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    ※1人AdventのDay-2です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+先日、Modelを書いているときにfindOrCreate()の挙動でハマった部分があったので調べてみました。 バリデーションが期待通りに動かなかったので、その対応を書いています。
+findOrCreateメソッドについて CakePHP3のTableClassに、 findOrCreate() というメソッドがあります。
+code: https://github.com/cakephp/cakephp/blob/3.6.13/src/ORM/Table.php#L1686
+これは、「第1引数で渡されたデータを検索する。DB上に存在しなければ、新規にEntityを作成・保存し、それを返却する」というものです。知っていると、多くの場面で使いたくなります。
+$data = ['name' =&gt; 'new太郎']; $entity = $this-&gt;Table-&gt;findOrCreate($data);  この結果として、(DB上にすでにレコードがあるか無いかにかかわらず) {name: new太郎} のEntityインスタンスが取得される、というわけです。なお、 すでに persistent 済みであるため、$entity-&gt;isNew() はfalseとなります。
+実装内容について詳しく もう少し、内部処理について詳しく見てみましょう。
+// \Cake\ORM\Table public function findOrCreate($search, callable $callback = null, $options = []) { $options = new ArrayObject($options + [ 'atomic' =&gt; true, 'defaults' =&gt; true, ]); $entity = $this-&gt;_executeTransaction(function () use ($search, $callback, $options) { return $this-&gt;_processFindOrCreate($search, $callback, $options-&gt;getArrayCopy()); }, $options['atomic']); if ($entity &amp;&amp; $this-&gt;_transactionCommitted($options['atomic'], true)) { $this-&gt;dispatchEvent('Model.
+  </div>
+  
+  <a href="https://cake.nichiyoubi.land/posts/24-find-or-create-validation/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/1-use-query/">`Query` を愛用する。(もしくは `-&gt;all()` を避ける)</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -153,7 +182,7 @@ Collectionクラスは、以前にQiitaにも書いた。
     
       
       <li class="p-menu__listitem">
-        <a href="https://cake.nichiyoubi.land/about">About</a>
+        <a href="https://cake.nichiyoubi.land/about/">About</a>
       </li>
       
     
@@ -162,15 +191,17 @@ Collectionクラスは、以前にQiitaにも書いた。
           <span>Tags</span>
           <ul>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/core">Core</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/core/">Core</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/orm-and-database">ORM/Database</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/http-and-router/">Http/Router</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/ver-up">Version up</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/orm-and-database/">ORM/Database</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/tips">tips</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/ver-up/">Version up</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility">utility</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/tips/">tips</a></li>
+            
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/tags/utility/">utility</a></li>
             
           </ul>
         </li>
@@ -181,9 +212,9 @@ Collectionクラスは、以前にQiitaにも書いた。
           <span>Categories</span>
           <ul>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/cakephp3">CakePHP 3.x</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/cakephp3/">CakePHP 3.x</a></li>
             
-              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/plugins">Plugins</a></li>
+              <li class="p-menu__listitem p-menu__child"><a href="https://cake.nichiyoubi.land/categories/plugins/">Plugins</a></li>
             
           </ul>
         </li>

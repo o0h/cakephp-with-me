@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Collection</title>
-  <meta property="og:title" content="Collection" />
-  <meta name="twitter:title" content="Collection" />
+  <title>Http/Route</title>
+  <meta property="og:title" content="Http/Route" />
+  <meta name="twitter:title" content="Http/Route" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="Hideki Kinjyo"/>
   <meta property="og:site_name" content="cakephp-with-me" />
-  <meta property="og:url" content="https://cake.nichiyoubi.land/tags/collection/" />
+  <meta property="og:url" content="https://cake.nichiyoubi.land/tags/http/route/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -57,29 +57,32 @@
   </header>
   <main id="main" class="l-main">
 
-<h2 class="c-title p-tag-title">Collection</h2>
+<h2 class="c-title p-tag-title">Http/Route</h2>
 
 
 <article class="c-article p-list-article">
   <header>
-    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/16-collection/">コレクションを任意の順番で並び替える</a></h2>
+    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/36-resource-routing/">Resource Routing</a></h2>
     <p class="c-article__meta">
       Posted on
-      <time datetime="2018-03-25T20:35:59&#43;09:00">
-        Mar 25, 2018
+      <time datetime="2018-12-25T00:00:06&#43;09:00">
+        Dec 25, 2018
       </time>
     </p>
   </header>
   <div class="c-article__summary">
-    コレクションを任意の順番で並び替える PHPを使っていると、「任意に順番を並び替えたキーに沿って、連想配列を並び替えたい」ということが意外と面倒くさかったりする。
-MySQLでいう ORDER BY FIELD(field, idx1, idx2, idx3) みたいなやつ。
-Collectionクラスを用いると簡単にできそうだな〜と思ったのでメモ。
-$order = [2, 1, 3]; $data = collection([ ['id' =&gt; 1, 'name' =&gt; 'John'], ['id' =&gt; 2, 'name' =&gt; 'Alice'], ['id' =&gt; 3, 'name' =&gt; 'Yui'], ]); $orderMap = array_flip($order); $data = $data-&gt;sortBy( function ($datum) use ($orderMap) { return $orderMap[$datum-&gt;id]; }, SORT_ASC ) -&gt;compile(false);  何をしているかというと、
- array_flipでもとの並び順を覚えさせて 対応順にarrayに位置を教えてあげる  というだけのもの。
-Collectionクラスは、以前にQiitaにも書いた。
-とても便利で強力なUtilityなので、使いこなしたい。
-[CakePHP3]現場で使えるCollectionクラスの15選 - Qiita
+    概要 CakePHPのRouterには、ある名前のリソースに対してRESTfulなアクセスを簡単に提供する機能 resources() があります。
+その内部実装がどのようになっているのか、処理を追ってみました。
+イントロ CakePHPは伝統的に設定より規約を重んじるフレームワークであり、Routingにもその色が濃く出ています。
+CakePHP2の時代と違い、交換・取り外し可能にはなりましたが、fallbackを用いて「コントローラー/アクション」を自動的にマッピングし、起動する機構は健在です。
+そうして、CakePHPにおいてはRoutingとは「書かなくても動くもの」としての性質がありますが、その方向性を更に強化するのがResource Routingだと感じます。
+Resource Routingは、対象の「リソース」の名前を指定することで、RESTfulなエンドポイントを仕立てる機能です。
+Bookにある例を引用し、概要の紹介とします。
+ルーティング - 3.7
+// config/routes.php 内で... Router::scope('/', function ($routes) { // 3.5.0 より前は `extensions()` を使用 $routes-&gt;setExtensions(['json']); $routes-&gt;resources('Recipes'); });     HTTP format URL.format 対応するコントローラーアクション     GET /recipes.format RecipesController::index()   GET /recipes/123.format RecipesController::view(123)   POST /recipes.format RecipesController::add()   PUT /recipes/123.format RecipesController::edit(123)   PATCH /recipes/123.format RecipesController::edit(123)   DELETE /recipes/123.
   </div>
+  
+  <a href="https://cake.nichiyoubi.land/posts/36-resource-routing/" class="c-article__btn p-list-article__btn">Read more</a>
   
 </article>
 
