@@ -17,7 +17,9 @@
       <pubDate>Tue, 25 Dec 2018 00:00:06 +0900</pubDate>
       
       <guid>https://cake.nichiyoubi.land/posts/36-resource-routing/</guid>
-      <description>概要 CakePHPのRouterには、ある名前のリソースに対してRESTfulなアクセスを簡単に提供する機能 resources() があります。
+      <description>※1人AdventのDay-24です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+概要 CakePHPのRouterには、ある名前のリソースに対してRESTfulなアクセスを簡単に提供する機能 resources() があります。
 その内部実装がどのようになっているのか、処理を追ってみました。
 イントロ CakePHPは伝統的に設定より規約を重んじるフレームワークであり、Routingにもその色が濃く出ています。
 CakePHP2の時代と違い、交換・取り外し可能にはなりましたが、fallbackを用いて「コントローラー/アクション」を自動的にマッピングし、起動する機構は健在です。
@@ -25,7 +27,7 @@ CakePHP2の時代と違い、交換・取り外し可能にはなりましたが
 Resource Routingは、対象の「リソース」の名前を指定することで、RESTfulなエンドポイントを仕立てる機能です。
 Bookにある例を引用し、概要の紹介とします。
 ルーティング - 3.7
-// config/routes.php 内で... Router::scope(&#39;/&#39;, function ($routes) { // 3.5.0 より前は `extensions()` を使用 $routes-&amp;gt;setExtensions([&#39;json&#39;]); $routes-&amp;gt;resources(&#39;Recipes&#39;); });     HTTP format URL.format 対応するコントローラーアクション     GET /recipes.format RecipesController::index()   GET /recipes/123.format RecipesController::view(123)   POST /recipes.format RecipesController::add()   PUT /recipes/123.format RecipesController::edit(123)   PATCH /recipes/123.format RecipesController::edit(123)   DELETE /recipes/123.</description>
+// config/routes.php 内で... Router::scope(&#39;/&#39;, function ($routes) { // 3.5.0 より前は `extensions()` を使用 $routes-&amp;gt;setExtensions([&#39;json&#39;]); $routes-&amp;gt;resources(&#39;Recipes&#39;); });     HTTP format URL.format 対応するコントローラーアクション     GET /recipes.format RecipesController::index()   GET /recipes/123.format RecipesController::view(123)   POST /recipes.format RecipesController::add()   PUT /recipes/123.format RecipesController::edit(123)   PATCH /recipes/123.</description>
     </item>
     
     <item>
