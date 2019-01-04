@@ -5,7 +5,7 @@ tags: [ver-up]
 categories: ["CakePHP3"]
 ---
 ## 概要
-akePHP3.7.2がリリースされたので、その内容をチェックしてみます。  
+CakePHP3.7.2がリリースされたので、その内容をチェックしてみます。  
 3.7.1から2週間半振りののアップデートです.
 
 23個のPR/issueがcloseされており、CSやTypeHint、docなどの軽微な修正に加えてbugfixが盛り込まれています。
@@ -37,13 +37,13 @@ Commands added in an Application or plugin console() hook method can now use spa
 https://book.cakephp.org/3.0/ja/console-and-shells.html#index-0
 ![](/images/posts/2019-01-05-02-49-21.png)
 
-これが紛らわしく思い実際に手元で動作確認をしてみたところ、3.7.1では上記コードは
+これが紛らわしく思い実際に手元で動作確認をしてみたところ、3.7.1では上記コードのような設定時には
 
 ```sh
 bin/cake "user dump"
 ```
 と、「1つのコマンド名」として認識できるようにしないとダメそうでした。  
-3.7.2からは、(利用可能な区切り数は現実的な範囲で制限されているものの)ちゃんと、クオテーション等もなく動作させられそうです。
+3.7.2からは、(利用可能な区切り数は現実的な範囲で制限されているものの)ちゃんと、クオテーション等なくても動作させられそうです。
 
 ### IntegrationTestTraitでの$_FILESの扱いの改善
 ```
