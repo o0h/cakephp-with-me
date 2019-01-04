@@ -3,7 +3,6 @@ title: "CakePHP 3.7.2がリリースされたので更新内容を確認"
 date: 2019-01-05T02:01:40+09:00
 tags: [ver-up]
 categories: ["CakePHP3"]
-draft: true
 ---
 ## 概要
 akePHP3.7.2がリリースされたので、その内容をチェックしてみます。  
