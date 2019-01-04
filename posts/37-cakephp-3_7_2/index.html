@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Resource Routing</title>
-  <meta property="og:title" content="Resource Routing" />
-  <meta name="twitter:title" content="Resource Routing" />
+  <title>CakePHP 3.7.2がリリースされたので更新内容を確認</title>
+  <meta property="og:title" content="CakePHP 3.7.2がリリースされたので更新内容を確認" />
+  <meta name="twitter:title" content="CakePHP 3.7.2がリリースされたので更新内容を確認" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="Hideki Kinjyo"/>
   <meta property="og:site_name" content="cakephp-with-me" />
-  <meta property="og:url" content="https://cake.nichiyoubi.land/posts/36-resource-routing/" />
+  <meta property="og:url" content="https://cake.nichiyoubi.land/posts/37-cakephp-3_7_2/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -61,345 +61,122 @@
 
 <article class="p-article">
   <header>
-    <h1>Resource Routing</h1>
+    <h1>CakePHP 3.7.2がリリースされたので更新内容を確認</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-12-25T00:00:06&#43;09:00">
-          Dec 25, 2018
+        <time datetime="2019-01-05T02:01:40&#43;09:00">
+          Jan 5, 2019
         </time>
       </div>
       
-      <a href="https://cake.nichiyoubi.land/tags/http-and-routes" class="c-tag">http-and-routes</a>
+      <a href="https://cake.nichiyoubi.land/tags/ver-up" class="c-tag">ver-up</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>※1人AdventのDay-24です</p>
+    <h2 id="概要">概要</h2>
 
-<p><a href="https://adventar.org/calendars/3627">1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar</a></p>
+<p>akePHP3.7.2がリリースされたので、その内容をチェックしてみます。<br />
+3.7.1から2週間半振りののアップデートです.</p>
 
-<hr />
-
-<h2 id="概要">概要</h2>
-
-<p>CakePHPのRouterには、ある名前のリソースに対してRESTfulなアクセスを簡単に提供する機能 <code>resources()</code> があります。<br />
-その内部実装がどのようになっているのか、処理を追ってみました。</p>
+<p>23個のPR/issueがcloseされており、CSやTypeHint、docなどの軽微な修正に加えてbugfixが盛り込まれています。</p>
 
 <p></p>
 
 <h2 id="イントロ">イントロ</h2>
 
-<p>CakePHPは伝統的に設定より規約を重んじるフレームワークであり、Routingにもその色が濃く出ています。<br />
-CakePHP2の時代と違い、交換・取り外し可能にはなりましたが、fallbackを用いて「コントローラー/アクション」を自動的にマッピングし、起動する機構は健在です。</p>
+<p>日付が変わりまして昨日の1月4日、CakePHPの3.7.2がリリースされました。</p>
 
-<p>そうして、CakePHPにおいてはRoutingとは「書かなくても動くもの」としての性質がありますが、その方向性を更に強化するのが<code>Resource Routing</code>だと感じます。<br />
-Resource Routingは、対象の「リソース」の名前を指定することで、RESTfulなエンドポイントを仕立てる機能です。</p>
+<ul>
+<li><a href="https://bakery.cakephp.org/2019/01/03/cakephp_372_released.html">CakePHP 3.7.2 Released — Bakery</a></li>
+<li><a href="https://github.com/cakephp/cakephp/milestone/187?closed=1">3.7.2 Milestone</a></li>
+</ul>
 
-<p>Bookにある例を引用し、概要の紹介とします。</p>
+<p>実際に自分の関わっているアプリケーションでのupdate実施に備えて、今回の変更の内容を見ていきたいと思います。</p>
 
-<p><a href="https://book.cakephp.org/3.0/ja/development/routing.html#restful">ルーティング - 3.7</a></p>
+<h2 id="bugfixes">Bugfixes</h2>
 
-<pre><code class="language-php">// config/routes.php 内で...
+<p>このアップデートでは、新機能の実装は行われずにBugfixesのみとなっています。</p>
 
-Router::scope('/', function ($routes) {
-    // 3.5.0 より前は `extensions()` を使用
-    $routes-&gt;setExtensions(['json']);
-    $routes-&gt;resources('Recipes');
-});
+<h3 id="consoleのサブコマンド名にスペースを利用できるように">Consoleのサブコマンド名にスペースを利用できるように</h3>
+
+<pre><code>Commands added in an Application or plugin console() hook method can now use spaces in the command name.
 </code></pre>
 
-<table>
-<thead>
-<tr>
-<th>HTTP format</th>
-<th>URL.format</th>
-<th>対応するコントローラーアクション</th>
-</tr>
-</thead>
+<p><a href="https://github.com/cakephp/cakephp/pull/12824">Enable subcommands to use spaces. by markstory · Pull Request #12824 · cakephp/cakephp</a></p>
 
-<tbody>
-<tr>
-<td>GET</td>
-<td>/recipes.format</td>
-<td>RecipesController::index()</td>
-</tr>
+<p>「これまではスペースを含む名前を使えなかったけど、使えるようにしたよ」「例えば <code>bin/cake bake:test</code>や<code>bin/cake bake.test</code>は動いたけど、<code>bin/cake bake test</code>は動かなかったでしょ」とのこと。<br />
+
+・・・なのですが、これは「スペースを含むネストされたコマンド名」は、ドキュメントを見ると今までも使えているように見えるんですよね。</p>
 
-<tr>
-<td>GET</td>
-<td>/recipes/123.format</td>
-<td>RecipesController::view(123)</td>
-</tr>
+<p><a href="https://book.cakephp.org/3.0/ja/console-and-shells.html#index-0">https://book.cakephp.org/3.0/ja/console-and-shells.html#index-0</a>
+<img src="https://cake.nichiyoubi.land/images/posts/2019-01-05-02-49-21.png" alt="" /></p>
 
-<tr>
-<td>POST</td>
-<td>/recipes.format</td>
-<td>RecipesController::add()</td>
-</tr>
+<p>これが紛らわしく思い実際に手元で動作確認をしてみたところ、3.7.1では上記コードは</p>
 
-<tr>
-<td>PUT</td>
-<td>/recipes/123.format</td>
-<td>RecipesController::edit(123)</td>
-</tr>
-
-<tr>
-<td>PATCH</td>
-<td>/recipes/123.format</td>
-<td>RecipesController::edit(123)</td>
-</tr>
-
-<tr>
-<td>DELETE</td>
-<td>/recipes/123.format</td>
-<td>RecipesController::delete(123)</td>
-</tr>
-</tbody>
-</table>
-
-<p>この記事では、「Resource Routingを使ったときに、内部的には、具体的に何が起きているのか」を見ていきます。</p>
-
-<h2 id="source">source</h2>
-
-<p>まずは、単純にソースコードを貼ってみます。</p>
-
-<p><a href="https://github.com/cakephp/cakephp/blob/3.7.1/src/Routing/RouteBuilder.php#L389">https://github.com/cakephp/cakephp/blob/3.7.1/src/Routing/RouteBuilder.php#L389</a></p>
-
-<pre><code class="language-php">public function resources($name, $options = [], $callback = null)
-{
-    if (is_callable($options)) {
-        $callback = $options;
-        $options = [];
-    }
-    $options += [
-        'connectOptions' =&gt; [],
-        'inflect' =&gt; 'underscore',
-        'id' =&gt; static::ID . '|' . static::UUID,
-        'only' =&gt; [],
-        'actions' =&gt; [],
-        'map' =&gt; [],
-        'prefix' =&gt; null,
-        'path' =&gt; null,
-    ];
-
-    foreach ($options['map'] as $k =&gt; $mapped) {
-        $options['map'][$k] += ['method' =&gt; 'GET', 'path' =&gt; $k, 'action' =&gt; ''];
-    }
-
-    $ext = null;
-    if (!empty($options['_ext'])) {
-        $ext = $options['_ext'];
-    }
-
-    $connectOptions = $options['connectOptions'];
-    if (empty($options['path'])) {
-        $method = $options['inflect'];
-        $options['path'] = Inflector::$method($name);
-    }
-    $resourceMap = array_merge(static::$_resourceMap, $options['map']);
-
-    $only = (array)$options['only'];
-    if (empty($only)) {
-        $only = array_keys($resourceMap);
-    }
-
-    $prefix = '';
-    if ($options['prefix']) {
-        $prefix = $options['prefix'];
-    }
-    if (isset($this-&gt;_params['prefix']) &amp;&amp; $prefix) {
-        $prefix = $this-&gt;_params['prefix'] . '/' . $prefix;
-    }
-
-    foreach ($resourceMap as $method =&gt; $params) {
-        if (!in_array($method, $only, true)) {
-            continue;
-        }
-
-        $action = $params['action'];
-        if (isset($options['actions'][$method])) {
-            $action = $options['actions'][$method];
-        }
-
-        $url = '/' . implode('/', array_filter([$options['path'], $params['path']]));
-        $params = [
-            'controller' =&gt; $name,
-            'action' =&gt; $action,
-            '_method' =&gt; $params['method'],
-        ];
-        if ($prefix) {
-            $params['prefix'] = $prefix;
-        }
-        $routeOptions = $connectOptions + [
-            'id' =&gt; $options['id'],
-            'pass' =&gt; ['id'],
-            '_ext' =&gt; $ext,
-        ];
-        $this-&gt;connect($url, $params, $routeOptions);
-    }
-
-    if (is_callable($callback)) {
-        $idName = Inflector::singularize(Inflector::underscore($name)) . '_id';
-        $path = '/' . $options['path'] . '/:' . $idName;
-        $this-&gt;scope($path, [], $callback);
-    }
-}
+<pre><code class="language-sh">bin/cake &quot;user dump&quot;
 </code></pre>
 
-<p>ざっと眺めると、いくつかのポイントが有ることがわかります。</p>
+<p>と、「1つのコマンド名」として認識できるようにしないとダメそうでした。<br />
+3.7.2からは、(利用可能な区切り数は現実的な範囲で制限されているものの)ちゃんと、クオテーション等もなく動作させられそうです。</p>
 
-<ol>
-<li><code>$name</code>パラメータは、対応するコントローラーの指定とpathの指定に利用されていること</li>
-<li>第二引数でいくつかのオプションをとること</li>
-<li>加えて、callbackが指定できること</li>
-<li>最終的には、クラスメンバ及びoptionで渡された<code>$_resourceMap</code>に従い、<code>scope()</code>を設定していること</li>
-</ol>
+<h3 id="integrationtesttraitでの-filesの扱いの改善">IntegrationTestTraitでの$_FILESの扱いの改善</h3>
 
-<p>原理を見れば単純なもので、これによって、あの「パワフルなRESTfulルーティング」が実現されています。<br />
-というわけで、設定の方法と処理内容について見ていきます。</p>
-
-<h2 id="options">$options</h2>
-
-<p>デフォルトオプションは、以下の項目になっているようです。</p>
-
-<pre><code class="language-php">[
-    'connectOptions' =&gt; [],
-    'inflect' =&gt; 'underscore',
-    'id' =&gt; static::ID . '|' . static::UUID,
-    'only' =&gt; [],
-    'actions' =&gt; [],
-    'map' =&gt; [],
-    'prefix' =&gt; null,
-    'path' =&gt; null,
-]
+<pre><code>IntegrationTestTrait now forwards files defined in configRequest().
 </code></pre>
 
-<h3 id="connectoptions">connectOptions</h3>
+<p><a href="https://github.com/cakephp/cakephp/pull/12833">Make PSR7 uploaded files accessible in integration tests by robertpustulka · Pull Request #12833 · cakephp/cakephp</a></p>
 
-<p><code>connectOptions</code> は、最終的にはいくつかのデフォルト項目とマージされて<code>$this-&gt;connect()</code>メソッドの第3引数に渡されます。<br />
-例えば <code>action</code> <code>_ext</code> <code>_name</code> <code>routeClass</code> <code>_middleware</code> といった項目が、ここから注入可能ということです。</p>
+<h3 id="html-htm拡張子のurlにおけるエラーハンドリングの修正">.html/.htm拡張子のURLにおけるエラーハンドリングの修正</h3>
 
-<h3 id="inflect">inflect</h3>
-
-<p><code>inflect</code> は、名前の通りURLの「語形変化」について設定します。・・・ここだとデフォルトが<code>underscore</code>なんですね。もしチェインケースでのURLを生成する場合は、 <code>dasherize</code> を指定することで実現されます。</p>
-
-<h3 id="id">id</h3>
-
-<p><code>id</code> はクラス定数を参照していますが、以下のように定義されています。</p>
-
-<pre><code class="language-php">/**
- * Regular expression for auto increment IDs
- *
- * @var string
- */
-const ID = '[0-9]+';
-
-/**
- * Regular expression for UUIDs
- *
- * @var string
- */
-const UUID = '[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}';
+<pre><code>Error pages for parsed extensions are once again rendering correctly.
 </code></pre>
 
-<p>これは、例えば <code>articles/:id</code> (GETアクセス・view()アクション)時に「許容する」文字列のパターンをどうするかという話になります。デフォルトだと、インクリメントを想定して数字のキーかUUIDベースでのIDが想定されていることになります。<br />
-「screen_id」のようなリソース識別子を用いたアクセスを提供する場合など、自分で注入する必要があるでしょう。</p>
+<p><a href="https://github.com/cakephp/cakephp/pull/12845">Fix handling of `html` and `htm` extensions. by ndm2 · Pull Request #12845 · cakephp/cakephp</a></p>
 
-<h3 id="only">only</h3>
+<h3 id="fileenginecache-の内部処理における無用なttlチェック処理の排除">FileEngineCacheの内部処理における無用なTTLチェック処理の排除</h3>
 
-<p><code>only</code>は「どのアクションに対してResource Routingを提供するか」を指定するリストで、例えば「一覧と個別表示だけ許可」といった場合は<code>['only' =&gt; ['index', 'view']]</code> といった形になるのではないでしょうか。</p>
-
-<h3 id="actions">actions</h3>
-
-<p><code>actions</code> は、規定の「操作とactionの紐づけ」を変更するための指定です。<br />
-例えば、元々は <code>['index' =&gt; ['action' =&gt; 'index']]</code>というように指定されています。同様に、index/create/view/update/deleteの5種類の「操作」に対して、「規定のaction」が設定されているわけです。<br />
-これについて、「index操作はlist()メソッドで」「create操作はgenerate()メソッドで」というような、上書き設定を注入することができます。<br />
-これ自体は「mapの再指定」ではなく、あくまで「対応の書き換え」として動作することに注意してください。すなわち、「actionsで指定のないものは提供されない」のではなくて、「元々mapで規定されているものを利用する」ことになります。</p>
-
-<p><code>map</code>は、「提供する操作の一覧・定義」をするものです。これはRouteBuilderがもつクラスメンバ<code>$_resourceMap</code>とマージされる形で利用されます。<br />
-mapの基本的な形として、<code>RouterBuilder::$resourceMap</code> を引用します。</p>
-
-<pre><code class="language-php">protected static $_resourceMap = [
-    'index' =&gt; ['action' =&gt; 'index', 'method' =&gt; 'GET', 'path' =&gt; ''],
-    'create' =&gt; ['action' =&gt; 'add', 'method' =&gt; 'POST', 'path' =&gt; ''],
-    'view' =&gt; ['action' =&gt; 'view', 'method' =&gt; 'GET', 'path' =&gt; ':id'],
-    'update' =&gt; ['action' =&gt; 'edit', 'method' =&gt; ['PUT', 'PATCH'], 'path' =&gt; ':id'],
-    'delete' =&gt; ['action' =&gt; 'delete', 'method' =&gt; 'DELETE', 'path' =&gt; ':id'],
-];
+<pre><code>A redundant expiry time check in FileEngine was removed.
 </code></pre>
 
-<p>これをforeachで回しながら、<code>connect()</code>に引き渡す形です。iterateされたvalueが、<code>connect()</code>の第二引数へと渡されます。ただし、すべての値がそのまま渡されるわけではないので注意が必要です。適用されるのは、<code>action</code> <code>path</code> <code>method</code>の3項目になります。また、<code>$params['action']</code>に関しては、先述の<code>$options['actions']</code>で宣言されている内容が優先されることになります。<br />
-また、もしmap内で<code>path</code>を省略した場合は、暗黙的に操作名を<code>path</code>に割り当てるような挙動をします。</p>
+<p><a href="https://github.com/cakephp/cakephp/pull/12839">Remove redundant check in FileEngine by markstory · Pull Request #12839 · cakephp/cakephp</a></p>
 
-<pre><code class="language-php">foreach ($options['map'] as $k =&gt; $mapped) {
-    $options['map'][$k] += ['method' =&gt; 'GET', 'path' =&gt; $k, 'action' =&gt; ''];
-}
+<p>元Issue -&gt; <a href="https://github.com/cakephp/cakephp/issues/12827">File cache engine: do not check duration on read · Issue #12827 · cakephp/cakephp</a><br />
+これは結構、踏んでしまうと切なそうだ・・・</p>
+
+<h3 id="requesthandlercomponentを用いても拡張子付きリクエストがエラーレンダリング時にhtmlコンテンツを生成する問題">RequestHandlerComponentを用いても拡張子付きリクエストがエラーレンダリング時にHTMLコンテンツを生成する問題</h3>
+
+<pre><code>RequestHandlerComponent once again handles explicit htm and html extensions correctly.
 </code></pre>
 
-<h3 id="prefix-path">prefix / path</h3>
+<p><a href="https://github.com/cakephp/cakephp/pull/12836">Fix .json routes not rendering error pages properly by markstory · Pull Request #12836 · cakephp/cakephp</a></p>
 
-<p><code>prefix</code> <code>path</code> は、その名の通り定義するルーティングの設定内容です。最終的には、<code>/$prefx/$options['path]/$params['path']/current($map)['path']</code> という形のURLが構築されます(prefixだけ、connect()の第1引数でなく第3引数で設定されることに注意</p>
+<p>(これ、正に・・ちょうど今日踏んでたなぁ。。WAF側の問題だったのね。)</p>
 
-<h2 id="callback">$callback</h2>
+<h3 id="asserturl-メソッドで-cdn等の-ホスト違い-系のurlの検査に対応しやすく"><code>assertUrl()</code>メソッドで、CDN等の「ホスト違い」系のURLの検査に対応しやすく</h3>
 
-<p>resources()メソッドは第3引数に<code>callback</code>を取ることができます。また、第2引数にcallableを渡し第3引数を省略した場合にも動作が可能です。</p>
-
-<pre><code class="language-php">if (is_callable($options)) {
-   $callback = $options;
-   $options = [];
-}
+<pre><code>UrlHelper::assetUrl() now supports a fullBase option enabling CDN assets to be linked more easily.
 </code></pre>
 
-<p>これは何でしょうか？<br />
-(通常のroutingの設定で見るような)<code>scope()</code> に直接コールバックを渡すような形で、RESTfulなルーティングを構築するようになります。</p>
+<p><a href="https://github.com/cakephp/cakephp/pull/12849">Allow assetUrl() to use CDNs easier. by dereuromark · Pull Request #12849 · cakephp/cakephp</a></p>
 
-<p>例えば、サンプルとして以下のような例がありました。</p>
+<h3 id="console-emailのintegrationtesttraitでもbefore-afterアノテーションを利用する">Console/EmailのIntegrationTestTraitでもbefore/afterアノテーションを利用する</h3>
 
-<pre><code class="language-php">/**
-  * You can create nested resources by passing a callback in:
-  *
-  * $routes-&gt;resources('Articles', function ($routes) {
-  *   $routes-&gt;resources('Comments');
-  * });
-  */
+<pre><code>EmailTrait and ConsoleIntegrationTestTrait now uses before and after annotations to apply its setup/teardown logic.
 </code></pre>
 
-<p>これは、実際にどのような routingを構築するでしょう？試してみました。</p>
+<p><a href="https://github.com/cakephp/cakephp/pull/12865">Trait annotations by jeremyharris · Pull Request #12865 · cakephp/cakephp</a><br />
+cf: <a href="https://github.com/cakephp/cakephp/pull/12822">Use annotitations for integration trait setup/teardown by markstory · Pull Request #12822 · cakephp/cakephp</a></p>
 
-<pre><code class="language-sh">bin/cake routes
-+-----------------+------------------------------------+-----------------------------------------------------------------------------------+
-| Route name      | URI template                       | Defaults                                                                          |
-+-----------------+------------------------------------+-----------------------------------------------------------------------------------+
-| articles:index  | /articles                          | {&quot;_method&quot;:&quot;GET&quot;,&quot;action&quot;:&quot;index&quot;,&quot;controller&quot;:&quot;Articles&quot;,&quot;plugin&quot;:null}          |
-| articles:add    | /articles                          | {&quot;_method&quot;:&quot;POST&quot;,&quot;action&quot;:&quot;add&quot;,&quot;controller&quot;:&quot;Articles&quot;,&quot;plugin&quot;:null}           |
-| articles:view   | /articles/:id                      | {&quot;_method&quot;:&quot;GET&quot;,&quot;action&quot;:&quot;view&quot;,&quot;controller&quot;:&quot;Articles&quot;,&quot;plugin&quot;:null}           |
-| articles:edit   | /articles/:id                      | {&quot;_method&quot;:[&quot;PUT&quot;,&quot;PATCH&quot;],&quot;action&quot;:&quot;edit&quot;,&quot;controller&quot;:&quot;Articles&quot;,&quot;plugin&quot;:null} |
-| articles:delete | /articles/:id                      | {&quot;_method&quot;:&quot;DELETE&quot;,&quot;action&quot;:&quot;delete&quot;,&quot;controller&quot;:&quot;Articles&quot;,&quot;plugin&quot;:null}      |
-| comments:index  | /articles/:article_id/comments     | {&quot;_method&quot;:&quot;GET&quot;,&quot;action&quot;:&quot;index&quot;,&quot;controller&quot;:&quot;Comments&quot;,&quot;plugin&quot;:null}          |
-| comments:add    | /articles/:article_id/comments     | {&quot;_method&quot;:&quot;POST&quot;,&quot;action&quot;:&quot;add&quot;,&quot;controller&quot;:&quot;Comments&quot;,&quot;plugin&quot;:null}           |
-| comments:view   | /articles/:article_id/comments/:id | {&quot;_method&quot;:&quot;GET&quot;,&quot;action&quot;:&quot;view&quot;,&quot;controller&quot;:&quot;Comments&quot;,&quot;plugin&quot;:null}           |
-| comments:edit   | /articles/:article_id/comments/:id | {&quot;_method&quot;:[&quot;PUT&quot;,&quot;PATCH&quot;],&quot;action&quot;:&quot;edit&quot;,&quot;controller&quot;:&quot;Comments&quot;,&quot;plugin&quot;:null} |
-| comments:delete | /articles/:article_id/comments/:id | {&quot;_method&quot;:&quot;DELETE&quot;,&quot;action&quot;:&quot;delete&quot;,&quot;controller&quot;:&quot;Comments&quot;,&quot;plugin&quot;:null}      |
-+-----------------+------------------------------------+-----------------------------------------------------------------------------------+
-</code></pre>
+<h2 id="感想">感想</h2>
 
-<p>articlesと、その単一リソースの下に更にcommentsへのアクセスが提供されているのがわかります。
-更に、この場合に<code>article_id</code> <code>comment_id</code> のいずれにも、コントローラーのアクション内からアクセス可能になっているのが気の利いている部分です。<br />
-例えば、<code>GET articles/2/comments/12</code> にアクセスした場合に、<code>$this-&gt;getRequest()-&gt;params</code>の内容は次のようになります。</p>
-
-<p><img src="https://cake.nichiyoubi.land/images/posts/2018-12-25-04-13-37.png" alt="" /></p>
-
-<p>まさに、「自動的にRESTfulなroutingを提供してくれる」といった体感です。</p>
-
-<h2 id="まとめ">まとめ</h2>
-
-<p>Resource Routingは、機能自体は知っていて一部利用したことがあります。しかしながら、あまり使いこなせているという実感がなく、「なんとなく」で利用していました。<br />
-そこで、今回コールドリーディングをしてみた次第です。</p>
-
-<p>使いこなそうとすると、やや癖がありそうなものの、柔軟で開かれた機能だなぁという印象を受けました。</p>
-
-<p>便利なのであれば使わない手もないし、内部構造を知れたことで今後はより「無駄のない設定」をしつつ付き合っていけそうに思います。</p>
+<p>いつもより「バグ」っぽいバグが多いような気もしました。(FileCacheEngine, .htmlページエラーハンドリング, 非HTMLコンテンツへのExceptionRender)<br />
+・・・元よりこんなもんですっけ。。。<br />
+当然、期待通りに動いてもらえないのは「困る」わけで、他人が困っているように自分も・またその逆も・・というのが容易に想像できます。<br />
+実際、「なんか変だなぁ気持ち悪いなぁ」と思いながらスルーしていた部分が今回のバージョンでパッチを当てられていたりしたので、これは裏を返せば「自分が貢献できたかもしれない」と感じる部分でもあります。<br />
+通常業務とのバランスになっていきますが、やはり、気になった部分はコードを読んでいく姿勢が大事ですね。また、Slack#supportチャンネルなどでも非常にアクティブに対応してくれる印象があるので、「何かあったら気軽に聞いてみる(ただし誠実にやる！)」くらいの温度感を保っておくのがよいのかな〜とも思いました。</p>
   </section>
   <footer>
     
@@ -407,17 +184,37 @@ mapの基本的な形として、<code>RouterBuilder::$resourceMap</code> を引
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
-          <a href="https://cake.nichiyoubi.land/posts/37-cakephp-3_7_2/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://cake.nichiyoubi.land/posts/35-object-registry/">Older</a>
+          <a href="https://cake.nichiyoubi.land/posts/36-resource-routing/">Older</a>
           
         </div>
       </div>
     </nav>
     
+
+<section class="p-related">
+  <h3>See Also</h3>
+  <ul id="slider" class="p-related__list">
+    
+    <li class="p-related__item js-related__item">
+      <a href="https://cake.nichiyoubi.land/posts/33-cakephp-3_7_1/"
+        >
+        <span>CakePHP 3.7.1がリリースされたので更新内容を確認</span>
+      </a>
+    </li>
+    
+    <li class="p-related__item js-related__item">
+      <a href="https://cake.nichiyoubi.land/posts/28-cakephp-3_7/"
+        >
+        <span>CakePHP 3.7の個人的な見どころ</span>
+      </a>
+    </li>
+    
+  </ul>
+</section>
 
 
     

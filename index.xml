@@ -6,10 +6,26 @@
     <description>Recent content on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 25 Dec 2018 00:00:06 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 05 Jan 2019 02:01:40 +0900</lastBuildDate>
     
 	<atom:link href="https://cake.nichiyoubi.land/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CakePHP 3.7.2がリリースされたので更新内容を確認</title>
+      <link>https://cake.nichiyoubi.land/posts/37-cakephp-3_7_2/</link>
+      <pubDate>Sat, 05 Jan 2019 02:01:40 +0900</pubDate>
+      
+      <guid>https://cake.nichiyoubi.land/posts/37-cakephp-3_7_2/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;akePHP3.7.2がリリースされたので、その内容をチェックしてみます。&lt;br /&gt;
+3.7.1から2週間半振りののアップデートです.&lt;/p&gt;
+
+&lt;p&gt;23個のPR/issueがcloseされており、CSやTypeHint、docなどの軽微な修正に加えてbugfixが盛り込まれています。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Resource Routing</title>

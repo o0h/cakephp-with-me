@@ -62,6 +62,38 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/27-cakephp-dto/">dereuromark/cakephp-dtoに触ってみる</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2018-12-08T18:12:32&#43;09:00">
+        Dec 8, 2018
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    ※1人AdventのDay-8です
+1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
+CakePHP開発者であるMark Sch.さんが、新しいプラグインを公開されていました。 [New]dereuromark/cakephp-dto CakePHP DTO Plugin https://t.co/vBFe8DJUPE
+&mdash; function(){exit;} (@call_user_func) 2018年12月8日 
+名前の通り、CakePHPでDTOを扱うための実装のようです。
+cf) Data Transfer Object - Wikipedia
+おもしろそうなので、早速触ってみました。
+ざっくりいうと何？  決められたプロパティを持つmutable/immutableなオブジェクトを扱いやすくするためのもの 決められたプロパティ = 型は、設定ファイルに記述していく それらの設定を、実クラス生成コマンドによって作成する 実際のクラスを生成するからIDE上での保管や静的解析との相性が良い  CakeDTOに触ってみる setup まずは、インストールです
+composer require dereuromark/cakephp-dto:dev-master  Pluginを有効化します。1
+bin/cake plugin load CakeDto -b  はじめてのDTO作成 ファイル初期生成用のコマンドが用意されています。
+bin/cake dto init  これを実行すると、config/dto.xmlに以下のようなファイルが設置されます
+&lt;?xml version=&quot;1.0&quot;?&gt; &lt;dtos xmlns=&quot;cakephp-dto&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;cakephp-dto https://github.com/dereuromark/cakephp-dto&quot;&gt; &lt;/dtos&gt;  ・・・と言っておいて何ですが、個人的にYAMLでいきたいのでYAMLに書き換えます。 こちらのExampleを参考にしましょう。 /examples/basic.dto.yml
+  </div>
+  
+  <a href="https://cake.nichiyoubi.land/posts/27-cakephp-dto/" class="c-article__btn p-list-article__btn">Read more</a>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/24-find-or-create-validation/">findOrCreate()時にvalidationを行う</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -273,7 +305,7 @@ Collectionクラスは、以前にQiitaにも書いた。
           
         
         &nbsp;&bull;&nbsp;
-        2018
+        2019
 
         
           &nbsp;&bull;&nbsp;
