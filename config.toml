@@ -57,6 +57,12 @@ canonifyURLs = true
 
 [[menu.main]]
     parent = "Tags"
+    name = "Updates"
+    url = "/tags/updates/"
+    weight = 3
+
+[[menu.main]]
+    parent = "Tags"
     name = "Http/Routes"
     url = "/tags/http-and-routes/"
     weight = 3
