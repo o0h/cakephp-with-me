@@ -1,7 +1,6 @@
 ---
-title: "File Upload Test"
+title: "Fileのアップロードに関する結合テストをどうするか？"
 date: 2019-05-18T19:11:11+09:00
-draft: true
 tags: [Tests]
 categories: ["CakePHP3"]
 ---
