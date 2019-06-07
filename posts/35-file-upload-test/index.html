@@ -79,7 +79,7 @@
 
 <p>Controller のテストにおいて、IntegrationTestTrait(IntegrationTestCase)の <code>get</code> / <code>posts</code> といったメソッドを利用する機会は多いと思います。<br />
 この「POST や PUT のリクエスト」において、ファイルアップロード処理についてはどのように扱うべきでしょうか？<br />
-<code>post()</code>に渡すデータ = リクエストボディとなるデータとは別に、<code>configRequest()</code>によるリクエストコンテキストへの <code>$_FILES</code> へのアップロードファイルの注入が必要です。</p>
+<code>post()</code>に渡すデータ = リクエストボディとなるデータとは別に、<code>configRequest()</code>によるリクエストコンテキストへのアップロードファイル情報の注入が必要です。</p>
 
 <p></p>
 
