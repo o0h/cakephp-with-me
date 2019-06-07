@@ -9,7 +9,7 @@ categories: ["CakePHP3"]
 
 Controller のテストにおいて、IntegrationTestTrait(IntegrationTestCase)の `get` / `posts` といったメソッドを利用する機会は多いと思います。  
 この「POST や PUT のリクエスト」において、ファイルアップロード処理についてはどのように扱うべきでしょうか？  
-`post()`に渡すデータ = リクエストボディとなるデータとは別に、`configRequest()`によるリクエストコンテキストへの `$_FILES` へのアップロードファイルの注入が必要です。
+`post()`に渡すデータ = リクエストボディとなるデータとは別に、`configRequest()`によるリクエストコンテキストへのアップロードファイル情報の注入が必要です。
 
 <!--more-->
 
