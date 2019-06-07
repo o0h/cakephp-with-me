@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>カスタムファインダーについておさらい</title>
-  <meta property="og:title" content="カスタムファインダーについておさらい" />
-  <meta name="twitter:title" content="カスタムファインダーについておさらい" />
+  <title>Weekly CakePHP4 in 201901.3</title>
+  <meta property="og:title" content="Weekly CakePHP4 in 201901.3" />
+  <meta name="twitter:title" content="Weekly CakePHP4 in 201901.3" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="Hideki Kinjyo"/>
   <meta property="og:site_name" content="cakephp-with-me" />
-  <meta property="og:url" content="https://cake.nichiyoubi.land/posts/30-custom-find/" />
+  <meta property="og:url" content="https://cake.nichiyoubi.land/posts/weekly-cakephp4-201901-3/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -60,237 +60,47 @@
 
 <article class="p-article">
   <header>
-    <h1>カスタムファインダーについておさらい</h1>
+    <h1>Weekly CakePHP4 in 201901.3</h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-12-13T19:09:01&#43;09:00">
-          Dec 13, 2018
+        <time datetime="2019-01-20T00:00:00&#43;09:00">
+          Jan 20, 2019
         </time>
       </div>
       
-      <a href="https://cake.nichiyoubi.land/tags/orm-and-database" class="c-tag">ORM-and-Database</a>
+      <a href="https://cake.nichiyoubi.land/tags/updates" class="c-tag">Updates</a>
       
     </div>
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>※1人AdventのDay-13です</p>
+    <h2 id="概要">概要</h2>
 
-<p><a href="https://adventar.org/calendars/3627">1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar</a></p>
-
-<h2 id="概要">概要</h2>
-
-<p>CakePHP3で導入された「カスタムファインダー」は、Queryの組み立てを抽象化・パッケージ化する手法です。<br />
-よく利用するconditonsの追加やfields、formatResultsなどの手順を一箇所にまとめ、更にメソッドチェーンによるQueryのビルドを可能にします。</p>
+<p>2019年1月13日〜19日にCakePHP(4.x)にとりこまれたコミットをおさらいしていきます。
+※3.x / masterからのマージコミットは除きます。</p>
 
 <p></p>
 
-<h2 id="イントロ">イントロ</h2>
+<h2 id="updates">Updates</h2>
 
-<p>CakePHP3のORM機能の1つに、Tableで提供されている「カスタムファインド」というものがあります。<br />
-これは、より「鮮明で簡潔なコーディングをする」ことを支援する強力な機能だと思っています。</p>
+<h3 id="2019-01-13">2019-01-13</h3>
 
-<p>とはいっても、自分自身もCakePHP3を触り始めた当初はその存在<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>を知らず、利用できていませんでした。今になって感じるのは、うまく付き合えばより「Cakeらしい」コードが書けそうだということです。<br />
-この記事では、その具体的な実装や内部処理の流れについて触れていきます。</p>
+<h4 id="fix-up-bad-merge-cakephp-cakephp-9a1e5fc-https-github-com-cakephp-cakephp-commit-9a1e5fc4dcb4170f567171dd0a1aeb982dc7a56a"><a href="https://github.com/cakephp/cakephp/commit/9a1e5fc4dcb4170f567171dd0a1aeb982dc7a56a">Fix up bad merge. · cakephp/cakephp@9a1e5fc</a></h4>
 
-<h2 id="簡単な利用例-cookbookより">簡単な利用例(Cookbookより)</h2>
+<h4 id="fix-types-cakephp-cakephp-c63a9dc-https-github-com-cakephp-cakephp-commit-c63a9dc7f57517569db4fe39ffdebf85ffade357"><a href="https://github.com/cakephp/cakephp/commit/c63a9dc7f57517569db4fe39ffdebf85ffade357">Fix types. · cakephp/cakephp@c63a9dc</a></h4>
 
-<p>まずは、Cookbookにある内容を例にとって、簡単なサンプルに触れてみたいと思います。
-<a href="https://book.cakephp.org/3.0/ja/orm/retrieving-data-and-resultsets.html#custom-find-methods">データの取り出しと結果セット - 3.7</a></p>
+<h3 id="2019-01-14">2019-01-14</h3>
 
-<pre><code class="language-php">use Cake\ORM\Query;
-use Cake\ORM\Table;
+<h3 id="2019-01-15">2019-01-15</h3>
 
-class ArticlesTable extends Table
-{
+<h3 id="2019-01-16">2019-01-16</h3>
 
-    public function findOwnedBy(Query $query, array $options)
-    {
-        $user = $options['user'];
-        return $query-&gt;where(['author_id' =&gt; $user-&gt;id]);
-    }
+<h3 id="2019-01-17">2019-01-17</h3>
 
-}
+<h3 id="2019-01-18">2019-01-18</h3>
 
-// コントローラーやテーブルのメソッド内で
-$articles = TableRegistry::get('Articles');
-$query = $articles-&gt;find('ownedBy', ['user' =&gt; $userEntity]);
-</code></pre>
-
-<p>よくありそうな、「記事の筆者によって絞り込む」という処理です。<br />
-これは<code>WHERE author_id = :user_id</code>  という条件付けによって達成されます。</p>
-
-<p>カスタムファインダーを使う際には、2つの手順が必要です。</p>
-
-<ol>
-<li><code>findXxx</code> という規則に従ってメソッド名をつける</li>
-<li><code>Table::find('Xxx')</code> という形で呼び出す</li>
-</ol>
-
-<p>とてもシンプルですが、これだけでOKです。<br />
-これは、CakePHP2の時代から踏襲されているものです。</p>
-
-<p>参考) <a href="https://qiita.com/chinpei215/items/1f719b58e62a283ea27b">[CakePHP2] カスタムファインダーの使い方と利便性 - Qiita</a></p>
-
-<p>ただし、以前のバージョンと大きく違うのは、<strong>CakePHP3のfindメソッドは、(fetchした結果ではなく)Queryを返す</strong> ということです。<br />
-これにより、「汎用的で再利用性の高い処理」に対して「今この場でのみ必要な処理」を連鎖させることがとても容易になっています。</p>
-
-<h3 id="簡単な利用例②">簡単な利用例②</h3>
-
-<p>これを、もう少し実際的に利用している例も紹介されています。</p>
-
-<pre><code class="language-php">// コントローラーやテーブルのメソッド内で
-$articles = TableRegistry::get('Articles');
-$query = $articles-&gt;find('published')-&gt;find('recent');
-</code></pre>
-
-<p>内容としては、「公開済み」で、かつ「最近公開されたもの」と説明されています。<br />
-具体的な実装としては、以下のようなイメージでしょうか。</p>
-
-<pre><code class="language-php">use Cake\I18n\FrozenTime;
-use Cake\ORM\Query;
-use Cake\ORM\Table;
-
-class ArticlesTable extends Table
-{
-    const STATUS_DRAFT = 1;
-    const STATUS_IN_REVIEW = 2;
-    const STATUS_PUBLISHED = 3;
-
-    public function findPublished(Query $query, array $options)
-    {
-        return $query-&gt;where(['status' =&gt; self::STATUS_PUBLISHED]);
-    }
-
-    public function findRecent(Query $query, array $options)
-    {
-        $threshold = $options['threshold'] ?? new FrozenTime('-3 days');
-        return $query-&gt;where(['published &gt;=' $threshold]);
-    }
-
-}
-</code></pre>
-
-<p>これによって、「3日以内に公開された、閲覧可能状態にある記事」がごく簡単に取得できます。まだまだ単純な例ですが、「処理内容にラベルを与える」というのはコードの書き手に安心感を与えるられそうで嬉しいですね。</p>
-
-<p>もちろん、通常のクエリと同様に任意のメソッドを重ねていくことも可能です。</p>
-
-<pre><code class="language-php">$query = $articles
-    -&gt;find('published')
-    -&gt;find('recent')
-    -&gt;orderAsc('created');
-</code></pre>
-
-<h2 id="踏み込んだ利用例">踏み込んだ利用例</h2>
-
-<p>Cookbook中に、</p>
-
-<blockquote>
-<p>フェッチ後に結果を変更する必要があるなら、 結果を Map/Reduce で変更する 機能を使って結果を変更してください。 map reduce 機能は、旧バージョンの CakePHP にあった &lsquo;afterFind&rsquo; コールバックに代わるものです。</p>
-</blockquote>
-
-<p>という言及があります。</p>
-
-<p>これの実装例が、 <code>findList()</code> です。listタイプのfindの使い方については、 <a href="https://book.cakephp.org/3.0/ja/orm/retrieving-data-and-resultsets.html#table-find-list">Cookbokの説明</a>を御覧ください。</p>
-
-<p>一部を抜粋して、 「map reduce」機能の部分を引用してみます。</p>
-
-<pre><code class="language-php">// \Cake\ORM\Table::findList()
-return $query-&gt;formatResults(function ($results) use ($options) {
-    /** @var \Cake\Collection\CollectionInterface $results */
-    return $results-&gt;combine(
-        $options['keyField'],
-        $options['valueField'],
-        $options['groupField']
-    );
-});
-</code></pre>
-
-<p><code>formatResults()</code> は、queryの実行結果を呼び出し側に戻す前に「形を変形させる」という働きを持ちます。第1引数として<code>query-&gt;execute()</code>の実行結果を渡され、それはCollectionInterfaceを実装しているように指定されています。
-<code>findList</code>の例でいうと、「ResultSetをそのまま帰す」のではなく「<code>Collection::combine()</code> を適用して、プリミティブな連想配列を返す」ようになります。<br />
-このように、「クエリ実行後の加工・変形処理を差し込むことができる」という余地があることで、カスタムファインダーはより「かゆいところに手が届く」ようになったと感じています。</p>
-
-<h2 id="内部実装を覗いてみる">内部実装を覗いてみる</h2>
-
-<p>実際には、Queryインスタンスはどのように渡されていっているのでしょうか？<br />
-簡単にでも具体的な挙動を掴んでおくことは、「普段の開発で気軽に機能を使う」ためのハードルを下げると思っています。<br />
-そこで、内容について少々踏み込んでみてみましょう。</p>
-
-<p>例えば、次のようなクエリを実行したとします。</p>
-
-<pre><code class="language-php">$query = $this-&gt;Users-&gt;find();
-$query-&gt;find('list');
-</code></pre>
-
-<p>通常であれば最初の <code>find()</code> はいらないのですが、「チェインしたときにどのような挙動をするのか」により興味があるため、あえて入れてみます。</p>
-
-<pre><code class="language-php">public function find($type = 'all', $options = [])
-{
-    $query = $this-&gt;query();
-    $query-&gt;select();
-
-    return $this-&gt;callFinder($type, $query, $options);
-}
-</code></pre>
-
-<p>findメソッドは、このような流れになっています。<br />
-引数を省略した「普通のfind」は、 <code>all</code> というタイプでの呼び出しを意味することになります。</p>
-
-<p>その次に呼ばれる <code>callFind()</code> こそ、まさに「ファインダーメソッドが定義済みであるか」を検査する実態です。<br />
-もし存在するようであれば、そのまま実行します。</p>
-
-<pre><code class="language-php">public function callFinder($type, Query $query, array $options = [])
-{
-    $query-&gt;applyOptions($options);
-    $options = $query-&gt;getOptions();
-    $finder = 'find' . $type;
-    if (method_exists($this, $finder)) {
-        return $this-&gt;{$finder}($query, $options);
-    }
-// 後略
-</code></pre>
-
-<p>参考までに、<code>findAll()</code> は以下のように定義されています</p>
-
-<pre><code class="language-php">public function findAll(Query $query, array $options)
-{
-    return $query;
-}
-</code></pre>
-
-<p>さて、問題は次です。メソッドチェーンを用いて呼び出した場合、find()はどのような処理になるのでしょう？<br />
-注意深く考えると、<code>Table</code> だけでなく <code>Query</code> にも 同名のメソッドが生えていることに気づきます。<br />
-<code>\Cake\ORM\Query</code> 版の<code>find()</code>は、以下のようになります。</p>
-
-<pre><code class="language-php">public function find($finder, array $options = [])
-{
-    /** @var \Cake\ORM\Table $table */
-    $table = $this-&gt;getRepository();
-
-    return $table-&gt;callFinder($finder, $this, $options);
-}
-</code></pre>
-
-<p>queryインスタンスの中から、その出生元であるtableインスタンスにアクセスをして、先に見た <code>callFinder()</code> の流れに合流するのでした。その中で、 <code>$query</code> として自分自身(<code>$this</code>)を渡しています。</p>
-
-<p>これによって、チェイン処理の完成です！！</p>
-
-<h2 id="まとめ">まとめ</h2>
-
-<p>カスタムファインダーは、利用していくとコントローラーの見通しが抜群に良くなるように思います。ほとんど「手続きを記した」、自然文に近いような形で処理の手順を記述していきやすくなるからです。</p>
-
-<p>もちろん、これはBehaviorやTraitに組み込むことで活用の幅が格段に増えていきます。
-フレームワークのポテンシャルを活かして、楽しみながら本質的な開発に取り組めるようになることを望みます。</p>
-<div class="footnotes">
-
-<hr />
-
-<ol>
-<li id="fn:1">名前は知っていたのですが・・・使おう、というところまでは至らなかったのです。
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
-</ol>
-</div>
+<h3 id="2019-01-19">2019-01-19</h3>
   </section>
   <footer>
     
@@ -298,38 +108,16 @@ $query-&gt;find('list');
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
-          <a href="https://cake.nichiyoubi.land/posts/31-look-into-accesible/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="https://cake.nichiyoubi.land/posts/28-cakephp-3_7/">Older</a>
+          <a href="https://cake.nichiyoubi.land/posts/37-cakephp-3_7_2/">Older</a>
           
         </div>
       </div>
     </nav>
     
-
-<section class="p-related">
-  <h3>See Also</h3>
-  <ul id="slider" class="p-related__list">
-    
-    <li class="p-related__item js-related__item">
-      <a href="https://cake.nichiyoubi.land/posts/24-find-or-create-validation/"
-        >
-        <span>findOrCreate()時にvalidationを行う</span>
-      </a>
-    </li>
-    
-    <li class="p-related__item js-related__item">
-      <a href="https://cake.nichiyoubi.land/posts/1-use-query/"
-        >
-        <span>`Query` を愛用する。(もしくは `-&gt;all()` を避ける)</span>
-      </a>
-    </li>
-    
-  </ul>
-</section>
 
 
     

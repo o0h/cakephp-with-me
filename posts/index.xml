@@ -6,10 +6,24 @@
     <description>Recent content in Posts on cakephp-with-me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 05 Jan 2019 02:01:40 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 20 Jan 2019 00:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://cake.nichiyoubi.land/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Weekly CakePHP4 in 201901.3</title>
+      <link>https://cake.nichiyoubi.land/posts/weekly-cakephp4-201901-3/</link>
+      <pubDate>Sun, 20 Jan 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://cake.nichiyoubi.land/posts/weekly-cakephp4-201901-3/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;2019年1月13日〜19日にCakePHP(4.x)にとりこまれたコミットをおさらいしていきます。
+※3.x / masterからのマージコミットは除きます。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>CakePHP 3.7.2がリリースされたので更新内容を確認</title>
