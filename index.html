@@ -62,6 +62,31 @@
 
 <article class="c-article p-list-article">
   <header>
+    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/35-file-upload-test/">Fileのアップロードに関する結合テストをどうするか？</a></h2>
+    <p class="c-article__meta">
+      Posted on
+      <time datetime="2019-05-18T19:11:11&#43;09:00">
+        May 18, 2019
+      </time>
+    </p>
+  </header>
+  <div class="c-article__summary">
+    概要 Controller のテストにおいて、IntegrationTestTrait(IntegrationTestCase)の get / posts といったメソッドを利用する機会は多いと思います。
+この「POST や PUT のリクエスト」において、ファイルアップロード処理についてはどのように扱うべきでしょうか？
+post()に渡すデータ = リクエストボディとなるデータとは別に、configRequest()によるリクエストコンテキストへの $_FILES へのアップロードファイルの注入が必要です。
+
+
+  </div>
+  
+  <a href="https://cake.nichiyoubi.land/posts/35-file-upload-test/" class="c-article__btn p-list-article__btn">Read more</a></li>
+  
+</article>
+
+
+
+
+<article class="c-article p-list-article">
+  <header>
     <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/weekly-cakephp4-201901-3/">Weekly CakePHP4 in 201901.3</a></h2>
     <p class="c-article__meta">
       Posted on
@@ -287,32 +312,6 @@ MySQL互換RDBMSで利用が可能で、導入は簡単です。
   </div>
   
   <a href="https://cake.nichiyoubi.land/posts/31-look-into-accesible/" class="c-article__btn p-list-article__btn">Read more</a></li>
-  
-</article>
-
-
-
-
-<article class="c-article p-list-article">
-  <header>
-    <h2 class="c-title c-article__title"><a href="https://cake.nichiyoubi.land/posts/30-custom-find/">カスタムファインダーについておさらい</a></h2>
-    <p class="c-article__meta">
-      Posted on
-      <time datetime="2018-12-13T19:09:01&#43;09:00">
-        Dec 13, 2018
-      </time>
-    </p>
-  </header>
-  <div class="c-article__summary">
-    ※1人AdventのDay-13です
-1人advent(CakePHP中心、PHP開発よもやま) Advent Calendar 2018 - Adventar
-概要 CakePHP3で導入された「カスタムファインダー」は、Queryの組み立てを抽象化・パッケージ化する手法です。
-よく利用するconditonsの追加やfields、formatResultsなどの手順を一箇所にまとめ、更にメソッドチェーンによるQueryのビルドを可能にします。
-
-
-  </div>
-  
-  <a href="https://cake.nichiyoubi.land/posts/30-custom-find/" class="c-article__btn p-list-article__btn">Read more</a></li>
   
 </article>
 

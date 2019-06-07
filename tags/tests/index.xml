@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tests on cakephp-with-me</title>
+    <link>https://cake.nichiyoubi.land/tags/tests/</link>
+    <description>Recent content in Tests on cakephp-with-me</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 18 May 2019 19:11:11 +0900</lastBuildDate>
+    
+	<atom:link href="https://cake.nichiyoubi.land/tags/tests/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fileのアップロードに関する結合テストをどうするか？</title>
+      <link>https://cake.nichiyoubi.land/posts/35-file-upload-test/</link>
+      <pubDate>Sat, 18 May 2019 19:11:11 +0900</pubDate>
+      
+      <guid>https://cake.nichiyoubi.land/posts/35-file-upload-test/</guid>
+      <description>&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;
+
+&lt;p&gt;Controller のテストにおいて、IntegrationTestTrait(IntegrationTestCase)の &lt;code&gt;get&lt;/code&gt; / &lt;code&gt;posts&lt;/code&gt; といったメソッドを利用する機会は多いと思います。&lt;br /&gt;
+この「POST や PUT のリクエスト」において、ファイルアップロード処理についてはどのように扱うべきでしょうか？&lt;br /&gt;
+&lt;code&gt;post()&lt;/code&gt;に渡すデータ = リクエストボディとなるデータとは別に、&lt;code&gt;configRequest()&lt;/code&gt;によるリクエストコンテキストへの &lt;code&gt;$_FILES&lt;/code&gt; へのアップロードファイルの注入が必要です。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
