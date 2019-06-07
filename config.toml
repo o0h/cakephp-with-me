@@ -86,6 +86,12 @@ canonifyURLs = true
     weight = 3
 
 [[menu.main]]
+    parent = "Tests"
+    name = "tests"
+    url = "/tags/tests/"
+    weight = 3
+
+[[menu.main]]
     identifier = "categories"
     name = "Categories"
     weight = 3
